@@ -261,34 +261,7 @@ export default function ContactCard() {
               </div>
             </motion.div>
 
-            {/* Office Hours */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ delay: 0.2, duration: 0.3, ease: 'easeOut' }}
-              className="rounded-[24px] p-4 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
-              style={{ willChange: 'opacity', background: CARD_BG, border: CARD_BORDER, boxShadow: CARD_SHADOW }}
-            >
-              <div
-                className="absolute inset-x-0 top-0 h-1/2 rounded-t-[24px] pointer-events-none opacity-60"
-                style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 100%)' }}
-              />
-              <div className="flex items-start gap-3 relative z-10">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={ICON_PILL_STYLE}>
-                  <svg viewBox="0 0 24 24" className="w-5 h-5" style={{ color: '#7A2148' }} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-slate-900 mb-1.5 text-base">Office Hours</h3>
-                  <p className="text-sm text-slate-600">
-                    {shopConfig.contact.storeHours}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+
           </div>
         </div>
       </div>

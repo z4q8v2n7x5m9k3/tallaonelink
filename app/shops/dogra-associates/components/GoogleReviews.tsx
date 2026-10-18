@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Star, ArrowRight, ChevronRight } from 'lucide-react'
+import { Star, ArrowRight, ChevronRight, CheckCircle2 } from 'lucide-react'
 import { shopConfig } from '../config'
+import GoogleGIcon from '../../../components/GoogleGIcon'
 
 interface Review {
   author_name: string
@@ -206,24 +207,24 @@ export default function GoogleReviews() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="mb-4 rounded-[22px] border border-[#DDB66A]/35 bg-white p-4 shadow-[0_8px_20px_rgba(47,16,31,.08)]"
+        className="mb-4 rounded-[22px] border border-[#DDB66A]/40 bg-gradient-to-b from-white to-[#FAF7F2] p-4 shadow-[0_8px_20px_rgba(47,16,31,.07)]"
       >
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <div className="mb-2 flex items-center gap-2">
+            <div className="mb-1.5 flex items-center gap-2">
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star
                     key={star}
-                    className={`h-5 w-5 ${
+                    className={`h-4.5 w-4.5 ${
                       star <= Math.round(reviewsData.rating)
-                        ? 'fill-yellow-400 text-yellow-400'
-                        : 'text-slate-300'
+                        ? 'fill-[#F59E0B] text-[#F59E0B]'
+                        : 'text-slate-200'
                     }`}
                   />
                 ))}
               </div>
-              <span className="text-2xl font-black leading-none" style={{ color: '#111827' }}>
+              <span className="text-2xl font-black leading-none text-[#1A1A1A]">
                 {reviewsData.rating.toFixed(1)}
               </span>
             </div>
@@ -231,12 +232,14 @@ export default function GoogleReviews() {
               {reviewsData.totalReviews.toLocaleString()} verified Google reviews
             </p>
           </div>
-          <span
-            className="mt-1 shrink-0 rounded-full border px-4 py-2 text-sm font-black"
-            style={{ borderColor: '#E7D6AE', color: '#610138', background: '#F8F4EC' }}
+          <div
+            className="flex items-center gap-1.5 rounded-full border border-[#DDB66A]/40 bg-white px-3 py-1.5 shadow-[0_2px_8px_rgba(47,16,31,.04)]"
           >
-            {isDemo ? 'Demo Version' : 'Google'}
-          </span>
+            <GoogleGIcon className="h-4 w-4 shrink-0" />
+            <span className="[font-family:var(--font-manrope)] text-[11px] font-bold tracking-tight text-[#5F0D3C]">
+              {isDemo ? 'Demo Version' : 'Google Verified'}
+            </span>
+          </div>
         </div>
       </motion.div>
 
@@ -264,38 +267,44 @@ export default function GoogleReviews() {
             transition={{ delay: index * 0.05, duration: 0.3, ease: 'easeOut' }}
             className="rounded-2xl p-4 transition-all"
             style={{
-              background: '#FFFFFF',
-              border: '1px solid rgba(221,182,106,.32)',
-              borderRadius: 16,
-              boxShadow: '0 7px 18px rgba(47,16,31,.07)',
+              background: 'linear-gradient(160deg, #FFFFFF 0%, #FFFDF9 60%, #FAF3E6 100%)',
+              border: '1px solid rgba(221,182,106,.38)',
+              borderRadius: 18,
+              boxShadow: '0 8px 20px rgba(47,16,31,.07)',
             }}
           >
-            <div className="flex items-start gap-3 mb-2">
+            <div className="flex items-start gap-3 mb-2.5">
               <ReviewAvatar review={review} />
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1 flex-wrap">
-                  <h3 className="font-semibold text-sm" style={{ color: '#0F2A44' }}>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2 mb-0.5">
+                  <h3 className="font-bold text-[13.5px] truncate text-[#1A1A1A]">
                     {review.author_name}
                   </h3>
-                  <div className="flex items-center gap-0.5">
+                  <div className="flex items-center gap-0.5 shrink-0">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
                         key={star}
-                        className={`w-3.5 h-3.5 ${
+                        className={`w-3 h-3 ${
                           star <= review.rating
-                            ? 'fill-yellow-400 text-yellow-400'
-                            : 'text-gray-400'
+                            ? 'fill-[#F59E0B] text-[#F59E0B]'
+                            : 'text-gray-200'
                         }`}
                       />
                     ))}
                   </div>
                 </div>
-                <p className="text-xs" style={{ color: '#6B7A90' }}>
-                  {review.relative_time_description}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10.5px] text-[#88787E]">
+                    {review.relative_time_description}
+                  </span>
+                  <span className="text-[#DDB66A]">•</span>
+                  <span className="inline-flex items-center gap-0.5 text-[10.5px] font-medium text-[#2E7D32]">
+                    <CheckCircle2 className="h-3 w-3" /> Verified Customer
+                  </span>
+                </div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed line-clamp-3" style={{ color: '#0B1F33' }}>
+            <p className="text-[12.5px] leading-relaxed line-clamp-3 text-[#3A2A32]">
               {review.text}
             </p>
           </motion.div>
@@ -309,25 +318,12 @@ export default function GoogleReviews() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ delay: 0.15, duration: 0.3 }}
-        className="mt-5 space-y-3"
+        className="mt-4 space-y-2.5"
       >
-        <Link
-          href="/reviews"
-          className="block w-full font-semibold py-3 px-4 rounded-2xl transition-all flex items-center justify-center gap-2"
-          style={{
-            background: '#FFFFFF',
-            color: '#610138',
-            border: '1px solid rgba(216,197,141,.58)',
-            boxShadow: '0 8px 20px rgba(96,75,34,.13)',
-          }}
-        >
-          View All Reviews
-          <ArrowRight className="w-4 h-4" style={{ color: '#80652C' }} />
-        </Link>
         {isDemo ? (
           <div
             className="block w-full font-semibold py-3 px-4 rounded-2xl text-center text-white"
-            style={{ background: '#610138' }}
+            style={{ background: '#5F0D3C' }}
           >
             Demo Version
           </div>
@@ -336,13 +332,22 @@ export default function GoogleReviews() {
             href={writeReviewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full font-semibold py-3 px-4 rounded-2xl transition-all flex items-center justify-center gap-2 text-white"
-            style={{ background: '#610138' }}
+            className="group relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-2xl bg-gradient-to-r from-[#5F0D3C] via-[#6F0F46] to-[#5F0D3C] py-3.5 px-4 font-semibold text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-all hover:shadow-[0_12px_28px_rgba(95,13,60,.32)] active:scale-[0.99]"
           >
-            Write on Google
-            <Star className="w-4 h-4 fill-white text-white" />
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-sm shrink-0">
+              <GoogleGIcon className="h-3.5 w-3.5" />
+            </div>
+            <span className="text-[14px] font-semibold tracking-tight">Review Us on Google</span>
+            <Star className="h-3.5 w-3.5 fill-[#DDB66A] text-[#DDB66A]" />
           </Link>
         )}
+        <Link
+          href="/reviews"
+          className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DDB66A]/50 bg-gradient-to-b from-[#FFFFFF] to-[#FAF7F2] py-3 px-4 font-semibold text-[#5F0D3C] shadow-[0_4px_14px_rgba(95,13,60,.06)] transition-all hover:border-[#DDB66A] hover:shadow-[0_6px_20px_rgba(95,13,60,.1)] active:scale-[0.99]"
+        >
+          <span className="text-[13px] font-semibold">View All Reviews</span>
+          <ArrowRight className="h-3.5 w-3.5 text-[#80652C] transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </motion.div>
     </section>
   )

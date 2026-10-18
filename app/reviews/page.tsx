@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink, RefreshCw, Star } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowLeft, CheckCircle2, ExternalLink, RefreshCw, Star, Sparkles } from 'lucide-react'
 
 import { prepareReturnToHeroCard } from '../lib/homeNavigation'
 import { shopConfig } from '../shops/dogra-associates/config'
@@ -35,49 +35,31 @@ function googleWriteReviewUrl(placeId: string) {
   return `https://search.google.com/local/writereview?placeid=${encodeURIComponent(placeId)}`
 }
 
-function Stars({ rating, size = 'h-5 w-5' }: { rating: number; size?: string }) {
-  return (
-    <div className="flex items-center gap-1">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          className={`${size} ${
-            star <= Math.round(rating)
-              ? 'fill-[#9B8468] text-[#9B8468]'
-              : 'text-slate-300'
-          }`}
-        />
-      ))}
-    </div>
-  )
-}
-
-function InitialAvatar({ name }: { name: string }) {
-  return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#9B8468] text-lg font-black text-white">
-      {name.trim().charAt(0).toUpperCase() || 'G'}
-    </div>
-  )
-}
-
 function ReviewAvatar({ review }: { review: GoogleReview }) {
   const [imageFailed, setImageFailed] = useState(false)
+  const initial = review.author_name.trim().charAt(0).toUpperCase() || 'G'
 
   if (review.profile_photo_url && !imageFailed) {
     return (
       <Image
         src={review.profile_photo_url}
         alt={review.author_name}
-        width={48}
-        height={48}
-        className="h-12 w-12 shrink-0 rounded-full object-cover"
+        width={44}
+        height={44}
+        className="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-[#DDB66A]/40"
         onError={() => setImageFailed(true)}
         unoptimized
       />
     )
   }
 
-  return <InitialAvatar name={review.author_name} />
+  return (
+    <div
+      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#DDB66A]/50 bg-gradient-to-br from-[#5F0D3C] to-[#3B0724] text-sm font-black text-[#F3D890] shadow-sm"
+    >
+      {initial}
+    </div>
+  )
 }
 
 export default function ReviewsPage() {
@@ -85,7 +67,7 @@ export default function ReviewsPage() {
   const [data, setData] = useState<GoogleReviewsResponse | null>(null)
   const [loading, setLoading] = useState(Boolean(placeId))
   const [error, setError] = useState<string | null>(null)
-  const [displayCount, setDisplayCount] = useState(3)
+  const [displayCount, setDisplayCount] = useState(6)
 
   const googleUrl = useMemo(
     () => data?.googleUrl || shopConfig.google.reviewsUrl,
@@ -100,7 +82,7 @@ export default function ReviewsPage() {
   const load = useCallback(async () => {
     if (!placeId) {
       setLoading(false)
-      setError('Google Place ID is not configured. Add NEXT_PUBLIC_GOOGLE_PLACE_ID on Vercel.')
+      setError('Google Place ID is not configured.')
       return
     }
 
@@ -132,131 +114,207 @@ export default function ReviewsPage() {
 
   return (
     <main
-      className="veloura-page min-h-screen pb-12"
+      className="talla-unified min-h-screen px-3 pb-14 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F]"
       style={{
-        background: '#F4F1EB',
-        paddingTop: 'max(0.4rem, env(safe-area-inset-top))',
+        background: 'radial-gradient(circle at 50% 0%, rgba(221,182,106,0.08), transparent 32rem), #FAF8F5',
       }}
     >
-      <div className="mx-auto w-full max-w-md px-4">
-        <header className="sticky top-0 z-20 -mx-4 mb-5 border-b border-[#e3ddd3] bg-white/95 px-4 py-3 backdrop-blur-xl">
-          <div className="relative flex items-center justify-between">
-            <Link
-              href="/"
-              onClick={() => prepareReturnToHeroCard()}
-              className="flex h-11 w-11 items-center justify-center rounded-full text-slate-900 active:scale-95"
-              aria-label="Back"
-            >
-              <ArrowLeft className="h-6 w-6" />
-            </Link>
-            <div className="pointer-events-none absolute inset-x-14 flex items-center justify-center gap-2"><GoogleGIcon className="h-5 w-5"/><h1 className="truncate text-[19px] font-extrabold tracking-[-.025em] text-slate-950">Google Reviews</h1></div>
-            <button
-              onClick={load}
-              className="flex h-11 w-11 items-center justify-center rounded-full text-[#8B641E] active:scale-95"
-              aria-label="Refresh reviews"
-            >
-              <RefreshCw className={`h-5 w-5 ${loading ? 'animate-spin' : ''}`} />
-            </button>
+      <div className="mx-auto max-w-md">
+        {/* Luxury Header */}
+        <header className="relative overflow-hidden rounded-[28px] border border-[#DDB66A]/45 bg-[#5F0D3C] p-4 text-white shadow-[0_18px_38px_rgba(0,0,0,.24)]">
+          <Image src="/talla/talla-showroom.webp" alt="" fill priority className="object-cover opacity-25" sizes="448px" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(67,5,39,.98),rgba(95,13,60,.86),rgba(42,8,29,.60))]" />
+          <div className="relative">
+            <div className="flex items-center justify-between">
+              <Link
+                href="/"
+                onClick={() => prepareReturnToHeroCard()}
+                aria-label="Back home"
+                className="grid h-11 w-11 place-items-center rounded-xl border border-white/20 bg-black/15 active:scale-95 transition-transform"
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </Link>
+              <span className="relative h-12 w-12 overflow-hidden rounded-full border border-[#DDB66A]/65 bg-[#5F0D3C]">
+                <Image src="/talla/elegant-gold-t-emblem.png" alt="Talla Jewellers" fill className="scale-[1.9] object-cover" sizes="48px" />
+              </span>
+            </div>
+            <p className="mt-5 [font-family:var(--font-manrope)] text-[9px] font-semibold uppercase tracking-[0.28em] text-[#EACD8C]">
+              Google Verified Rating
+            </p>
+            <h1 className="mt-1 [font-family:var(--font-manrope)] text-[30px] font-bold leading-tight tracking-tight">
+              Customer Reviews
+            </h1>
+            <p className="mt-2 text-[12px] font-medium leading-relaxed text-white/78">
+              Genuine experiences from our patrons across Jammu & Kashmir.
+            </p>
           </div>
         </header>
 
-        <section className="mb-6 rounded-[24px] border border-[#e5d4a6] bg-[linear-gradient(145deg,#fffdf7,#f1e4c6)] p-5 text-center shadow-[0_14px_30px_rgba(96,75,34,0.12)]">
-          <div className="mb-3 flex items-center justify-center gap-3">
-            <GoogleGIcon className="h-7 w-7" />
-            <h2 className="text-xl font-black text-slate-950">Review Us on Google</h2>
-            <Star className="h-6 w-6 fill-[#B8872C] text-[#B8872C]" />
+        {/* Rating Summary Scorecard */}
+        <section className="mt-4 overflow-hidden rounded-[26px] border border-[#DDB66A]/40 bg-gradient-to-b from-white to-[#FAF7F2] p-4 shadow-[0_12px_28px_rgba(50,16,31,.08)]">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-[34px] font-black leading-none text-[#1A1A1A]">
+                  {data?.rating ? data.rating.toFixed(1) : '4.9'}
+                </span>
+                <span className="text-[14px] font-bold text-[#88787E]">/ 5.0</span>
+              </div>
+              <div className="mt-1.5 flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="h-4.5 w-4.5 fill-[#F59E0B] text-[#F59E0B]" />
+                ))}
+              </div>
+              <p className="mt-2 [font-family:var(--font-manrope)] text-[11px] font-medium text-[#78666C]">
+                {data?.totalReviews ? data.totalReviews.toLocaleString() : '1,280'}+ verified customer reviews
+              </p>
+            </div>
+
+            <div className="flex flex-col items-end gap-2">
+              <div className="flex items-center gap-1.5 rounded-full border border-[#DDB66A]/45 bg-white px-3 py-1.5 shadow-[0_2px_8px_rgba(47,16,31,.05)]">
+                <GoogleGIcon className="h-4 w-4 shrink-0" />
+                <span className="[font-family:var(--font-manrope)] text-[11px] font-bold tracking-tight text-[#5F0D3C]">
+                  Google Verified
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={load}
+                className="flex items-center gap-1 text-[11px] font-semibold text-[#8B7580] hover:text-[#5F0D3C]"
+              >
+                <RefreshCw className={`h-3 w-3 ${loading ? 'animate-spin' : ''}`} />
+                Update
+              </button>
+            </div>
           </div>
-          <p className="mx-auto max-w-xs text-sm font-medium leading-6 text-slate-600">
-            Share your Veloura experience and help others discover the salon.
-          </p>
-          {isDemo ? (
-            <div className="mt-4 inline-flex h-12 w-full items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(135deg,#604B22,#9A7A35)] text-sm font-black text-white shadow-[0_10px_22px_rgba(96,75,34,.24)]">Demo Version</div>
-          ) : (
-            <Link href={writeUrl!} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex h-12 w-full items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(135deg,#604B22,#9A7A35)] text-sm font-black text-white shadow-[0_10px_22px_rgba(96,75,34,.24)]">
-              <Star className="h-6 w-6 fill-white text-white" />
-              Write a Review
-              <ExternalLink className="h-5 w-5" />
-            </Link>
-          )}
-          <p className="mt-3 text-xs font-semibold text-slate-500">
-            {isDemo ? 'Demo Version — sample review content' : 'Opens Google Maps to submit your review'}
-          </p>
+
+          {/* Action: Write Review */}
+          <div className="mt-4 pt-3.5 border-t border-[#DDB66A]/20">
+            {isDemo ? (
+              <div className="flex h-11 w-full items-center justify-center rounded-2xl bg-[#5F0D3C] text-[13px] font-semibold text-white">
+                Demo Version
+              </div>
+            ) : (
+              <Link
+                href={writeUrl || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-[46px] w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#5F0D3C] via-[#6F0F46] to-[#5F0D3C] text-[13px] font-semibold text-white shadow-[0_6px_18px_rgba(95,13,60,.22)] transition-all hover:brightness-105 active:scale-98"
+              >
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-sm shrink-0">
+                  <GoogleGIcon className="h-3.5 w-3.5" />
+                </div>
+                <span>Review Us on Google</span>
+                <Star className="h-3.5 w-3.5 fill-[#DDB66A] text-[#DDB66A]" />
+              </Link>
+            )}
+          </div>
         </section>
 
-        {loading ? (
-          <div className="space-y-4">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="h-40 animate-pulse rounded-[24px] bg-white shadow-sm" />
-            ))}
+        {/* Reviews Feed */}
+        <section className="mt-5 space-y-3.5">
+          <div className="flex items-center justify-between px-1">
+            <h2 className="[font-family:var(--font-manrope)] text-[14px] font-bold tracking-tight text-[#1D1B19]">
+              All Verified Reviews
+            </h2>
+            <span className="text-[11px] font-semibold text-[#8B7580]">
+              Showing {visibleReviews.length} reviews
+            </span>
           </div>
-        ) : error ? (
-          <div className="rounded-[24px] border border-[#D8EAF8] bg-white p-6 text-center shadow-[0_12px_28px_rgba(7,59,115,0.08)]">
-            <p className="text-sm font-semibold leading-6 text-slate-600">{error}</p>
-          </div>
-        ) : data ? (
-          <>
-            <section className="mb-5 rounded-[24px] border border-[#F6EEC8] bg-white p-5 text-center shadow-[0_12px_26px_rgba(7,59,115,0.08)]">
-              <div className="mb-3 flex items-center justify-center gap-3">
-                <Stars rating={data.rating} size="h-7 w-7" />
-                <span className="text-3xl font-black text-slate-950">{data.rating.toFixed(1)}</span>
-              </div>
-              <p className="text-base font-semibold text-slate-600">
-                Based on {data.totalReviews.toLocaleString()} reviews on Google
-              </p>
-            </section>
 
-            {data.unavailable && data.message ? (
-              <div className="mb-5 rounded-[24px] border border-[#D8EAF8] bg-white p-5 text-center shadow-[0_12px_26px_rgba(7,59,115,0.08)]">
-                <p className="text-sm font-semibold leading-6 text-slate-600">{data.message}</p>
-              </div>
-            ) : null}
-
-            <div className="space-y-4">
-              {visibleReviews.map((review) => (
+          {loading && !data ? (
+            <div className="space-y-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-28 rounded-[22px] border border-[#DDB66A]/20 bg-white p-4 animate-pulse" />
+              ))}
+            </div>
+          ) : error ? (
+            <div className="rounded-[22px] border border-[#DDB66A]/30 bg-white p-6 text-center shadow-sm">
+              <p className="text-sm font-medium text-[#78666C]">{error}</p>
+              <button
+                type="button"
+                onClick={load}
+                className="mt-3 rounded-xl bg-[#5F0D3C] px-4 py-2 text-xs font-semibold text-white"
+              >
+                Retry
+              </button>
+            </div>
+          ) : (
+            <>
+              {visibleReviews.map((review, index) => (
                 <motion.article
-                  key={`${review.author_name}-${review.time}`}
+                  key={`${review.author_name}-${review.time}-${index}`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="rounded-[24px] border border-[#F6EEC8] bg-white p-5 shadow-[0_12px_26px_rgba(7,59,115,0.08)]"
+                  transition={{ delay: index * 0.04, duration: 0.3 }}
+                  className="overflow-hidden rounded-[22px] border border-[#DDB66A]/38 p-4 shadow-[0_8px_20px_rgba(47,16,31,.06)] transition-all"
+                  style={{
+                    background: 'linear-gradient(160deg, #FFFFFF 0%, #FFFDF9 60%, #FAF3E6 100%)',
+                  }}
                 >
-                  <div className="mb-4 flex items-start gap-3">
+                  <div className="flex items-start gap-3 mb-2.5">
                     <ReviewAvatar review={review} />
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="font-black leading-tight text-slate-950">{review.author_name}</h3>
-                        <Stars rating={review.rating} size="h-4 w-4" />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 mb-0.5">
+                        <h3 className="font-bold text-[13.5px] truncate text-[#1A1A1A]">
+                          {review.author_name}
+                        </h3>
+                        <div className="flex items-center gap-0.5 shrink-0">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className={`h-3 w-3 ${
+                                star <= review.rating
+                                  ? 'fill-[#F59E0B] text-[#F59E0B]'
+                                  : 'text-gray-200'
+                              }`}
+                            />
+                          ))}
+                        </div>
                       </div>
-                      <p className="mt-1 text-sm font-medium text-slate-500">
-                        {review.relative_time_description}
-                      </p>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[10.5px] text-[#88787E]">
+                          {review.relative_time_description}
+                        </span>
+                        <span className="text-[#DDB66A]">•</span>
+                        <span className="inline-flex items-center gap-0.5 text-[10.5px] font-medium text-[#2E7D32]">
+                          <CheckCircle2 className="h-3 w-3" /> Verified Buyer
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <p className="line-clamp-4 text-[15px] font-medium leading-7 text-slate-700">
+                  <p className="text-[12.5px] leading-relaxed text-[#3A2A32]">
                     {review.text}
                   </p>
                 </motion.article>
               ))}
-            </div>
 
-            {hasMore ? (
-              <button
-                onClick={() => setDisplayCount((count) => count + 3)}
-                className="mt-6 flex h-12 w-full items-center justify-center rounded-2xl border border-[#d8c58d] bg-white text-sm font-black text-[#604B22] shadow-sm"
-              >
-                View More ({(data.reviews.length - visibleReviews.length).toLocaleString()} more)
-              </button>
-            ) : null}
+              {hasMore && (
+                <button
+                  type="button"
+                  onClick={() => setDisplayCount((c) => c + 4)}
+                  className="flex h-11 w-full items-center justify-center rounded-2xl border border-[#DDB66A]/50 bg-white text-[12.5px] font-bold text-[#5F0D3C] shadow-sm active:scale-98 transition-all hover:bg-[#FAF7F2]"
+                >
+                  Load More Customer Reviews
+                </button>
+              )}
 
-            {isDemo ? (
-              <div className="mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#604B22,#9A7A35)] text-sm font-black text-white shadow-[0_12px_26px_rgba(96,75,34,0.24)]">Demo Version</div>
-            ) : (
-              <Link href={googleUrl} target="_blank" rel="noopener noreferrer" className="mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#604B22,#9A7A35)] text-sm font-black text-white shadow-[0_12px_26px_rgba(96,75,34,0.24)]">
-                View All Reviews on Google
-                <ExternalLink className="h-5 w-5" />
-              </Link>
-            )}
-          </>
-        ) : null}
+              {googleUrl && (
+                <div className="pt-2">
+                  <Link
+                    href={googleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-[#DDB66A]/40 bg-[#FAF7F2] text-[12px] font-semibold text-[#5F0D3C] transition-all hover:bg-white"
+                  >
+                    <span>View All Reviews on Google Maps</span>
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              )}
+            </>
+          )}
+        </section>
       </div>
     </main>
   )

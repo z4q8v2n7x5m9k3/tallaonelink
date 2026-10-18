@@ -33,18 +33,16 @@ export default function Home() {
 
     const section = consumeReturnSection()
     const skipLoad = consumeSkipLoad() || section !== null
-    const hasSeenIntro = window.sessionStorage.getItem('tallaIntroSeen') === 'true'
 
     if (section) setRestoreSection(section)
 
-    if (skipLoad || hasSeenIntro) {
+    if (skipLoad) {
       setShowLoading(false)
       return
     }
 
-    window.sessionStorage.setItem('tallaIntroSeen', 'true')
-    const timer = setTimeout(() => setShowLoading(false), 550)
-    const fallbackTimer = setTimeout(() => setShowLoading(false), 900)
+    const timer = setTimeout(() => setShowLoading(false), 2400)
+    const fallbackTimer = setTimeout(() => setShowLoading(false), 2800)
     return () => {
       clearTimeout(timer)
       clearTimeout(fallbackTimer)

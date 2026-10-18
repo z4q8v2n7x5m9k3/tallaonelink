@@ -5,14 +5,20 @@ import { motion } from 'framer-motion'
 import NextLink from 'next/link'
 import NextImage from 'next/image'
 import { useRouter } from 'next/navigation'
+import { Sparkles, ArrowRight } from 'lucide-react'
 import { setReturnSection } from '../../../lib/homeNavigation'
 
-// Gallery images from public/talla folder
+// Authentic official Talla Jewellers bridal couture images
 const galleryImages = [
-  '/talla/kriyon/fine-103.webp',
-  '/talla/kriyon/fine-104.webp',
-  '/talla/kriyon/fine-110.webp',
-  '/talla/kriyon/fine-115.webp',
+  '/talla/talla-couture-01.png',
+  '/talla/talla-couture-04.png',
+  '/talla/talla-couture-03.png',
+  '/talla/talla-couture-05.png',
+]
+
+const previewAvatars = [
+  '/talla/talla-couture-01.png',
+  '/talla/talla-couture-04.png',
 ]
 
 const visibleImages = galleryImages.slice(0, 4)
@@ -39,21 +45,23 @@ export default function Gallery() {
   return (
     <section id="gallery" className="mx-auto w-full max-w-md pb-6 pt-8 [font-family:var(--font-manrope)]">
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="mb-6"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
+        className="mb-5"
       >
         <div className="section-title-accent talla-title-accent mb-2">
           <h2 className="[font-family:var(--font-manrope)] text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Bridal Gallery
+            Imperial Bridal Gallery
           </h2>
         </div>
-        <p className="whitespace-nowrap [font-family:var(--font-manrope)] text-sm font-normal tracking-tight text-slate-300/90 sm:text-base">Bridal • couture • heirloom moments.</p>
+        <p className="text-sm font-normal tracking-tight text-slate-300/85">
+          Heirloom Polki • Certified Solitaires • Regal Bridal Sets
+        </p>
       </motion.div>
 
-      {/* 4 image grid — Mango "Gallery" geometry, big rounded corners + premium shadow */}
+      {/* 4 image grid — luxury rounded geometry with subtle gold borders */}
       <div className="grid grid-cols-2 gap-3.5">
         {visibleImages.map((imageSrc, index) => (
           <motion.div
@@ -62,23 +70,26 @@ export default function Gallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-30px' }}
             transition={{ delay: index * 0.06, duration: 0.3 }}
-            className="group relative aspect-square cursor-pointer overflow-hidden rounded-[24px] border border-white/10 shadow-[0_18px_36px_rgba(0,0,0,.24)]"
+            className="group relative aspect-square cursor-pointer overflow-hidden rounded-[24px] border border-[#DDB66A]/30 bg-[#1D141A] shadow-[0_16px_34px_rgba(0,0,0,.35)] active:scale-[0.98] transition-all"
             onClick={handleImageClick}
           >
             <Image
               src={imageSrc}
-              alt={`Gallery image ${index + 1}`}
+              alt={`Talla Bridal Couture ${index + 1}`}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               sizes="(max-width: 448px) 50vw, 224px"
             />
-            <div className="absolute inset-[1px] z-[1] rounded-[23px] border border-white/10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+            <div className="absolute inset-[1px] z-[1] rounded-[23px] border border-white/10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+            <div className="absolute bottom-2.5 left-3 z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <span className="text-[10px] font-bold text-white/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">View Piece →</span>
+            </div>
           </motion.div>
         ))}
       </div>
 
-      {/* View Gallery button — Mango pill geometry, blue brand */}
+      {/* View Gallery button — refined luxury burgundy & gold */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -89,10 +100,21 @@ export default function Gallery() {
         <Link
           href="/gallery"
           onClick={() => setReturnSection('gallery')}
-          className="flex min-h-[56px] w-full items-center justify-center gap-2.5 rounded-2xl border border-[#DDB66A]/45 bg-[#610138] px-4 [font-family:var(--font-manrope)] text-base font-bold tracking-tight text-white shadow-[0_12px_24px_rgba(97,1,56,.22)] transition active:scale-[0.98]"
+          className="group relative flex min-h-[54px] w-full items-center justify-center gap-3 rounded-2xl border border-[#DDB66A]/60 bg-gradient-to-r from-[#610138] via-[#780646] to-[#51012E] px-4 [font-family:var(--font-manrope)] text-base font-bold tracking-tight text-white shadow-[0_12px_26px_rgba(97,1,56,.32),inset_0_1px_0_rgba(255,255,255,0.22)] transition-all active:scale-[0.98] hover:brightness-105"
         >
-          <span className="flex -space-x-2" aria-hidden>{visibleImages.slice(0, 2).map((image) => <span key={image} className="relative h-7 w-7 overflow-hidden rounded-full border-2 border-[#242424]"><Image src={image} alt="" fill sizes="28px" className="object-cover" /></span>)}</span>
-          View Gallery
+          {/* Changed 2 images with luxury circular styling */}
+          <span className="flex -space-x-2" aria-hidden>
+            {previewAvatars.map((image, i) => (
+              <span
+                key={image}
+                className="relative h-8 w-8 overflow-hidden rounded-full border-2 border-white shadow-[0_4px_10px_rgba(0,0,0,0.3)] ring-1 ring-[#DDB66A]/80 transition-transform group-hover:scale-105"
+              >
+                <Image src={image} alt="" fill sizes="32px" className="object-cover" />
+              </span>
+            ))}
+          </span>
+          <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">View Gallery</span>
+          <ArrowRight className="h-4 w-4 text-[#EACD8C] transition-transform group-hover:translate-x-0.5" />
         </Link>
       </motion.div>
     </section>

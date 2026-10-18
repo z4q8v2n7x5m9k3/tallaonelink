@@ -55,7 +55,9 @@ const TIME_SLOTS = [
 ]
 
 const SHOWROOM_PREVIEW_IMAGES = [
-  '/talla/talla-showroom.webp',
+  '/talla/showrooms/gandhi-nagar.jpg',
+  '/talla/showrooms/lakhdata-bazar.jpg',
+  '/talla/showrooms/udhampur.jpg',
 ]
 
 const ActionsRow = forwardRef<ActionsRowRef, ActionsRowProps>(({ onOpenPayments, onOpenAppointment, onOpenDoctorProfile }, ref) => {
@@ -244,8 +246,8 @@ Please confirm availability.`
               </motion.span>
             </AnimatePresence>
             <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(42,7,27,.96)_0%,rgba(97,1,56,.80)_52%,rgba(97,1,56,.30)_100%)]" aria-hidden />
-            <span className="relative z-10 h-11 w-11 shrink-0 overflow-hidden rounded-[15px] border-2 border-white/90 shadow-[0_7px_18px_rgba(0,0,0,0.25)]">
-              <Image src="/talla/talla-showroom.webp" alt="Talla Jewellers showroom" fill unoptimized className="object-cover" sizes="48px" />
+            <span className="relative z-10 h-11 w-11 shrink-0 overflow-hidden rounded-[15px] border-2 border-white/95 shadow-[0_7px_18px_rgba(0,0,0,0.30)] ring-1 ring-[#DDB66A]/50">
+              <Image src="/talla/showrooms/gandhi-nagar.jpg" alt="Talla Jewellers showroom" fill unoptimized className="object-cover" sizes="48px" />
             </span>
             <span className="relative z-10 ml-3 min-w-0 flex-1 text-left">
               <strong className="block truncate text-[16px] font-black text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]">Find a Showroom</strong>
@@ -253,7 +255,7 @@ Please confirm availability.`
             </span>
             <span className="relative z-10 ml-2 flex shrink-0 -space-x-2" aria-hidden>
               {SHOWROOM_PREVIEW_IMAGES.map((src, index) => (
-                <motion.span key={src} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/90 shadow-[0_6px_15px_rgba(0,0,0,0.28)]" animate={{ y: index === showroomPreviewIndex ? -3 : 0, scale: index === showroomPreviewIndex ? 1.06 : 1 }} transition={{ duration: 0.55 }}>
+                <motion.span key={src} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/95 shadow-[0_6px_16px_rgba(0,0,0,0.32)] ring-1 ring-[#DDB66A]/60" animate={{ y: index === showroomPreviewIndex ? -3 : 0, scale: index === showroomPreviewIndex ? 1.08 : 1 }} transition={{ duration: 0.55 }}>
                   <Image src={src} alt="" fill unoptimized className="object-cover" sizes="40px" />
                 </motion.span>
               ))}
