@@ -279,7 +279,7 @@ Please confirm availability.`
             style={{ boxShadow: '0 7px 18px rgba(97,1,56,0.12)' }}
           >
             <span className="pointer-events-none absolute right-0 top-0 h-full w-[46%] overflow-hidden"><Image src="/talla/talla-couture-01.png" alt="" fill unoptimized className="object-cover opacity-50 transition-transform duration-500 group-hover:scale-110" sizes="110px" /><span className="absolute inset-0 bg-[linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.20)_100%)]" /></span>
-            <span className="relative z-10 truncate text-[12.5px] font-black text-[#610138]">Explore All Collections</span>
+            <span className="relative z-10 truncate text-[13px] font-black text-[#610138]">Collections</span>
           </Link>
 
           <Link

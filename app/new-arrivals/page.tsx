@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, ArrowUpRight, Crown, Gem, Layers, Sparkles, Star } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, Sparkles } from 'lucide-react'
 import WhatsAppLogo from '@/components/WhatsAppLogo'
 import { shopConfig } from '../shops/dogra-associates/config'
 import { getWhatsAppLink } from '../lib/phone'
@@ -15,17 +15,17 @@ type CategoryKey = 'all' | 'bridal' | 'diamond' | 'gold' | 'polki' | 'daily' | '
 interface CategoryFilter {
   key: CategoryKey
   label: string
-  icon: typeof Sparkles
+  image: string
 }
 
 const CATEGORIES: CategoryFilter[] = [
-  { key: 'all', label: 'All New', icon: Layers },
-  { key: 'bridal', label: 'Bridal Heirlooms', icon: Crown },
-  { key: 'diamond', label: 'Diamonds', icon: Sparkles },
-  { key: 'gold', label: 'Gold Essentials', icon: Gem },
-  { key: 'polki', label: 'Heritage Polki', icon: Star },
-  { key: 'daily', label: 'Daily Wear', icon: Sparkles },
-  { key: 'silver', label: 'ZAVI Silver', icon: Gem },
+  { key: 'all', label: 'All New', image: '/talla/kriyon/fine-081.webp' },
+  { key: 'bridal', label: 'Bridal Heirlooms', image: '/talla/kriyon/fine-076.webp' },
+  { key: 'diamond', label: 'Diamonds', image: '/talla/kriyon/fine-092.webp' },
+  { key: 'gold', label: 'Gold Essentials', image: '/talla/kriyon/fine-085.webp' },
+  { key: 'polki', label: 'Heritage Polki', image: '/talla/kriyon/fine-110.webp' },
+  { key: 'daily', label: 'Daily Wear', image: '/talla/kriyon/fine-103.webp' },
+  { key: 'silver', label: 'ZAVI Silver', image: '/talla/kriyon/fine-107.webp' },
 ]
 
 interface ProductItem {
@@ -34,7 +34,6 @@ interface ProductItem {
   category: CategoryKey
   categoryLabel: string
   tagline: string
-  description: string
   badge: string
   image: string
   shopUrl: string
@@ -47,7 +46,6 @@ const NEW_ARRIVALS: ProductItem[] = [
     category: 'bridal',
     categoryLabel: 'Bridal Heirlooms',
     tagline: 'Imperial Royal Collection',
-    description: 'Intricately handcrafted with certified Colombian emerald drops and 22KT antique finish gold for the modern regal bride.',
     badge: '22KT Heritage Gold',
     image: '/talla/kriyon/fine-076.webp',
     shopUrl: 'https://tallajewellers.com/bridal-collections/',
@@ -58,7 +56,6 @@ const NEW_ARRIVALS: ProductItem[] = [
     category: 'diamond',
     categoryLabel: 'Diamond Jewellery',
     tagline: 'Modern Brilliance',
-    description: 'Precision-cut natural diamonds set in 18KT rose and white gold, crafted to dazzle from dawn to midnight.',
     badge: 'IGI Certified Natural',
     image: '/talla/kriyon/fine-092.webp',
     shopUrl: 'https://tallajewellers.com/shop/?filter_jewellery-type=diamond-jewellery',
@@ -69,7 +66,6 @@ const NEW_ARRIVALS: ProductItem[] = [
     category: 'polki',
     categoryLabel: 'Heritage Polki',
     tagline: 'Uncut Royal Legacy',
-    description: 'Centuries-old royal craftsmanship reimagined with uncut Syndicate polki stones and South Sea pearls.',
     badge: 'Handcrafted Heritage',
     image: '/talla/kriyon/fine-110.webp',
     shopUrl: 'https://tallajewellers.com/polki-collections/',
@@ -80,7 +76,6 @@ const NEW_ARRIVALS: ProductItem[] = [
     category: 'gold',
     categoryLabel: 'Gold Essentials',
     tagline: 'New In Pure Gold',
-    description: 'Heavy architectural filigree and embossed divinity motifs in hallmarked 916 yellow gold.',
     badge: 'BIS 916 Hallmarked',
     image: '/talla/kriyon/fine-085.webp',
     shopUrl: 'https://tallajewellers.com/shop/?filter_metal-type=gold',
@@ -91,7 +86,6 @@ const NEW_ARRIVALS: ProductItem[] = [
     category: 'daily',
     categoryLabel: 'Daily Wear',
     tagline: 'Everyday Fine Joaillerie',
-    description: 'Feather-light stackable bands and pavé pendants styled for daily wear without compromising grandeur.',
     badge: 'Modern Luxury',
     image: '/talla/kriyon/fine-103.webp',
     shopUrl: 'https://tallajewellers.com/shop/?filter_occasion=everyday',
@@ -102,7 +96,6 @@ const NEW_ARRIVALS: ProductItem[] = [
     category: 'silver',
     categoryLabel: 'ZAVI Silver',
     tagline: 'Pure 925 Silver',
-    description: 'Modern silver elegance curated by Talla Jewellers for casual festive celebrations and contemporary gifting.',
     badge: '925 Sterling Hallmarked',
     image: '/talla/kriyon/fine-107.webp',
     shopUrl: 'https://tallajewellers.com/collections/zavi-silver-range/',
@@ -127,7 +120,7 @@ export default function NewArrivalsPage() {
     }, 50)
   }
 
-  const defaultWhatsapp = shopConfig.contact.clientPhoneE164 || '919000000000'
+  const defaultWhatsapp = shopConfig.contact.clientPhoneE164 || '918716900000'
 
   const getWhatsappProductLink = (title: string) => {
     const message = `Hello Talla Jewellers, I am interested in knowing more about the new arrival: "${title}". Please share details and pricing.`
@@ -187,37 +180,17 @@ export default function NewArrivalsPage() {
                 Explore our freshest heirlooms across bridal couture, natural diamonds, certified gold and fine silver.
               </p>
             </div>
-
-            {/* Quick Links Nav */}
-            <nav className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-white/15 bg-black/15 p-1.5 backdrop-blur-sm">
-              <Link
-                href="/"
-                onClick={() => prepareReturnToHeroCard()}
-                className="flex h-9 items-center justify-center rounded-xl text-[11px] font-bold text-white/90 hover:bg-white/10 transition-colors"
-              >
-                Return to Card
-              </Link>
-              <a
-                href={getWhatsAppLink(defaultWhatsapp, 'Hello Talla Jewellers, I would like to see your latest new arrivals catalogue.')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 items-center justify-center gap-1.5 rounded-xl bg-white text-[11px] font-black text-[#5F0D3C] shadow-sm transition-transform active:scale-95"
-              >
-                <WhatsAppLogo className="h-4 w-4" color="#25D366" />
-                WhatsApp Catalogue
-              </a>
-            </nav>
           </div>
         </header>
 
-        {/* Poshak Ki Noor Style Horizontal Scroll Category Filter Bar */}
+        {/* Poshak Ki Noor Style Horizontal Scroll Category Filter Bar with Jewellery Images */}
         <section className="mt-4" aria-label="Category Filters">
           <div
             ref={filterScrollRef}
             className="flex gap-2 overflow-x-auto pb-1.5 scrollbar-hide"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
-            {CATEGORIES.map(({ key, label, icon: Icon }) => {
+            {CATEGORIES.map(({ key, label, image }) => {
               const isActive = activeCategory === key
               return (
                 <button
@@ -225,18 +198,20 @@ export default function NewArrivalsPage() {
                   data-cat-pill={key}
                   type="button"
                   onClick={() => selectCategory(key)}
-                  className={`flex h-10 shrink-0 items-center gap-2 rounded-full border px-3.5 text-[12px] font-bold transition-all shadow-sm active:scale-95 ${
+                  className={`flex h-10 shrink-0 items-center gap-2 rounded-full border px-3 py-1 text-[12px] font-bold transition-all shadow-sm active:scale-95 ${
                     isActive
                       ? 'border-[#5F0D3C] bg-[#5F0D3C] text-white shadow-[0_4px_12px_rgba(95,13,60,.25)]'
                       : 'border-[#DDB66A]/35 bg-white text-[#4A3440] hover:border-[#DDB66A] hover:bg-[#FFFDF9]'
                   }`}
                 >
-                  <span
-                    className={`grid h-6 w-6 place-items-center rounded-full ${
-                      isActive ? 'bg-white/15 text-[#EACD8C]' : 'bg-[#FAF2E4] text-[#80652C]'
-                    }`}
-                  >
-                    <Icon className="h-3.5 w-3.5" />
+                  <span className="relative h-6 w-6 shrink-0 overflow-hidden rounded-full border border-white/60 shadow-sm">
+                    <Image
+                      src={image}
+                      alt={label}
+                      fill
+                      className="object-cover"
+                      sizes="24px"
+                    />
                   </span>
                   <span>{label}</span>
                 </button>
@@ -246,7 +221,7 @@ export default function NewArrivalsPage() {
         </section>
 
         {/* Category Heading & Count */}
-        <div className="mt-4 mb-3.5 flex items-end justify-between px-1">
+        <div className="mt-4 mb-3 flex items-end justify-between px-1">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#9A7A35]">
               {activeCategory === 'all' ? 'All Handcrafted Edits' : `${activeCategory} Collection`}
@@ -260,7 +235,7 @@ export default function NewArrivalsPage() {
           </span>
         </div>
 
-        {/* Wide Luxury Product Cards */}
+        {/* Wide Luxury Product Cards - Clean & Clutter-Free */}
         <div className="space-y-4">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
@@ -282,10 +257,10 @@ export default function NewArrivalsPage() {
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
                     sizes="448px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/15" />
 
                   {/* Top Badge */}
-                  <span className="absolute left-3 top-3 rounded-full border border-white/25 bg-black/40 px-3 py-1 text-[9px] font-bold uppercase tracking-[.14em] text-[#EACD8C] backdrop-blur-md">
+                  <span className="absolute left-3 top-3 rounded-full border border-white/25 bg-black/45 px-3 py-1 text-[9px] font-bold uppercase tracking-[.14em] text-[#EACD8C] backdrop-blur-md">
                     {item.badge}
                   </span>
 
@@ -302,7 +277,7 @@ export default function NewArrivalsPage() {
 
                   {/* Bottom Image Overlay Tag */}
                   <div className="absolute inset-x-0 bottom-0 p-3.5 text-white">
-                    <span className="text-[8px] font-bold uppercase tracking-[.22em] text-[#EACD8C]">
+                    <span className="text-[8.5px] font-bold uppercase tracking-[.22em] text-[#EACD8C]">
                       {item.tagline}
                     </span>
                     <h3 className="mt-0.5 text-[17px] font-black leading-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
@@ -311,13 +286,9 @@ export default function NewArrivalsPage() {
                   </div>
                 </div>
 
-                {/* Card Details & Action Buttons */}
-                <div className="px-2 pt-3 pb-1">
-                  <p className="text-[12px] font-medium leading-relaxed text-[#5A4550]">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-3.5 grid grid-cols-2 gap-2">
+                {/* Card Action Buttons (Clean & Clutter-Free) */}
+                <div className="px-1 pt-2.5 pb-1">
+                  <div className="grid grid-cols-2 gap-2">
                     <a
                       href={item.shopUrl}
                       target="_blank"
