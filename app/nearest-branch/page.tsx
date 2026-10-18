@@ -14,7 +14,7 @@ function GoogleMapsDirectionButton({ mapQuery, label = 'Directions' }: { mapQuer
       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`}
       target="_blank"
       rel="noreferrer"
-      className="flex h-12 min-w-0 items-center justify-center gap-2 rounded-[16px] border border-slate-200 bg-white px-3 text-[13px] font-extrabold text-[#111827] shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] hover:bg-[#FAF7F2]"
+      className="flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-[#DDB66A]/40 bg-white px-4 text-[13px] font-black text-[#111827] shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] hover:bg-[#FAF7F2]"
     >
       <span className="grid h-6 w-6 shrink-0 place-items-center" aria-hidden>
         <svg viewBox="0 0 24 24" className="h-5 w-5">
@@ -44,7 +44,7 @@ const showroomImages = [
   '/talla/showrooms/udhampur.jpg',
 ]
 
-const showroomImagePositions = ['50% 45%', '50% 50%', '50% 30%', '50% 45%']
+const showroomImagePositions = ['center center', 'center center', 'center 35%', 'center center']
 
 const showrooms = shopConfig.branches.map((branch, index) => ({
   ...branch,
@@ -93,7 +93,7 @@ export default function NearestBranchPage() {
       (locationError) => {
         setError(
           locationError.code === locationError.PERMISSION_DENIED
-            ? 'Allow location access to find the closest showroom.'
+            ? 'Allow location access to find your closest showroom.'
             : 'Could not detect location. Please check the showrooms below.'
         )
         setLoading(false)
@@ -110,8 +110,8 @@ export default function NearestBranchPage() {
       }}
     >
       <div className="mx-auto max-w-md">
-        {/* Simplified Premium Header */}
-        <header className="relative overflow-hidden rounded-[28px] border border-[#DDB66A]/45 bg-[#5F0D3C] p-4 text-white shadow-[0_18px_38px_rgba(95,13,60,.28)]">
+        {/* Luxury Taller Header */}
+        <header className="relative overflow-hidden rounded-[30px] border border-[#DDB66A]/45 bg-[#5F0D3C] p-5 text-white shadow-[0_20px_42px_rgba(95,13,60,.32)]">
           <Image
             src="/talla/talla-showroom.webp"
             alt=""
@@ -120,7 +120,7 @@ export default function NearestBranchPage() {
             className="object-cover opacity-30"
             sizes="448px"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(67,5,39,.98),rgba(95,13,60,.84),rgba(42,8,29,.58))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(67,5,39,.98),rgba(95,13,60,.86),rgba(42,8,29,.60))]" />
 
           <div className="relative">
             <div className="flex items-center justify-between">
@@ -149,48 +149,48 @@ export default function NearestBranchPage() {
               </span>
             </div>
 
-            <div className="mt-4">
-              <span className="block text-[9.5px] font-bold uppercase tracking-[0.26em] text-[#EACD8C]">
-                Jammu & Kashmir
-              </span>
-              <h1 className="mt-1 text-[26px] font-black leading-tight tracking-tight text-white">
+            <div className="mt-6">
+              <h1 className="text-[32px] font-black leading-tight tracking-tight text-white">
                 Find a Showroom
               </h1>
-              <p className="mt-1 text-[12px] font-medium leading-relaxed text-white/80">
-                Visit our four signature jewellery destinations across Jammu & Kashmir.
+              <p className="mt-1.5 text-[12.5px] font-medium leading-relaxed text-white/85">
+                Visit our signature jewellery destinations for master craftsmanship and personalised consultation.
               </p>
             </div>
 
             {/* Clean Segmented Nav */}
-            <nav className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-white/15 bg-black/20 p-1.5 backdrop-blur-sm">
+            <nav className="mt-5 grid grid-cols-2 gap-2 rounded-2xl border border-white/15 bg-black/25 p-1.5 backdrop-blur-sm">
               <button
                 type="button"
                 onClick={() => {
                   document.getElementById('nearest-section')?.scrollIntoView({ behavior: 'smooth' })
                   findNearest()
                 }}
-                className="flex h-10 items-center justify-center gap-2 rounded-xl bg-white text-[11.5px] font-extrabold text-[#5F0D3C] shadow-md transition-transform active:scale-95"
+                className="flex h-11 items-center justify-center gap-2 rounded-xl bg-white text-[12px] font-black text-[#5F0D3C] shadow-md transition-transform active:scale-95"
               >
                 <Compass className="h-4 w-4 text-[#5F0D3C]" />
-                <span>Nearest Store</span>
+                <span>Nearest Showroom</span>
               </button>
               <a
                 href="#all-showrooms"
-                className="flex h-10 items-center justify-center gap-2 rounded-xl text-[11.5px] font-bold text-white/90 transition-colors hover:bg-white/10"
+                className="flex h-11 items-center justify-center gap-2 rounded-xl text-[12px] font-bold text-white/90 transition-colors hover:bg-white/10"
               >
                 <Store className="h-4 w-4 text-[#EACD8C]" />
-                <span>All 4 Showrooms</span>
+                <span>All Showrooms</span>
               </a>
             </nav>
           </div>
         </header>
 
-        {/* Find Nearest Store Action Block */}
-        <section id="nearest-section" className="mt-4 scroll-mt-3 overflow-hidden rounded-[26px] border border-[#DDB66A]/35 bg-white p-2.5 shadow-[0_12px_28px_rgba(50,16,31,.07)]">
+        {/* Find Nearest Store Action Block (GPS Locator Badge Removed, Gradient towards gold) */}
+        <section
+          id="nearest-section"
+          className="mt-4 scroll-mt-3 overflow-hidden rounded-[26px] border border-[#DDB66A]/45 bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFDF9_60%,#FAF3E3_100%)] p-2.5 shadow-[0_12px_28px_rgba(50,16,31,.08)]"
+        >
           <button
             onClick={findNearest}
             disabled={loading}
-            className="group relative block h-[106px] w-full overflow-hidden rounded-[22px] text-left disabled:opacity-60 cursor-pointer"
+            className="group relative block h-[110px] w-full overflow-hidden rounded-[22px] text-left disabled:opacity-60 cursor-pointer"
           >
             <Image
               src="/talla/talla-showroom.webp"
@@ -203,15 +203,11 @@ export default function NearestBranchPage() {
             <span className="absolute inset-[1px] rounded-[21px] border border-white/20" />
             <span className="relative flex h-full items-center justify-between px-5 text-white">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-2.5 py-0.5 text-[8.5px] font-bold uppercase tracking-[.20em] text-[#EACD8C]">
-                  <Compass className="h-3 w-3" />
-                  GPS Locator
-                </span>
-                <strong className="mt-1.5 block text-[18px] font-black leading-tight">
+                <strong className="block text-[20px] font-black leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                   {loading ? 'Locating closest store…' : 'Find Nearest Store'}
                 </strong>
-                <span className="mt-0.5 block text-[11px] font-medium text-white/80">
-                  Tap to calculate driving distance
+                <span className="mt-1 block text-[11.5px] font-medium text-white/85">
+                  Tap to detect your closest Talla destination
                 </span>
               </div>
               <span className={`grid h-12 w-12 place-items-center rounded-full border border-[#EACD8C]/50 bg-black/30 backdrop-blur-sm transition-transform ${loading ? 'animate-spin' : 'group-hover:scale-105'}`}>
@@ -235,7 +231,7 @@ export default function NearestBranchPage() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="mx-1 mb-1 mt-3 overflow-hidden rounded-[24px] border border-[#DDB66A]/50 bg-white shadow-[0_14px_30px_rgba(95,13,60,.12)]"
+                className="mx-1 mb-1 mt-3 overflow-hidden rounded-[24px] border border-[#DDB66A]/50 bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFDF9_60%,#FAF3E3_100%)] shadow-[0_14px_30px_rgba(95,13,60,.12)]"
               >
                 <div className="relative aspect-[16/8.5]">
                   <Image
@@ -251,7 +247,7 @@ export default function NearestBranchPage() {
                     Closest Showroom
                   </span>
                   <div className="absolute inset-x-0 bottom-0 p-3.5 text-white">
-                    <h2 className="text-[19px] font-black leading-tight">
+                    <h2 className="text-[20px] font-black leading-tight">
                       {nearest.name.replace('Talla Jewellers — ', '')}
                     </h2>
                     <p className="mt-0.5 text-[11px] font-semibold text-[#F3D890]">
@@ -264,10 +260,10 @@ export default function NearestBranchPage() {
                     <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#5F0D3C]" />
                     {nearest.address}
                   </p>
-                  <div className="mt-4 grid grid-cols-2 gap-2.5">
+                  <div className="mt-4 flex gap-2.5">
                     <a
                       href={`tel:${nearest.phone.replace(/\s/g, '')}`}
-                      className="flex h-12 items-center justify-center gap-2 rounded-[16px] bg-gradient-to-r from-[#5F0D3C] via-[#75114A] to-[#5F0D3C] px-3 text-[13px] font-extrabold text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-all active:scale-[0.98] hover:brightness-105"
+                      className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#5F0D3C] via-[#75114A] to-[#5F0D3C] px-4 text-[13px] font-black text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-all active:scale-[0.98] hover:brightness-105"
                     >
                       <Phone className="h-4 w-4 text-[#EACD8C]" />
                       <span>Call Now</span>
@@ -280,25 +276,19 @@ export default function NearestBranchPage() {
           </AnimatePresence>
         </section>
 
-        {/* All Showrooms List */}
+        {/* All Showrooms List - Title in ONE SINGLE LINE */}
         <section id="all-showrooms" className="mt-6 scroll-mt-4">
-          <div className="mb-3.5 flex items-center justify-between px-1">
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#5F0D3C]" />
-              <h2 className="text-[17px] font-extrabold tracking-tight text-[#1D1B19]">
-                Signature Showrooms
-              </h2>
-            </div>
-            <span className="text-[11px] font-semibold text-[#8B7580]">
-              4 Jammu & Kashmir Locations
-            </span>
+          <div className="mb-3.5 px-1">
+            <h2 className="text-[20px] font-black tracking-tight text-[#1D1B19] whitespace-nowrap">
+              Signature Showrooms
+            </h2>
           </div>
 
           <div className="space-y-4">
             {showrooms.map((showroom) => (
               <article
                 key={showroom.name}
-                className="overflow-hidden rounded-[26px] border border-[#E8DEC8] bg-white p-2.5 shadow-[0_12px_28px_rgba(50,16,31,.07)]"
+                className="overflow-hidden rounded-[26px] border border-[#DDB66A]/45 bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFDF9_60%,#FAF3E3_100%)] p-2.5 shadow-[0_12px_28px_rgba(50,16,31,.08)]"
               >
                 <div className="relative aspect-[16/9.5] overflow-hidden rounded-[22px] bg-[#24131D]">
                   <Image
@@ -314,9 +304,9 @@ export default function NearestBranchPage() {
                     Signature Showroom
                   </span>
                   <div className="absolute inset-x-0 bottom-0 p-3.5 text-white">
-                    <h2 className="text-[20px] font-black leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+                    <h3 className="text-[20px] font-black leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
                       {showroom.name.replace('Talla Jewellers — ', '')}
-                    </h2>
+                    </h3>
                     <p className="mt-1 flex items-start gap-1.5 text-[11px] font-medium leading-4 text-white/90">
                       <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#EACD8C]" />
                       {showroom.address}
@@ -324,10 +314,10 @@ export default function NearestBranchPage() {
                   </div>
                 </div>
                 <div className="px-1.5 pt-3.5 pb-1">
-                  <div className="grid grid-cols-2 gap-2.5">
+                  <div className="flex gap-2.5">
                     <a
                       href={`tel:${showroom.phone.replace(/\s/g, '')}`}
-                      className="flex h-12 items-center justify-center gap-2 rounded-[16px] bg-gradient-to-r from-[#5F0D3C] via-[#75114A] to-[#5F0D3C] px-3 text-[13px] font-extrabold text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-all active:scale-[0.98] hover:brightness-105"
+                      className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#5F0D3C] via-[#75114A] to-[#5F0D3C] px-4 text-[13px] font-black text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-all active:scale-[0.98] hover:brightness-105"
                     >
                       <Phone className="h-4 w-4 text-[#EACD8C]" />
                       <span>Call Now</span>

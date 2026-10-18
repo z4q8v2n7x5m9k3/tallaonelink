@@ -12,8 +12,7 @@ export default function LoadingScreen() {
       animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        scale: shouldReduceMotion ? 1 : 0.985,
-        transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+        transition: { duration: 0.65, ease: [0.4, 0, 0.2, 1] },
       }}
       className="fixed inset-0 z-[99999] flex flex-col items-center justify-center overflow-hidden px-6"
       style={{
@@ -43,11 +42,20 @@ export default function LoadingScreen() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center">
         {/* Emblem Container (Pattern + Central T) */}
         <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56 mb-5 flex items-center justify-center">
-          {/* Stage 1: Brand Pattern (0s – 0.7s) */}
+          {/* Stage 1: Brand Pattern - Expands and vanishes on exit as requested */}
           <motion.div
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
+            exit={{
+              scale: shouldReduceMotion ? 1 : 2.8,
+              rotate: shouldReduceMotion ? 0 : 25,
+              opacity: 0,
+              transition: {
+                duration: 0.65,
+                ease: [0.25, 1, 0.5, 1],
+              },
+            }}
             transition={{
               duration: 0.7,
               ease: [0.22, 1, 0.36, 1],
@@ -63,11 +71,16 @@ export default function LoadingScreen() {
             />
           </motion.div>
 
-          {/* Stage 2: Central T (0.65s – 1.35s) */}
+          {/* Stage 2: Central T (Fades out quickly on exit) */}
           <motion.div
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
+            exit={{
+              opacity: 0,
+              scale: 0.85,
+              transition: { duration: 0.22, ease: 'easeOut' },
+            }}
             transition={{
               delay: 0.65,
               duration: 0.7,
@@ -85,11 +98,16 @@ export default function LoadingScreen() {
           </motion.div>
         </div>
 
-        {/* Stage 3: Brand Name "TALLA JEWELLERS" (1.35s – 2.05s) */}
+        {/* Stage 3: Brand Name "TALLA JEWELLERS" (Fades out quickly on exit) */}
         <motion.div
           className="w-52 sm:w-60 md:w-68"
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{
+            opacity: 0,
+            y: 8,
+            transition: { duration: 0.22, ease: 'easeOut' },
+          }}
           transition={{
             delay: 1.35,
             duration: 0.68,
