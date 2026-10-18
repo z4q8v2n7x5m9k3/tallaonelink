@@ -163,7 +163,7 @@ export default function NewArrivalsPage() {
                 <span className="block text-[9.5px] font-bold uppercase tracking-[0.24em] text-[#EACD8C]">
                   Talla Jewellers
                 </span>
-                <span className="block text-[11px] font-semibold text-white/80">Est. 1986</span>
+                <span className="block text-[11px] font-semibold text-white/80">Est. 1960</span>
               </div>
               <span className="relative h-11 w-11 overflow-hidden rounded-full border border-[#DDB66A]/65 bg-[#5F0D3C] shadow-md">
                 <Image

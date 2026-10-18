@@ -15,13 +15,13 @@ export const shopConfig = {
   name: 'Talla Jewellers',
   tagline: 'Fine Jewellery & Diamonds',
   taglineShort: 'Gold • Diamonds • Polki • Silver',
-  serviceTagline: 'Since 1986 • 100% BIS Hallmarked',
+  serviceTagline: 'Since 1960 • 100% BIS Hallmarked',
   snapshotLocationLine: '4 Showrooms across Jammu & Kashmir',
   snapshotServicesLine: 'Gold • Diamonds • Polki • ZAVI Silver',
   snapshotHours: 'Daily 10:30 AM - 8:00 PM',
   url: PUBLIC_SITE_URL,
   cardType: 'B2C' as const,
-  keywordBadges: ['Since 1986', '100% BIS Hallmarked'] as string[],
+  keywordBadges: ['Since 1960', '100% BIS Hallmarked'] as string[],
 
   contact: {
     phones: ['918716900000'],
@@ -65,7 +65,7 @@ export const shopConfig = {
     zomato: '',
   },
 
-  trustBadges: ['Since 1986', '100% BIS Hallmarked', 'Certified Diamonds'] as string[],
+  trustBadges: ['Since 1960', '100% BIS Hallmarked', 'Certified Diamonds'] as string[],
   brands: [
     { name: 'Gold', tagline: '100% BIS Hallmarked 22K & 18K', logo: '' },
     { name: 'Diamonds', tagline: 'Certified Natural Diamonds', logo: '' },
@@ -75,13 +75,13 @@ export const shopConfig = {
 
   about: {
     title: 'Welcome to Talla Jewellers',
-    shortDescription: 'Crafting timeless elegance and heirloom jewellery since 1986. Known for uncompromised purity, master craftsmanship, and being Jammu’s most cherished diamond & bridal jewellery destination.',
+    shortDescription: 'Crafting timeless elegance and heirloom jewellery since 1960. Known for uncompromised purity, master craftsmanship, and being Jammu’s most cherished diamond & bridal jewellery destination.',
   },
   menuUrl: '/services',
 
   payment: {
     upiId: 'talla.jewellers@upi', upiId2: '', upiName: 'Talla Jewellers', upiQrImageUrl: '', scannerImage: '',
-    bank: { bankName: 'J&K Bank', accountNumberMasked: 'XXXX XXXX 1986', ifsc: 'JAKA0DEMO01', accountHolder: 'TALLA JEWELLERS' },
+    bank: { bankName: 'J&K Bank', accountNumberMasked: 'XXXX XXXX 1960', ifsc: 'JAKA0DEMO01', accountHolder: 'TALLA JEWELLERS' },
     showScanner: false, showDownloadQR: false,
   },
 
@@ -93,7 +93,7 @@ export const shopConfig = {
   },
 
   seo: {
-    title: 'Talla Jewellers | Fine Jewellery & Diamonds Since 1986',
+    title: 'Talla Jewellers | Fine Jewellery & Diamonds Since 1960',
     description: 'Talla Jewellers OneLink — Explore Gold, Diamonds, Polki, and ZAVI Silver across four showrooms.',
     keywords: 'Talla Jewellers, Gold Jewellery Jammu, Diamond Jewellery, Polki, ZAVI Silver',
   },

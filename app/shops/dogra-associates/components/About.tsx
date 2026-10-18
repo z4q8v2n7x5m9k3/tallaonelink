@@ -26,7 +26,7 @@ export default function About() {
             <span className="h-px flex-1 bg-gradient-to-r from-[#DDB66A]/80 to-transparent" />
           </div>
           <p className="text-[15px] font-medium leading-[1.65] text-white/95 sm:text-[16px]">
-            Since 1986, Talla Jewellers has created fine jewellery that becomes part of a family&apos;s most cherished celebrations. Every piece brings together uncompromised purity, master craftsmanship and a deep understanding of Jammu&apos;s wedding traditions.
+            Since 1960, Talla Jewellers has created fine jewellery that becomes part of a family&apos;s most cherished celebrations. Every piece brings together uncompromised purity, master craftsmanship and a deep understanding of Jammu&apos;s wedding traditions.
           </p>
         </div>
       </div>

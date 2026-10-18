@@ -148,7 +148,7 @@ export default function Hero() {
 
   const getKeywordBadgeIcon = (badge: string) => {
     const b = badge.toLowerCase()
-    if (b.includes('1986') || b.includes('1904') || b.includes('legacy')) return Award
+    if (b.includes('1960') || b.includes('1986') || b.includes('legacy')) return Award
     if (b.includes('hallmark') || b.includes('bis')) return Award
     if (b.includes('showroom')) return Store
     return Award
@@ -818,7 +818,7 @@ export default function Hero() {
 
                 <div className="shrink-0 rounded-[18px] border border-slate-100 bg-white p-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.03)] text-center">
                   <p className="text-[13px] font-bold leading-5 text-slate-800">
-                    Heirloom Luxury • Since 1986
+                    Heirloom Luxury • Since 1960
                   </p>
                   <p className="mt-1.5 text-[12px] font-medium leading-5 text-slate-500">
                     Jammu & Kashmir’s most cherished destination for hallmarked bridal jewellery and certified solitaires.
@@ -839,7 +839,7 @@ export default function Hero() {
                 <div className="shrink-0 grid grid-cols-2 gap-2">
                   <div className="rounded-[16px] border border-slate-100 bg-white px-2 py-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.02)] text-center flex flex-col justify-center">
                     <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#610138]">Founding</p>
-                    <p className="mt-1 text-[11px] font-bold leading-snug text-slate-800">Since 1986</p>
+                    <p className="mt-1 text-[11px] font-bold leading-snug text-slate-800">Since 1960</p>
                   </div>
                   <div className="rounded-[16px] border border-slate-100 bg-white px-2 py-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.02)] text-center flex flex-col justify-center">
                     <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#610138]">Purity</p>

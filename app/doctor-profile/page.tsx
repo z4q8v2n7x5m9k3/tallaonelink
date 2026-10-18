@@ -96,7 +96,7 @@ export default function DoctorProfilePage() {
 
             <div className="mt-4 grid grid-cols-3 overflow-hidden rounded-[20px] border border-[#F3C7D8] bg-white shadow-[0_10px_26px_rgba(7,59,115,0.08)]">
               {[
-                { icon: Award, title: 'Since 1986', label: 'Experience', color: '#B32A64' },
+                { icon: Award, title: 'Since 1960', label: 'Experience', color: '#B32A64' },
                 { icon: MapPin, title: '5 Branches', label: 'North India', color: '#B32A64' },
                 { icon: Sparkles, title: 'Luxury', label: 'Salon Care', color: '#B32A64' },
               ].map(({ icon: Icon, title, label, color }, index) => (

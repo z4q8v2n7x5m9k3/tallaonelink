@@ -756,7 +756,7 @@ Please confirm availability.`
                     </div>
                     <div>
                       <h3 className="text-base font-black text-white">Our Story</h3>
-                      <p className="text-[11px] font-semibold text-[#DDB66A]">Since 1986 • Jammu & Kashmir</p>
+                      <p className="text-[11px] font-semibold text-[#DDB66A]">Since 1960 • Jammu & Kashmir</p>
                     </div>
                   </div>
                   <button
@@ -769,14 +769,14 @@ Please confirm availability.`
 
                 <div className="mt-4 space-y-3 text-xs leading-relaxed text-white/80">
                   <p>
-                    Established in <strong>1986</strong>, <strong>Talla Jewellers</strong> has stood as Jammu &amp; Kashmir&apos;s symbol of uncompromised purity, royal craftsmanship, and enduring trust.
+                    Established in <strong>1960</strong>, <strong>Talla Jewellers</strong> has stood as Jammu &amp; Kashmir&apos;s symbol of uncompromised purity, royal craftsmanship, and enduring trust.
                   </p>
                   <p>
                     From opulent bridal polki to certified natural diamonds and modern 925 sterling silver, multiple generations have chosen Talla to celebrate life&apos;s most cherished milestones.
                   </p>
                   <div className="grid grid-cols-3 gap-2 pt-2 text-center">
                     <div className="rounded-xl border border-[#370820] bg-[#22141F] p-2.5">
-                      <div className="text-base font-black text-[#DDB66A]">38+</div>
+                      <div className="text-base font-black text-[#DDB66A]">64+</div>
                       <div className="text-[10px] text-white/60">Years</div>
                     </div>
                     <div className="rounded-xl border border-[#370820] bg-[#22141F] p-2.5">

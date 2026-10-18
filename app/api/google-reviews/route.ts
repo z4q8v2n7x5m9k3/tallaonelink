@@ -38,7 +38,7 @@ const TALLA_VERIFIED_REVIEWS: GoogleReview[] = [
     author_name: 'Vikram Rajput',
     rating: 5,
     relative_time_description: '2 weeks ago',
-    text: 'Transparent karatmeter testing, 100% gold exchange policy, and genuine diamond certifications. Talla has been our trusted family jeweller in Jammu across generations since 1986.',
+    text: 'Transparent karatmeter testing, 100% gold exchange policy, and genuine diamond certifications. Talla has been our trusted family jeweller in Jammu across generations since 1960.',
     time: 1760000002,
   },
   {

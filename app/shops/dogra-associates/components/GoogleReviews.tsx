@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Star, ArrowRight, ChevronRight, CheckCircle2 } from 'lucide-react'
+import { Star, ArrowRight, ChevronRight, CheckCircle2, Quote } from 'lucide-react'
 import { shopConfig } from '../config'
 import GoogleGIcon from '../../../components/GoogleGIcon'
 
@@ -265,11 +265,12 @@ export default function GoogleReviews() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: index * 0.05, duration: 0.3, ease: 'easeOut' }}
-            className="rounded-[20px] p-4 transition-all bg-white border border-[#E8DEC8] shadow-[0_8px_20px_rgba(47,16,31,.06)]"
+            className="relative rounded-[22px] p-4.5 transition-all bg-white border border-[#E8DEC8] shadow-[0_10px_24px_rgba(47,16,31,.07)]"
           >
+            <Quote className="pointer-events-none absolute right-3.5 top-3.5 h-6 w-6 text-[#DDB66A]/20" />
             <div className="flex items-start gap-3 mb-2.5">
               <ReviewAvatar review={review} />
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 pr-4">
                 <div className="flex items-center justify-between gap-2 mb-0.5">
                   <h3 className="font-extrabold text-[13.5px] truncate text-[#1A1A1A]">
                     {review.author_name}

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, CheckCircle2, ExternalLink, RefreshCw, Star, Sparkles } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, ExternalLink, RefreshCw, Star, Sparkles, Quote } from 'lucide-react'
 
 import { prepareReturnToHeroCard } from '../lib/homeNavigation'
 import { shopConfig } from '../shops/dogra-associates/config'
@@ -138,7 +138,7 @@ export default function ReviewsPage() {
                 <span className="block text-[9.5px] font-bold uppercase tracking-[0.24em] text-[#EACD8C]">
                   Talla Jewellers
                 </span>
-                <span className="block text-[11px] font-semibold text-white/80">Est. 1986</span>
+                <span className="block text-[11px] font-semibold text-white/80">Est. 1960</span>
               </div>
               <span className="relative h-11 w-11 overflow-hidden rounded-full border border-[#DDB66A]/65 bg-[#5F0D3C] shadow-md">
                 <Image src="/talla/elegant-gold-t-emblem.png" alt="Talla Jewellers" fill className="scale-[1.8] object-cover" sizes="44px" />
@@ -253,11 +253,12 @@ export default function ReviewsPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.04, duration: 0.3 }}
-                  className="overflow-hidden rounded-[22px] border border-[#E8DEC8] bg-white p-4 shadow-[0_8px_20px_rgba(47,16,31,.05)] transition-all"
+                  className="relative overflow-hidden rounded-[22px] border border-[#E8DEC8] bg-white p-4.5 shadow-[0_10px_24px_rgba(47,16,31,.06)] transition-all"
                 >
+                  <Quote className="pointer-events-none absolute right-3.5 top-3.5 h-6 w-6 text-[#DDB66A]/20" />
                   <div className="flex items-start gap-3 mb-2.5">
                     <ReviewAvatar review={review} />
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 pr-4">
                       <div className="flex items-center justify-between gap-2 mb-0.5">
                         <h3 className="font-extrabold text-[13.5px] truncate text-[#1A1A1A]">
                           {review.author_name}

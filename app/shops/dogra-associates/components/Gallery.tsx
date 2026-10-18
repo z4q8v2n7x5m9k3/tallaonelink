@@ -5,20 +5,20 @@ import { motion } from 'framer-motion'
 import NextLink from 'next/link'
 import NextImage from 'next/image'
 import { useRouter } from 'next/navigation'
-import { Sparkles, ArrowRight } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { setReturnSection } from '../../../lib/homeNavigation'
 
-// Authentic official Talla Jewellers bridal couture images
+// Fresh official Talla Jewellers fine jewellery and heirloom pieces
 const galleryImages = [
-  '/talla/talla-couture-01.png',
-  '/talla/talla-couture-04.png',
-  '/talla/talla-couture-03.png',
-  '/talla/talla-couture-05.png',
+  '/talla/kriyon/fine-076.webp',
+  '/talla/kriyon/fine-081.webp',
+  '/talla/kriyon/fine-110.webp',
+  '/talla/kriyon/fine-104.webp',
 ]
 
 const previewAvatars = [
-  '/talla/talla-couture-01.png',
-  '/talla/talla-couture-04.png',
+  '/talla/kriyon/fine-076.webp',
+  '/talla/kriyon/fine-081.webp',
 ]
 
 const visibleImages = galleryImages.slice(0, 4)
@@ -53,7 +53,7 @@ export default function Gallery() {
       >
         <div className="section-title-accent talla-title-accent mb-2">
           <h2 className="[font-family:var(--font-manrope)] text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Imperial Bridal Gallery
+            Explore Our Gallery
           </h2>
         </div>
         <p className="text-sm font-normal tracking-tight text-slate-300/85">
@@ -75,7 +75,7 @@ export default function Gallery() {
           >
             <Image
               src={imageSrc}
-              alt={`Talla Bridal Couture ${index + 1}`}
+              alt={`Talla Fine Jewellery ${index + 1}`}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               sizes="(max-width: 448px) 50vw, 224px"
@@ -104,7 +104,7 @@ export default function Gallery() {
         >
           {/* Changed 2 images with luxury circular styling */}
           <span className="flex -space-x-2" aria-hidden>
-            {previewAvatars.map((image, i) => (
+            {previewAvatars.map((image) => (
               <span
                 key={image}
                 className="relative h-8 w-8 overflow-hidden rounded-full border-2 border-white shadow-[0_4px_10px_rgba(0,0,0,0.3)] ring-1 ring-[#DDB66A]/80 transition-transform group-hover:scale-105"
@@ -113,7 +113,7 @@ export default function Gallery() {
               </span>
             ))}
           </span>
-          <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">View Gallery</span>
+          <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">Explore Our Gallery</span>
           <ArrowRight className="h-4 w-4 text-[#EACD8C] transition-transform group-hover:translate-x-0.5" />
         </Link>
       </motion.div>

@@ -131,6 +131,44 @@ export default function ContactCard() {
               <Button onClick={() => window.open(getWhatsAppLink(shopConfig.contact.clientPhoneE164, shopConfig.whatsapp.defaultMessage), '_blank', 'noopener,noreferrer')} className="mt-3 h-10 w-full rounded-xl border border-[#DDB66A]/45 bg-[#610138] text-sm font-semibold text-white hover:bg-[#710242]">Chat on WhatsApp</Button>
             </motion.div>
 
+            {/* Facebook */}
+            {shopConfig.social?.facebook && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ delay: 0.1, duration: 0.3, ease: 'easeOut' }}
+                className="rounded-[24px] p-4 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                style={{ willChange: 'opacity', background: CARD_BG, border: CARD_BORDER, boxShadow: CARD_SHADOW }}
+              >
+                <div
+                  className="absolute inset-x-0 top-0 h-1/2 rounded-t-[24px] pointer-events-none opacity-60"
+                  style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 100%)' }}
+                />
+                <div className="flex items-start gap-3 mb-3 relative z-10">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={ICON_PILL_STYLE}>
+                    <svg viewBox="0 0 24 24" className="w-5 h-5" style={{ color: '#1877F2' }} fill="currentColor">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-slate-900 mb-1.5 text-base">Facebook</h3>
+                    <p className="text-sm text-slate-600 break-all">Follow Talla Jewellers on Facebook</p>
+                  </div>
+                </div>
+                <Button
+                  onClick={() => window.open(shopConfig.social.facebook, '_blank', 'noopener,noreferrer')}
+                  className={CTA_CLASSES}
+                  style={CTA_STYLE}
+                >
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 mr-2 fill-current" aria-hidden>
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                  Visit Facebook Page
+                </Button>
+              </motion.div>
+            )}
+
             {/* LinkedIn */}
             {shopConfig.social?.linkedin && (
               <motion.div
