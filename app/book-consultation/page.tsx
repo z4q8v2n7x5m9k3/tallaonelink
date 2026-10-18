@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Calendar, CalendarDays, CheckCircle2, ChevronDown, Clock, Gem, Phone, Sparkles, User, MapPin } from 'lucide-react'
+import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, Clock, Gem, Phone, Sparkles, User, MapPin } from 'lucide-react'
+import WhatsAppLogo from '@/components/WhatsAppLogo'
 import { shopConfig } from '../shops/dogra-associates/config'
 import { prepareReturnToHeroCard } from '../lib/homeNavigation'
 
@@ -54,97 +56,104 @@ Please confirm the consultation appointment.`
 
   return (
     <main
-      className="talla-page min-h-screen px-3 pt-[max(0.75rem,env(safe-area-inset-top))]"
+      className="talla-unified min-h-screen px-3 pb-16 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F] [font-family:var(--font-manrope)]"
       style={{
-        background: '#FAF6EE',
+        background: 'radial-gradient(circle at 50% 0%, rgba(221,182,106,0.08), transparent 32rem), #FAF8F5',
       }}
     >
-      <div className="mx-auto w-full max-w-md pb-6">
-        <div className="-mx-3 bg-white px-3 pt-2 pb-1">
-          <motion.header
-            data-page-hero
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
-            className="mb-3 overflow-hidden rounded-[28px] border border-[#DDB66A]/40 p-4 shadow-xl"
-            style={{
-              backgroundImage: "linear-gradient(105deg, rgba(55, 8, 32, 0.95), rgba(97, 1, 56, 0.88)), url('/talla/ruby-couture-editorial.jpg')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="relative flex items-center justify-between">
+      <div className="mx-auto w-full max-w-md">
+        {/* Luxury Header */}
+        <header className="relative overflow-hidden rounded-[28px] border border-[#DDB66A]/45 bg-[#5F0D3C] p-4 text-white shadow-[0_18px_38px_rgba(95,13,60,.28)]">
+          <Image
+            src="/talla/ruby-couture-editorial.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-25"
+            sizes="448px"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(67,5,39,.98),rgba(95,13,60,.86),rgba(42,8,29,.60))]" />
+
+          <div className="relative">
+            <div className="flex items-center justify-between">
               <Link
                 href="/"
                 onClick={() => prepareReturnToHeroCard()}
-                className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-[#610138] shadow-md ring-1 ring-[#DDB66A]/40 backdrop-blur-md transition-transform active:scale-95"
-                aria-label="Back to card"
+                aria-label="Back home"
+                className="grid h-11 w-11 place-items-center rounded-xl border border-white/20 bg-black/20 text-white backdrop-blur-md active:scale-95 transition-transform"
               >
-                <ArrowLeft className="h-5 w-5 text-[#610138]" />
+                <ArrowLeft className="h-5 w-5" />
               </Link>
-              <div className="text-center flex-1 px-2">
-                <span className="block text-[10px] uppercase font-bold tracking-widest text-[#DDB66A]">Since 1986</span>
-                <h1 className="text-[1.2rem] font-black leading-tight text-white">
-                  Jewellery Consultation
-                </h1>
+              <div className="text-center">
+                <span className="block text-[9.5px] font-bold uppercase tracking-[0.24em] text-[#EACD8C]">
+                  Talla Jewellers
+                </span>
+                <span className="block text-[11px] font-semibold text-white/80">Private Concierge</span>
               </div>
-              <span className="z-10 h-10 w-10" aria-hidden />
+              <span className="relative h-11 w-11 overflow-hidden rounded-full border border-[#DDB66A]/65 bg-[#5F0D3C] shadow-md">
+                <Image
+                  src="/talla/elegant-gold-t-emblem.png"
+                  alt="Talla Jewellers"
+                  fill
+                  className="scale-[1.8] object-cover"
+                  sizes="44px"
+                />
+              </span>
             </div>
 
-            <nav className="mt-3 grid grid-cols-2 gap-2 rounded-2xl border border-white/20 bg-white/10 p-1.5 backdrop-blur-md">
-              <Link href="/services" className="flex h-9 items-center justify-center gap-1.5 rounded-xl text-xs font-bold text-white/90 hover:bg-white/10">
-                <Gem className="h-3.5 w-3.5 text-[#DDB66A]" />
-                Our Collections
-              </Link>
-              <Link data-active="true" href="/book-consultation" className="flex h-9 items-center justify-center gap-1.5 rounded-xl bg-[#610138] border border-[#DDB66A]/60 text-xs font-black text-white shadow-sm">
-                <CalendarDays className="h-3.5 w-3.5 text-[#DDB66A]" />
-                Book Consultation
-              </Link>
-            </nav>
-          </motion.header>
-        </div>
+            <p className="mt-5 text-[9.5px] font-bold uppercase tracking-[0.28em] text-[#EACD8C]">
+              Bespoke Jewellery Experience
+            </p>
+            <h1 className="mt-1 text-[28px] font-black leading-tight tracking-tight text-white">
+              Book a Visit
+            </h1>
+            <p className="mt-1.5 text-[12px] font-medium leading-relaxed text-white/80">
+              Schedule a dedicated consultation with our master jewellery stylists for bridal, gold and solitaire curations.
+            </p>
+          </div>
+        </header>
 
-        <motion.section
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.08, duration: 0.35 }}
-          className="rounded-[30px] border border-[#DDB66A]/40 bg-white p-5 shadow-lg"
-          style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFDF8 100%)' }}
-        >
-          <div className="space-y-3.5">
+        {/* Consultation Form Card */}
+        <section className="mt-4 overflow-hidden rounded-[26px] border border-[#E8DEC8] bg-white p-5 shadow-[0_12px_28px_rgba(50,16,31,.07)]">
+          <div className="space-y-4">
+            {/* Purpose */}
             <div>
-              <span className="mb-1.5 flex items-center gap-2 text-xs font-bold text-[#610138]">
-                <Gem className="h-4 w-4 text-[#DDB66A]" />
+              <span className="mb-2 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
+                <Gem className="h-4 w-4 text-[#9A7A35]" />
                 Purpose of Visit
               </span>
-              <div className="grid grid-cols-2 gap-1.5">
-                {PURPOSES.map((item) => (
-                  <button
-                    key={item}
-                    type="button"
-                    onClick={() => setPurpose(item)}
-                    className={`p-2.5 rounded-xl text-left text-xs font-semibold border transition-all ${
-                      purpose === item
-                        ? 'bg-[#610138] border-[#DDB66A] text-white shadow-sm'
-                        : 'bg-[#FCFBF8] border-slate-200 text-slate-700 hover:bg-slate-50'
-                    }`}
-                  >
-                    {item}
-                  </button>
-                ))}
+              <div className="grid grid-cols-2 gap-2">
+                {PURPOSES.map((item) => {
+                  const isSel = purpose === item
+                  return (
+                    <button
+                      key={item}
+                      type="button"
+                      onClick={() => setPurpose(item)}
+                      className={`p-3 rounded-2xl text-left text-[11.5px] font-bold transition-all border ${
+                        isSel
+                          ? 'bg-[#5F0D3C] border-[#5F0D3C] text-white shadow-sm'
+                          : 'bg-white border-[#E8DEC8] text-[#4A323D] hover:bg-[#FAF5EC]'
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
+            {/* Select Showroom */}
             <div>
-              <span className="mb-1.5 flex items-center gap-2 text-xs font-bold text-[#610138]">
-                <MapPin className="h-4 w-4 text-[#DDB66A]" />
+              <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
+                <MapPin className="h-4 w-4 text-[#9A7A35]" />
                 Select Showroom
               </span>
               <div className="relative">
                 <select
                   value={branch}
                   onChange={(e) => setBranch(e.target.value)}
-                  className="h-11 w-full appearance-none rounded-xl border border-slate-200 bg-[#FCFBF8] px-3.5 pr-10 text-xs font-semibold text-slate-800 outline-none focus:border-[#610138]"
+                  className="h-11 w-full appearance-none rounded-xl border border-[#E8DEC8] bg-white px-3.5 pr-10 text-[12px] font-semibold text-[#1F0715] outline-none focus:border-[#5F0D3C] shadow-sm"
                 >
                   {shopConfig.branches.map((b) => (
                     <option key={b.name} value={b.name}>
@@ -156,30 +165,31 @@ Please confirm the consultation appointment.`
               </div>
             </div>
 
+            {/* Date & Time */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <span className="mb-1.5 flex items-center gap-2 text-xs font-bold text-[#610138]">
-                  <Calendar className="h-4 w-4 text-[#DDB66A]" />
+                <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
+                  <Calendar className="h-4 w-4 text-[#9A7A35]" />
                   Preferred Date
                 </span>
                 <input
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="h-11 w-full rounded-xl border border-slate-200 bg-[#FCFBF8] px-3 text-xs font-semibold text-slate-800 outline-none focus:border-[#610138]"
+                  className="h-11 w-full rounded-xl border border-[#E8DEC8] bg-white px-3 text-[12px] font-semibold text-[#1F0715] outline-none focus:border-[#5F0D3C] shadow-sm"
                 />
               </div>
 
               <div>
-                <span className="mb-1.5 flex items-center gap-2 text-xs font-bold text-[#610138]">
-                  <Clock className="h-4 w-4 text-[#DDB66A]" />
+                <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
+                  <Clock className="h-4 w-4 text-[#9A7A35]" />
                   Preferred Time
                 </span>
                 <div className="relative">
                   <select
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="h-11 w-full appearance-none rounded-xl border border-slate-200 bg-[#FCFBF8] px-3 pr-8 text-xs font-semibold text-slate-800 outline-none focus:border-[#610138]"
+                    className="h-11 w-full appearance-none rounded-xl border border-[#E8DEC8] bg-white px-3 pr-8 text-[12px] font-semibold text-[#1F0715] outline-none focus:border-[#5F0D3C] shadow-sm"
                   >
                     {TIME_SLOTS.map((slot) => (
                       <option key={slot} value={slot}>
@@ -192,23 +202,24 @@ Please confirm the consultation appointment.`
               </div>
             </div>
 
+            {/* Name & Phone */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <span className="mb-1.5 flex items-center gap-2 text-xs font-bold text-[#610138]">
-                  <User className="h-4 w-4 text-[#DDB66A]" />
+                <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
+                  <User className="h-4 w-4 text-[#9A7A35]" />
                   Your Name
                 </span>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Priya Sharma"
-                  className="h-11 w-full rounded-xl border border-slate-200 bg-[#FCFBF8] px-3 text-xs font-semibold text-slate-800 outline-none focus:border-[#610138]"
+                  className="h-11 w-full rounded-xl border border-[#E8DEC8] bg-white px-3 text-[12px] font-semibold text-[#1F0715] outline-none focus:border-[#5F0D3C] shadow-sm"
                 />
               </div>
 
               <div>
-                <span className="mb-1.5 flex items-center gap-2 text-xs font-bold text-[#610138]">
-                  <Phone className="h-4 w-4 text-[#DDB66A]" />
+                <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
+                  <Phone className="h-4 w-4 text-[#9A7A35]" />
                   Mobile Number
                 </span>
                 <input
@@ -216,30 +227,29 @@ Please confirm the consultation appointment.`
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="e.g. 98765 43210"
                   type="tel"
-                  className="h-11 w-full rounded-xl border border-slate-200 bg-[#FCFBF8] px-3 text-xs font-semibold text-slate-800 outline-none focus:border-[#610138]"
+                  className="h-11 w-full rounded-xl border border-[#E8DEC8] bg-white px-3 text-[12px] font-semibold text-[#1F0715] outline-none focus:border-[#5F0D3C] shadow-sm"
                 />
               </div>
             </div>
 
-            <div className="pt-3">
+            {/* Submit via WhatsApp */}
+            <div className="pt-2">
               <a
                 href={canSubmit ? `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}` : undefined}
                 target="_blank"
                 rel="noreferrer"
-                className={`flex h-12 w-full items-center justify-center gap-2 rounded-xl text-xs font-black text-white shadow-lg transition-transform active:scale-[0.98] ${
-                  canSubmit ? 'cursor-pointer' : 'opacity-60 pointer-events-none'
+                className={`group flex h-12 w-full items-center justify-center gap-2 rounded-2xl text-[13px] font-extrabold text-white shadow-lg transition-transform active:scale-[0.98] ${
+                  canSubmit
+                    ? 'cursor-pointer bg-gradient-to-r from-[#5F0D3C] via-[#75114A] to-[#5F0D3C] shadow-[0_6px_20px_rgba(95,13,60,.25)]'
+                    : 'opacity-50 pointer-events-none bg-slate-400'
                 }`}
-                style={{
-                  background: 'linear-gradient(135deg, #610138 0%, #370820 100%)',
-                  border: '1px solid rgba(221, 182, 106, 0.65)',
-                }}
               >
-                <CheckCircle2 className="h-4 w-4 text-[#DDB66A]" />
-                Confirm Consultation via WhatsApp
+                <WhatsAppLogo className="h-4.5 w-4.5" color="#25D366" />
+                <span>Confirm Consultation via WhatsApp</span>
               </a>
             </div>
           </div>
-        </motion.section>
+        </section>
       </div>
     </main>
   )

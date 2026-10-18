@@ -207,7 +207,7 @@ export default function GoogleReviews() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="mb-4 rounded-[22px] border border-[#DDB66A]/40 bg-gradient-to-b from-white to-[#FAF7F2] p-4 shadow-[0_8px_20px_rgba(47,16,31,.07)]"
+        className="mb-4 rounded-[24px] border border-[#E8DEC8] bg-white p-4.5 shadow-[0_12px_26px_rgba(50,16,31,.07)]"
       >
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
@@ -233,10 +233,10 @@ export default function GoogleReviews() {
             </p>
           </div>
           <div
-            className="flex items-center gap-1.5 rounded-full border border-[#DDB66A]/40 bg-white px-3 py-1.5 shadow-[0_2px_8px_rgba(47,16,31,.04)]"
+            className="flex items-center gap-1.5 rounded-full border border-[#DDB66A]/45 bg-[#FFFDF9] px-3 py-1.5 shadow-[0_2px_8px_rgba(47,16,31,.04)]"
           >
             <GoogleGIcon className="h-4 w-4 shrink-0" />
-            <span className="[font-family:var(--font-manrope)] text-[11px] font-bold tracking-tight text-[#5F0D3C]">
+            <span className="[font-family:var(--font-manrope)] text-[11px] font-extrabold tracking-tight text-[#5F0D3C]">
               {isDemo ? 'Demo Version' : 'Google Verified'}
             </span>
           </div>
@@ -265,19 +265,13 @@ export default function GoogleReviews() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: index * 0.05, duration: 0.3, ease: 'easeOut' }}
-            className="rounded-2xl p-4 transition-all"
-            style={{
-              background: 'linear-gradient(160deg, #FFFFFF 0%, #FFFDF9 60%, #FAF3E6 100%)',
-              border: '1px solid rgba(221,182,106,.38)',
-              borderRadius: 18,
-              boxShadow: '0 8px 20px rgba(47,16,31,.07)',
-            }}
+            className="rounded-[20px] p-4 transition-all bg-white border border-[#E8DEC8] shadow-[0_8px_20px_rgba(47,16,31,.06)]"
           >
             <div className="flex items-start gap-3 mb-2.5">
               <ReviewAvatar review={review} />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2 mb-0.5">
-                  <h3 className="font-bold text-[13.5px] truncate text-[#1A1A1A]">
+                  <h3 className="font-extrabold text-[13.5px] truncate text-[#1A1A1A]">
                     {review.author_name}
                   </h3>
                   <div className="flex items-center gap-0.5 shrink-0">
@@ -298,13 +292,13 @@ export default function GoogleReviews() {
                     {review.relative_time_description}
                   </span>
                   <span className="text-[#DDB66A]">•</span>
-                  <span className="inline-flex items-center gap-0.5 text-[10.5px] font-medium text-[#2E7D32]">
-                    <CheckCircle2 className="h-3 w-3" /> Verified Customer
+                  <span className="inline-flex items-center gap-0.5 text-[10.5px] font-bold text-[#1E7E34]">
+                    <CheckCircle2 className="h-3 w-3 text-[#25D366]" /> Verified Patron
                   </span>
                 </div>
               </div>
             </div>
-            <p className="text-[12.5px] leading-relaxed line-clamp-3 text-[#3A2A32]">
+            <p className="text-[12.5px] leading-relaxed line-clamp-3 text-[#3F2B36]">
               {review.text}
             </p>
           </motion.div>
@@ -332,20 +326,20 @@ export default function GoogleReviews() {
             href={writeReviewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-2xl bg-gradient-to-r from-[#5F0D3C] via-[#6F0F46] to-[#5F0D3C] py-3.5 px-4 font-semibold text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-all hover:shadow-[0_12px_28px_rgba(95,13,60,.32)] active:scale-[0.99]"
+            className="group relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-2xl bg-gradient-to-r from-[#5F0D3C] via-[#75114A] to-[#5F0D3C] py-3.5 px-4 font-extrabold text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-all hover:shadow-[0_12px_28px_rgba(95,13,60,.32)] active:scale-[0.99]"
           >
             <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-sm shrink-0">
               <GoogleGIcon className="h-3.5 w-3.5" />
             </div>
-            <span className="text-[14px] font-semibold tracking-tight">Review Us on Google</span>
+            <span className="text-[14px] font-extrabold tracking-tight">Review Us on Google</span>
             <Star className="h-3.5 w-3.5 fill-[#DDB66A] text-[#DDB66A]" />
           </Link>
         )}
         <Link
           href="/reviews"
-          className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DDB66A]/50 bg-gradient-to-b from-[#FFFFFF] to-[#FAF7F2] py-3 px-4 font-semibold text-[#5F0D3C] shadow-[0_4px_14px_rgba(95,13,60,.06)] transition-all hover:border-[#DDB66A] hover:shadow-[0_6px_20px_rgba(95,13,60,.1)] active:scale-[0.99]"
+          className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DDB66A]/50 bg-white py-3 px-4 font-extrabold text-[#5F0D3C] shadow-[0_4px_14px_rgba(95,13,60,.06)] transition-all hover:border-[#DDB66A] hover:bg-[#FAF7F2] active:scale-[0.99]"
         >
-          <span className="text-[13px] font-semibold">View All Reviews</span>
+          <span className="text-[13px] font-extrabold">View All Reviews</span>
           <ArrowRight className="h-3.5 w-3.5 text-[#80652C] transition-transform group-hover:translate-x-0.5" />
         </Link>
       </motion.div>

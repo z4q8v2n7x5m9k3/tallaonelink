@@ -230,8 +230,8 @@ Please confirm availability.`
         <button
           type="button"
           onClick={handleDirections}
-          title="Explore our 4 showrooms across J&K"
-          className="order-2 relative block min-h-[80px] w-full overflow-hidden rounded-[22px] p-[2px] transition-transform active:scale-[0.985] text-left cursor-pointer"
+          title="Explore our showrooms across J&K"
+          className="order-2 relative block min-h-[78px] w-full overflow-hidden rounded-[22px] p-[2px] transition-transform active:scale-[0.985] text-left cursor-pointer"
           style={{
             background: 'linear-gradient(105deg, #FFF8FB 0%, #610138 34%, #DDB66A 52%, #370820 76%, #FFF8FB 100%)',
             backgroundSize: '230% 100%',
@@ -239,54 +239,53 @@ Please confirm availability.`
           }}
         >
           <motion.span className="pointer-events-none absolute inset-0 rounded-[22px]" style={{ backgroundImage: 'linear-gradient(105deg,#FFF8FB 0%,#610138 34%,#DDB66A 52%,#370820 76%,#FFF8FB 100%)', backgroundSize: '230% 100%' }} animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }} transition={{ duration: 5.5, ease: 'linear', repeat: Infinity }} aria-hidden />
-          <span className="relative flex min-h-[76px] items-center overflow-hidden rounded-[20px] bg-[#3E102B] px-3.5 py-2.5">
+          <span className="relative flex min-h-[74px] items-center overflow-hidden rounded-[20px] bg-[#3E102B] px-3.5 py-2">
             <AnimatePresence initial={false} mode="sync">
-              <motion.span key={SHOWROOM_PREVIEW_IMAGES[showroomPreviewIndex]} className="absolute inset-0" initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.05 }} aria-hidden>
-                <Image src={SHOWROOM_PREVIEW_IMAGES[showroomPreviewIndex]} alt="" fill unoptimized className="object-cover object-center" sizes="(max-width: 640px) 100vw, 448px" />
+              <motion.span key={SHOWROOM_PREVIEW_IMAGES[showroomPreviewIndex % 2]} className="absolute inset-0" initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.05 }} aria-hidden>
+                <Image src={SHOWROOM_PREVIEW_IMAGES[showroomPreviewIndex % 2]} alt="" fill unoptimized className="object-cover object-center" sizes="(max-width: 640px) 100vw, 448px" />
               </motion.span>
             </AnimatePresence>
-            <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(42,7,27,.96)_0%,rgba(97,1,56,.80)_52%,rgba(97,1,56,.30)_100%)]" aria-hidden />
+            <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(42,7,27,.96)_0%,rgba(97,1,56,.84)_55%,rgba(97,1,56,.35)_100%)]" aria-hidden />
             <span className="relative z-10 h-11 w-11 shrink-0 overflow-hidden rounded-[15px] border-2 border-white/95 shadow-[0_7px_18px_rgba(0,0,0,0.30)] ring-1 ring-[#DDB66A]/50">
               <Image src="/talla/showrooms/gandhi-nagar.jpg" alt="Talla Jewellers showroom" fill unoptimized className="object-cover" sizes="48px" />
             </span>
             <span className="relative z-10 ml-3 min-w-0 flex-1 text-left">
-              <strong className="block truncate text-[16px] font-black text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]">Find a Showroom</strong>
-              <span className="mt-0.5 block truncate text-[10px] font-semibold text-white/82">Explore all 4 locations across J&amp;K</span>
+              <strong className="block truncate text-[15px] font-black text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]">Explore All Showrooms</strong>
+              <span className="mt-0.5 block truncate text-[11px] font-semibold text-[#F3D890]">Find Nearest Showroom</span>
             </span>
+            {/* Exactly 2 preview images per user instruction */}
             <span className="relative z-10 ml-2 flex shrink-0 -space-x-2" aria-hidden>
-              {SHOWROOM_PREVIEW_IMAGES.map((src, index) => (
-                <motion.span key={src} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/95 shadow-[0_6px_16px_rgba(0,0,0,0.32)] ring-1 ring-[#DDB66A]/60" animate={{ y: index === showroomPreviewIndex ? -3 : 0, scale: index === showroomPreviewIndex ? 1.08 : 1 }} transition={{ duration: 0.55 }}>
+              {SHOWROOM_PREVIEW_IMAGES.slice(0, 2).map((src, index) => (
+                <span key={src} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/95 shadow-[0_6px_16px_rgba(0,0,0,0.32)] ring-1 ring-[#DDB66A]/60">
                   <Image src={src} alt="" fill unoptimized className="object-cover" sizes="40px" />
-                </motion.span>
+                </span>
               ))}
             </span>
           </span>
         </button>
 
-        {/* Row 4: Our Collections | New Arrivals */}
+        {/* Row 4: Explore All Collections | New Arrivals */}
         <div className="order-4 grid grid-cols-2 gap-2 w-full min-w-0">
           <Link
-            href="https://tallajewellers.com/collections"
+            href="https://tallajewellers.com/shop/"
             target="_blank"
             rel="noopener noreferrer"
-            title="Explore new jewellery arrivals"
+            title="Explore all jewellery collections"
             onClick={(e) => {
               e.stopPropagation()
-              playClickSound()
               prepareReturnToHeroCard()
             }}
-            className="relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#DDB66A]/60 bg-white transition active:scale-[0.97] group"
+            className="relative flex h-11 min-w-0 items-center justify-center gap-1.5 overflow-hidden rounded-2xl border border-[#DDB66A]/60 bg-white px-2 transition active:scale-[0.97] group"
             style={{ boxShadow: '0 7px 18px rgba(97,1,56,0.12)' }}
           >
             <span className="pointer-events-none absolute right-0 top-0 h-full w-[46%] overflow-hidden"><Image src="/talla/talla-couture-01.png" alt="" fill unoptimized className="object-cover opacity-50 transition-transform duration-500 group-hover:scale-110" sizes="110px" /><span className="absolute inset-0 bg-[linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.20)_100%)]" /></span>
-            <span className="relative z-10 truncate text-sm font-black text-[#610138]">Our Collections</span>
+            <span className="relative z-10 truncate text-[12.5px] font-black text-[#610138]">Explore All Collections</span>
           </Link>
 
           <Link
             href="/new-arrivals"
             onClick={(e) => {
               e.stopPropagation()
-              playClickSound()
               prepareReturnToHeroCard()
             }}
             className="relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#DDB66A]/60 bg-white transition active:scale-[0.97] group"
@@ -420,34 +419,34 @@ Please confirm availability.`
               onClick={() => setConsultationModalOpen(false)}
             >
               <motion.div
-                initial={{ scale: 0.92, y: 20 }}
+                initial={{ scale: 0.94, y: 16 }}
                 animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.92, y: 20 }}
+                exit={{ scale: 0.94, y: 16 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-md overflow-hidden rounded-[26px] border border-[#DDB66A]/60 bg-[#1A1118] p-5 text-white shadow-2xl"
+                className="relative w-full max-w-md overflow-hidden rounded-[28px] border border-[#DDB66A]/45 bg-gradient-to-b from-white via-[#FFFDF9] to-[#FAF6EE] p-5 text-[#2F101F] shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
               >
-                <div className="flex items-center justify-between border-b border-[#370820] pb-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#610138] text-[#DDB66A]">
+                <div className="flex items-center justify-between border-b border-[#DDB66A]/25 pb-3.5">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-[#5F0D3C] to-[#3B0724] text-[#F3D890] shadow-sm">
                       <Calendar className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-base font-black text-white">Book a Visit</h3>
-                      <p className="text-[11px] font-semibold text-[#DDB66A]">Choose a showroom, purpose, date and time</p>
+                      <h3 className="text-base font-extrabold text-[#1F0715] [font-family:var(--font-manrope)]">Book a Visit</h3>
+                      <p className="text-[11px] font-semibold text-[#8B7580]">Private bridal, diamond & heritage curation</p>
                     </div>
                   </div>
                   <button
                     onClick={() => setConsultationModalOpen(false)}
-                    className="grid h-8 w-8 place-items-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                    className="grid h-8 w-8 place-items-center rounded-full bg-[#5F0D3C]/10 text-[#5F0D3C] hover:bg-[#5F0D3C]/20 transition-colors"
                   >
-                    <X className="h-4 w-4 text-white" />
+                    <X className="h-4 w-4" />
                   </button>
                 </div>
 
                 <form onSubmit={handleConsultationSubmit} className="mt-3.5 space-y-3 max-h-[72vh] overflow-y-auto pr-1">
                   {/* Purpose of visit */}
                   <div>
-                    <label className="block text-xs font-bold text-white/90 mb-1.5">
+                    <label className="block text-xs font-bold text-[#1F0715] mb-1.5 [font-family:var(--font-manrope)]">
                       Purpose of visit
                     </label>
                     <div className="grid grid-cols-2 gap-1.5">
@@ -458,10 +457,10 @@ Please confirm availability.`
                             type="button"
                             key={purpose}
                             onClick={() => setSelectedPurpose(purpose)}
-                            className={`p-2 rounded-xl text-left text-[11px] font-semibold transition-all border ${
+                            className={`p-2.5 rounded-xl text-left text-[11px] font-bold transition-all border ${
                               isSel
-                                ? 'bg-[#610138] border-[#DDB66A] text-white shadow-sm'
-                                : 'bg-[#231821] border-[#370820] text-white/75 hover:bg-[#2e1d2c]'
+                                ? 'bg-[#5F0D3C] border-[#DDB66A] text-white shadow-sm'
+                                : 'bg-white border-[#DDB66A]/30 text-[#4A323D] hover:bg-[#FAF5EC]'
                             }`}
                           >
                             {purpose}
@@ -473,16 +472,16 @@ Please confirm availability.`
 
                   {/* Select Showroom */}
                   <div>
-                    <label className="block text-xs font-bold text-white/90 mb-1">
+                    <label className="block text-xs font-bold text-[#1F0715] mb-1 [font-family:var(--font-manrope)]">
                       Select showroom
                     </label>
                     <select
                       value={selectedBranch}
                       onChange={(e) => setSelectedBranch(e.target.value)}
-                      className="w-full rounded-xl border border-[#370820] bg-[#231821] px-3 py-2.5 text-xs font-medium text-white focus:border-[#DDB66A] focus:outline-none"
+                      className="w-full rounded-xl border border-[#DDB66A]/40 bg-white px-3 py-2.5 text-xs font-semibold text-[#2F101F] shadow-sm focus:border-[#5F0D3C] focus:outline-none"
                     >
                       {shopConfig.branches.map((b) => (
-                        <option key={b.name} value={b.name} className="bg-[#1A1118] text-white">
+                        <option key={b.name} value={b.name} className="text-[#2F101F]">
                           {b.name}
                         </option>
                       ))}
@@ -492,27 +491,27 @@ Please confirm availability.`
                   {/* Date and Time */}
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="block text-xs font-bold text-white/90 mb-1">
+                      <label className="block text-xs font-bold text-[#1F0715] mb-1 [font-family:var(--font-manrope)]">
                         Preferred date
                       </label>
                       <input
                         type="date"
                         value={preferredDate}
                         onChange={(e) => setPreferredDate(e.target.value)}
-                        className="w-full rounded-xl border border-[#370820] bg-[#231821] px-3 py-2 text-xs font-medium text-white focus:border-[#DDB66A] focus:outline-none"
+                        className="w-full rounded-xl border border-[#DDB66A]/40 bg-white px-3 py-2 text-xs font-semibold text-[#2F101F] shadow-sm focus:border-[#5F0D3C] focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-white/90 mb-1">
+                      <label className="block text-xs font-bold text-[#1F0715] mb-1 [font-family:var(--font-manrope)]">
                         Preferred time
                       </label>
                       <select
                         value={preferredTime}
                         onChange={(e) => setPreferredTime(e.target.value)}
-                        className="w-full rounded-xl border border-[#370820] bg-[#231821] px-3 py-2 text-xs font-medium text-white focus:border-[#DDB66A] focus:outline-none"
+                        className="w-full rounded-xl border border-[#DDB66A]/40 bg-white px-3 py-2 text-xs font-semibold text-[#2F101F] shadow-sm focus:border-[#5F0D3C] focus:outline-none"
                       >
                         {TIME_SLOTS.map((slot) => (
-                          <option key={slot} value={slot} className="bg-[#1A1118] text-white">
+                          <option key={slot} value={slot} className="text-[#2F101F]">
                             {slot}
                           </option>
                         ))}
@@ -523,7 +522,7 @@ Please confirm availability.`
                   {/* Customer Details */}
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="block text-xs font-bold text-white/90 mb-1">
+                      <label className="block text-xs font-bold text-[#1F0715] mb-1 [font-family:var(--font-manrope)]">
                         Your Name
                       </label>
                       <input
@@ -531,11 +530,11 @@ Please confirm availability.`
                         placeholder="e.g. Aarti Sharma"
                         value={custName}
                         onChange={(e) => setCustName(e.target.value)}
-                        className="w-full rounded-xl border border-[#370820] bg-[#231821] px-3 py-2 text-xs font-medium text-white placeholder:text-white/40 focus:border-[#DDB66A] focus:outline-none"
+                        className="w-full rounded-xl border border-[#DDB66A]/40 bg-white px-3 py-2 text-xs font-medium text-[#2F101F] shadow-sm placeholder:text-[#9A8790] focus:border-[#5F0D3C] focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-white/90 mb-1">
+                      <label className="block text-xs font-bold text-[#1F0715] mb-1 [font-family:var(--font-manrope)]">
                         Phone Number
                       </label>
                       <input
@@ -543,7 +542,7 @@ Please confirm availability.`
                         placeholder="e.g. 98765 43210"
                         value={custPhone}
                         onChange={(e) => setCustPhone(e.target.value)}
-                        className="w-full rounded-xl border border-[#370820] bg-[#231821] px-3 py-2 text-xs font-medium text-white placeholder:text-white/40 focus:border-[#DDB66A] focus:outline-none"
+                        className="w-full rounded-xl border border-[#DDB66A]/40 bg-white px-3 py-2 text-xs font-medium text-[#2F101F] shadow-sm placeholder:text-[#9A8790] focus:border-[#5F0D3C] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -552,17 +551,13 @@ Please confirm availability.`
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="flex w-full items-center justify-center gap-2 rounded-xl py-3 text-xs font-black text-white shadow-lg transition-transform active:scale-[0.98] cursor-pointer"
-                      style={{
-                        background: 'linear-gradient(135deg, #610138 0%, #370820 100%)',
-                        border: '1px solid rgba(221, 182, 106, 0.65)',
-                      }}
+                      className="flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-xs font-bold text-white shadow-[0_8px_20px_rgba(95,13,60,.24)] transition-transform active:scale-[0.98] cursor-pointer bg-gradient-to-r from-[#5F0D3C] via-[#6F0F46] to-[#5F0D3C]"
                     >
-                      <CheckCircle2 className="h-4 w-4 text-[#DDB66A]" />
+                      <CheckCircle2 className="h-4 w-4 text-[#EACD8C]" />
                       <span>Confirm Consultation via WhatsApp</span>
                     </button>
-                    <p className="mt-1.5 text-center text-[10px] text-white/60">
-                      The showroom team will promptly confirm your appointment slot.
+                    <p className="mt-2 text-center text-[10.5px] font-medium text-[#88787E]">
+                      Our bridal lounge team will promptly confirm your appointment.
                     </p>
                   </div>
                 </form>
