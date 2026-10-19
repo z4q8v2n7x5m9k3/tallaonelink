@@ -334,7 +334,7 @@ Please confirm availability.`
           >
             <Image src="/talla/kriyon/fine-110.webp" alt="" fill className="object-cover object-[70%_40%] opacity-44 transition-transform duration-500 group-hover:scale-[1.04]" sizes="220px" />
             <span className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,238,202,.98)_0%,rgba(245,227,176,.86)_58%,rgba(245,227,176,.34)_100%)]" />
-            <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#B88A35]/40 bg-white/85"><RefreshCw className="absolute h-[18px] w-[18px] text-[#9A742A]" strokeWidth={1.5} /><Gem className="relative h-[10px] w-[10px] fill-[#DDB66A]/35 text-[#610138]" strokeWidth={1.9} /></span>
+            <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#B88A35]/40 bg-white/88"><svg viewBox="0 0 28 28" className="h-[19px] w-[19px]" aria-hidden><path d="M7.2 10.2A7.7 7.7 0 0 1 20.3 7l1.2 1.2" fill="none" stroke="#9A742A" strokeWidth="1.7" strokeLinecap="round"/><path d="m21.8 5.6-.2 3.1-3.1-.2" fill="none" stroke="#9A742A" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/><path d="M20.8 17.8A7.7 7.7 0 0 1 7.7 21l-1.2-1.2" fill="none" stroke="#610138" strokeWidth="1.7" strokeLinecap="round"/><path d="m6.2 22.4.2-3.1 3.1.2" fill="none" stroke="#610138" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/><path d="M10 12.3h8l-1.3 5.2h-5.4L10 12.3Z" fill="#DDB66A" stroke="#7B5720" strokeWidth="1"/></svg></span>
             <span className="relative truncate text-sm font-extrabold">Gold Exchange</span>
           </button>
         </div>

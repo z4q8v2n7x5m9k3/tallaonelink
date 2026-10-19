@@ -69,7 +69,6 @@ export default function Services() {
             transition={{ delay: index * 0.05, duration: 0.28 }}
             className="group relative min-h-[104px] overflow-hidden rounded-[24px] border border-[#DDB66A]/48 bg-[#FFF9F5] shadow-[0_12px_28px_rgba(0,0,0,.18)]"
           >
-            <motion.span aria-hidden className="pointer-events-none absolute -inset-y-8 z-20 w-16 rotate-[18deg] bg-gradient-to-r from-transparent via-[#F6D98D]/35 to-transparent blur-sm" animate={{ left: ['-28%', '118%'] }} transition={{ duration: 3.8, delay: index * .55, repeat: Infinity, repeatDelay: 2.8, ease: 'easeInOut' }} />
             <span className="pointer-events-none absolute inset-[3px] z-20 rounded-[20px] border border-[#A9772A]/14" />
             {/* Background Image Layer */}
             <div className="pointer-events-none absolute inset-y-0 right-0 w-[64%] overflow-hidden">

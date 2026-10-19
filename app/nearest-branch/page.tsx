@@ -133,7 +133,8 @@ export default function NearestBranchPage() {
           <div className="space-y-4">{showrooms.map((showroom,index) => <article key={showroom.name} className={`relative overflow-hidden rounded-[25px] border bg-white shadow-[0_14px_32px_rgba(50,16,31,.10)] ${index % 2 ? 'border-[#C9A75F]/70' : 'border-[#8D456B]/45'}`}>
             <div className="relative h-[184px] overflow-hidden bg-[#F6F3ED]">
               <Image src={showroom.image} alt={showroom.isJewellery ? 'Original Talla gold jewellery' : `${showroom.name} showroom`} fill className={showroom.isJewellery ? 'object-contain p-3' : 'object-cover'} style={{ objectPosition: showroom.imagePosition }} sizes="448px" />
-              <span className="absolute inset-0 bg-gradient-to-t from-[#17030D]/92 via-[#250717]/25 to-transparent" />
+              <span className="absolute inset-0 bg-black/[.04]" />
+              <span className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#120208]/95 via-[#260A18]/58 to-transparent" />
               <span className="absolute left-4 top-4 rounded-full border border-white/60 bg-white/90 px-2.5 py-1 text-[9px] font-semibold text-[#610138]">0{index+1} · Talla Jewellers</span>
               <div className="absolute inset-x-4 bottom-4 text-white drop-shadow-md"><h3 className="text-[20px] font-extrabold tracking-[-.02em]">{showroom.name.replace('Talla Jewellers — ', '')}</h3><p className="mt-1 line-clamp-1 text-[10px] font-medium text-white/82">{showroom.address}</p></div>
             </div>

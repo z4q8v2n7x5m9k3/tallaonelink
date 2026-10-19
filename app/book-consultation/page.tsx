@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, Clock, Gem, Phone, Sparkles, User, MapPin, Heart, RefreshCw } from 'lucide-react'
+import { ArrowLeft, Calendar, ChevronDown, Clock, Gem, Phone, User, MapPin } from 'lucide-react'
 import WhatsAppLogo from '@/components/WhatsAppLogo'
 import { shopConfig } from '../shops/dogra-associates/config'
 import { prepareReturnToHeroCard } from '../lib/homeNavigation'
@@ -22,8 +22,6 @@ const PURPOSE_IMAGES = [
   '/talla/kriyon/fine-110.webp',
   '/talla/kriyon/fine-085.webp',
 ]
-
-const PURPOSE_ICONS = [Heart, Gem, Sparkles, RefreshCw]
 
 const TIME_SLOTS = [
   '11:00 AM',
@@ -65,9 +63,9 @@ Please confirm the consultation appointment.`
 
   return (
     <main
-      className="talla-unified min-h-screen bg-[#111011] px-3 pb-16 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F] [font-family:var(--font-poppins)]"
+      className="talla-unified min-h-screen bg-[#F4F0E9] px-3 pb-16 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F] [font-family:var(--font-poppins)]"
       style={{
-        background: 'radial-gradient(circle at 50% 0%, rgba(97,1,56,.26), transparent 30rem), #111011',
+        background: 'linear-gradient(180deg,#F1E9E1 0%,#FBF9F5 34%,#F5F0E9 100%)',
       }}
     >
       <div className="mx-auto w-full max-w-md">
@@ -127,7 +125,7 @@ Please confirm the consultation appointment.`
         </div>
 
         {/* Consultation Form Card */}
-        <section className="mt-4 overflow-hidden rounded-[26px] border border-[#E8DEC8] bg-[#FFFDF9] p-5 shadow-[0_16px_34px_rgba(0,0,0,.22)]">
+        <section className="mt-4 overflow-hidden rounded-[26px] border border-[#E1D3C0] bg-[#FFFDF9] p-5 shadow-[0_16px_34px_rgba(72,37,52,.13)]">
           <div className="mb-5"><p className="text-[9px] font-bold uppercase tracking-[.22em] text-[#A6782A]">Appointment details</p><h2 className="mt-1 text-[20px] font-extrabold tracking-[-.02em] text-[#32101F]">Plan your showroom visit</h2></div>
           <div className="space-y-4">
             {/* Purpose */}
@@ -139,22 +137,21 @@ Please confirm the consultation appointment.`
               <div className="grid grid-cols-2 gap-2">
                 {PURPOSES.map((item, index) => {
                   const isSel = purpose === item
-                  const PurposeIcon = PURPOSE_ICONS[index]
                   return (
                     <button
                       key={item}
                       type="button"
                       onClick={() => setPurpose(item)}
-                      className={`relative min-h-[82px] overflow-hidden rounded-2xl border p-3 text-left transition-all ${
+                      className={`relative min-h-[70px] overflow-hidden rounded-[15px] border px-3 py-2.5 text-left transition-all ${
                         isSel
                           ? 'border-[#610138] bg-[#610138] text-white shadow-[0_8px_18px_rgba(97,1,56,.18)]'
                           : 'border-[#E8DEC8] bg-white text-[#4A323D] hover:border-[#DDB66A] hover:bg-[#FAF5EC]'
                       }`}
                     >
                       <Image src={PURPOSE_IMAGES[index]} alt="" fill className="object-cover opacity-35" sizes="200px" />
-                      <span className={`absolute inset-0 ${isSel ? 'bg-[linear-gradient(90deg,rgba(66,3,37,.96),rgba(97,1,56,.58))]' : 'bg-[linear-gradient(90deg,rgba(255,253,249,.98),rgba(255,253,249,.56))]'}`} />
-                      <span className={`relative mb-1.5 flex h-7 w-7 items-center justify-center rounded-full border ${isSel ? 'border-[#EACD8C]/70 bg-white/10 text-[#EACD8C]' : 'border-[#DDB66A]/55 bg-[#FBF4E7] text-[#8D682A]'}`}>{isSel ? <CheckCircle2 className="h-4 w-4" /> : <PurposeIcon className="h-3.5 w-3.5" strokeWidth={1.8} />}</span>
-                      <span className="relative block max-w-[132px] text-[11.5px] font-extrabold leading-[1.3]">{item}</span>
+                      <span className={`absolute inset-0 ${isSel ? 'bg-[linear-gradient(90deg,rgba(66,3,37,.94),rgba(97,1,56,.46))]' : 'bg-[linear-gradient(90deg,rgba(255,253,249,.98),rgba(255,253,249,.50))]'}`} />
+                      <span className={`relative mb-1 block text-[8px] font-bold uppercase tracking-[.16em] ${isSel ? 'text-[#EACD8C]' : 'text-[#9A742A]'}`}>{isSel ? 'Selected' : `Option 0${index + 1}`}</span>
+                      <span className="relative block max-w-[138px] text-[11px] font-extrabold leading-[1.3]">{item}</span>
                     </button>
                   )
                 })}
@@ -171,7 +168,7 @@ Please confirm the consultation appointment.`
                 <select
                   value={branch}
                   onChange={(e) => setBranch(e.target.value)}
-                  className="h-[52px] w-full appearance-none rounded-[15px] border border-[#DCCDB8] bg-white px-4 pr-11 text-[13px] font-semibold text-[#1F0715] shadow-[0_7px_16px_rgba(45,20,31,.07)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
+                  className="h-[54px] w-full appearance-none rounded-[16px] border border-[#D7C6AF] bg-white px-4 pr-12 text-[13.5px] font-bold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
                 >
                   {shopConfig.branches.map((b) => (
                     <option key={b.name} value={b.name}>
@@ -179,7 +176,7 @@ Please confirm the consultation appointment.`
                     </option>
                   ))}
                 </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <span className="pointer-events-none absolute right-2.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-[#F6EFE5] text-[#610138]"><ChevronDown className="h-4 w-4" /></span>
               </div>
             </div>
 
@@ -194,7 +191,7 @@ Please confirm the consultation appointment.`
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="h-[52px] w-full rounded-[15px] border border-[#DCCDB8] bg-white px-4 text-[13px] font-semibold text-[#1F0715] shadow-[0_7px_16px_rgba(45,20,31,.07)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
+                  className="h-[54px] w-full rounded-[16px] border border-[#D7C6AF] bg-white px-4 text-[13px] font-bold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
                 />
               </div>
 
@@ -207,7 +204,7 @@ Please confirm the consultation appointment.`
                   <select
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="h-[52px] w-full appearance-none rounded-[15px] border border-[#DCCDB8] bg-white px-4 pr-9 text-[13px] font-semibold text-[#1F0715] shadow-[0_7px_16px_rgba(45,20,31,.07)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
+                    className="h-[54px] w-full appearance-none rounded-[16px] border border-[#D7C6AF] bg-white px-4 pr-10 text-[13px] font-bold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
                   >
                     {TIME_SLOTS.map((slot) => (
                       <option key={slot} value={slot}>
@@ -215,7 +212,7 @@ Please confirm the consultation appointment.`
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                  <span className="pointer-events-none absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-[#F6EFE5] text-[#610138]"><ChevronDown className="h-4 w-4" /></span>
                 </div>
               </div>
             </div>
@@ -231,7 +228,7 @@ Please confirm the consultation appointment.`
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Priya Sharma"
-                  className="h-[52px] w-full rounded-[15px] border border-[#DCCDB8] bg-white px-3.5 text-[13px] font-semibold text-[#1F0715] shadow-[0_7px_16px_rgba(45,20,31,.07)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
+                  className="h-[54px] w-full rounded-[16px] border border-[#D7C6AF] bg-white px-3.5 text-[13px] font-semibold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
                 />
               </div>
 
@@ -245,7 +242,7 @@ Please confirm the consultation appointment.`
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="e.g. 98765 43210"
                   type="tel"
-                  className="h-[52px] w-full rounded-[15px] border border-[#DCCDB8] bg-white px-3.5 text-[13px] font-semibold text-[#1F0715] shadow-[0_7px_16px_rgba(45,20,31,.07)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
+                  className="h-[54px] w-full rounded-[16px] border border-[#D7C6AF] bg-white px-3.5 text-[13px] font-semibold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
                 />
               </div>
             </div>
