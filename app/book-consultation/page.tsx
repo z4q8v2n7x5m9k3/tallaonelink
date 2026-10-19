@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Calendar, ChevronDown, Clock, Gem, Phone, User, MapPin } from 'lucide-react'
+import { ArrowLeft, CalendarDays, ChevronDown, Clock3, Smartphone, UserRound, Store } from 'lucide-react'
 import WhatsAppLogo from '@/components/WhatsAppLogo'
 import { shopConfig } from '../shops/dogra-associates/config'
 import { prepareReturnToHeroCard } from '../lib/homeNavigation'
@@ -63,9 +63,9 @@ Please confirm the consultation appointment.`
 
   return (
     <main
-      className="talla-unified min-h-screen bg-[#F4F0E9] px-3 pb-16 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F] [font-family:var(--font-poppins)]"
+      className="talla-unified min-h-screen bg-[#111011] px-3 pb-16 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F] [font-family:var(--font-poppins)]"
       style={{
-        background: 'linear-gradient(180deg,#F1E9E1 0%,#FBF9F5 34%,#F5F0E9 100%)',
+        background: '#111011',
       }}
     >
       <div className="mx-auto w-full max-w-md">
@@ -131,7 +131,7 @@ Please confirm the consultation appointment.`
             {/* Purpose */}
             <div>
               <span className="mb-2 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
-                <Gem className="h-4 w-4 text-[#9A7A35]" />
+                <CalendarDays className="h-4 w-4 text-[#9A7A35]" />
                 Purpose of Visit
               </span>
               <div className="grid grid-cols-2 gap-2">
@@ -150,8 +150,7 @@ Please confirm the consultation appointment.`
                     >
                       <Image src={PURPOSE_IMAGES[index]} alt="" fill className="object-cover opacity-35" sizes="200px" />
                       <span className={`absolute inset-0 ${isSel ? 'bg-[linear-gradient(90deg,rgba(66,3,37,.94),rgba(97,1,56,.46))]' : 'bg-[linear-gradient(90deg,rgba(255,253,249,.98),rgba(255,253,249,.50))]'}`} />
-                      <span className={`relative mb-1 block text-[8px] font-bold uppercase tracking-[.16em] ${isSel ? 'text-[#EACD8C]' : 'text-[#9A742A]'}`}>{isSel ? 'Selected' : `Option 0${index + 1}`}</span>
-                      <span className="relative block max-w-[138px] text-[11px] font-extrabold leading-[1.3]">{item}</span>
+                      <span className="relative flex min-h-[50px] max-w-[138px] items-end text-[11.5px] font-extrabold leading-[1.3]">{item}</span>
                     </button>
                   )
                 })}
@@ -161,7 +160,7 @@ Please confirm the consultation appointment.`
             {/* Select Showroom */}
             <div>
               <span className="mb-2 flex items-center gap-2 text-[13px] font-extrabold text-[#1F0715]">
-                <MapPin className="h-4 w-4 text-[#9A7A35]" />
+                <Store className="h-4 w-4 text-[#9A7A35]" />
                 Select Showroom
               </span>
               <div className="relative">
@@ -184,7 +183,7 @@ Please confirm the consultation appointment.`
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
-                  <Calendar className="h-4 w-4 text-[#9A7A35]" />
+                  <CalendarDays className="h-4 w-4 text-[#9A7A35]" />
                   Preferred Date
                 </span>
                 <input
@@ -197,7 +196,7 @@ Please confirm the consultation appointment.`
 
               <div>
                 <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
-                  <Clock className="h-4 w-4 text-[#9A7A35]" />
+                  <Clock3 className="h-4 w-4 text-[#9A7A35]" />
                   Preferred Time
                 </span>
                 <div className="relative">
@@ -218,10 +217,10 @@ Please confirm the consultation appointment.`
             </div>
 
             {/* Name & Phone */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid gap-4">
               <div>
                 <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
-                  <User className="h-4 w-4 text-[#9A7A35]" />
+                  <UserRound className="h-4 w-4 text-[#9A7A35]" />
                   Your Name
                 </span>
                 <input
@@ -234,7 +233,7 @@ Please confirm the consultation appointment.`
 
               <div>
                 <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
-                  <Phone className="h-4 w-4 text-[#9A7A35]" />
+                  <Smartphone className="h-4 w-4 text-[#9A7A35]" />
                   Mobile Number
                 </span>
                 <input

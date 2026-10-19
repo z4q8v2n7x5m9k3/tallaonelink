@@ -171,8 +171,8 @@ export default function NewArrivalsPage() {
           </div>
         </header>
 
-        <div ref={filterScrollRef} className="mt-3 flex gap-2 overflow-x-auto rounded-[20px] border border-white/10 bg-[#1A1719] p-2 scrollbar-hide" style={{ WebkitOverflowScrolling: 'touch' }}>
-          {CATEGORIES.map(({ key, label, image }) => { const isActive = activeCategory === key; return <button key={key} data-cat-pill={key} type="button" onClick={() => selectCategory(key)} className={`flex h-10 shrink-0 items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-[10.5px] font-bold transition active:scale-95 ${isActive ? 'border-[#DDB66A] bg-[#F8F4EC] text-[#610138]' : 'border-white/10 bg-white/[.05] text-white/75'}`}><span className="relative h-8 w-8 overflow-hidden rounded-full border border-white/30"><Image src={image} alt="" fill className="object-cover" sizes="32px" /></span>{label}</button> })}
+        <div ref={filterScrollRef} className="mt-3 flex gap-2 overflow-x-auto rounded-[20px] border border-white/10 bg-[#1A1719] p-2 pr-4 scrollbar-hide" style={{ WebkitOverflowScrolling: 'touch' }}>
+          {CATEGORIES.map(({ key, label, image }) => { const isActive = activeCategory === key; return <button key={key} data-cat-pill={key} type="button" onClick={() => selectCategory(key)} className={`flex h-11 shrink-0 items-center gap-2 rounded-full border py-1 pl-1 pr-4 text-[11.5px] font-extrabold transition active:scale-95 ${isActive ? 'border-[#DDB66A] bg-[#F8F4EC] text-[#610138]' : 'border-white/12 bg-white/[.06] text-white/85'}`}><span className="relative h-9 w-9 overflow-hidden rounded-full border border-white/35"><Image src={image} alt="" fill unoptimized className="object-cover" sizes="36px" /></span>{label}</button> })}
         </div>
 
         {/* Section Subtitle & Count */}
@@ -218,7 +218,7 @@ export default function NewArrivalsPage() {
                     <h3 className={`${activeCategory !== 'all' || index === 0 || index === filteredItems.length - 1 ? 'text-[18px]' : 'text-[13px]'} mt-0.5 font-extrabold leading-tight tracking-[-.02em]`}>{item.title}</h3>
                   </div>
                 </a>
-                <a href={getWhatsappProductLink(item.title)} target="_blank" rel="noopener noreferrer" className="absolute right-3 top-3 flex h-8 items-center gap-1.5 rounded-full border border-[#EACD8C]/55 bg-[#610138]/90 px-3 text-[9.5px] font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,.24)] backdrop-blur-md transition hover:bg-[#75114A] active:scale-95"><WhatsAppLogo className="h-3.5 w-3.5" color="#25D366" /><span>Enquire</span></a>
+                <a href={getWhatsappProductLink(item.title)} target="_blank" rel="noopener noreferrer" className="absolute right-3 top-3 flex h-9 items-center gap-1.5 rounded-full border border-[#EACD8C]/70 bg-[#610138] px-3.5 text-[10.5px] font-extrabold text-white shadow-[0_9px_20px_rgba(0,0,0,.28)] transition hover:bg-[#75114A] active:scale-95"><WhatsAppLogo className="h-[15px] w-[15px]" color="#25D366" /><span>Enquire</span></a>
               </motion.article>
             ))}
           </AnimatePresence>

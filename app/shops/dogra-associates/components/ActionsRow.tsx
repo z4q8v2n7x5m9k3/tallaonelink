@@ -224,13 +224,13 @@ Please confirm availability.`
           <span className="absolute inset-0 bg-[linear-gradient(90deg,#3E0624_0%,rgba(97,1,56,.94)_54%,rgba(97,1,56,.28)_100%)]" />
           <span className="pointer-events-none absolute inset-x-0 bottom-0 h-[68%] bg-[linear-gradient(180deg,transparent_0%,rgba(17,5,12,.54)_100%)]" />
           <span className="pointer-events-none absolute inset-[3px] rounded-[20px] border border-white/15" />
-          <span className="relative mr-3 h-[54px] w-[54px] shrink-0 overflow-hidden rounded-[15px] border-2 border-[#F8F4EC] shadow-[0_6px_16px_rgba(0,0,0,.22)]"><Image src="/talla/showrooms/showroom-hero-hd.png" alt="Talla showroom" fill unoptimized className="object-cover object-left" sizes="54px" /></span>
-          <span className="relative min-w-0 flex-1 pr-2">
+          <span className="relative mr-4 h-12 w-12 shrink-0 overflow-hidden rounded-[14px] border-2 border-[#F8F4EC] shadow-[0_6px_16px_rgba(0,0,0,.22)]"><Image src="/talla/showrooms/showroom-hero-hd.png" alt="Talla showroom" fill unoptimized className="object-cover object-left" sizes="48px" /></span>
+          <span className="relative min-w-0 flex-1 pr-3">
             <strong className="block whitespace-nowrap text-[15px] font-extrabold tracking-[-.015em] text-white">Explore All Showrooms</strong>
             <span className="mt-1 block text-[11px] font-bold text-[#F0D18F]">Find Nearest Showroom</span>
           </span>
           <span className="relative flex shrink-0 items-center">
-            {["35% center", "70% center"].map((position, index) => <span key={position} className={`${index ? '-ml-2.5' : ''} relative h-10 w-10 overflow-hidden rounded-full border-2 border-[#F8F4EC] shadow-[0_5px_12px_rgba(0,0,0,.24)]`}><Image src="/talla/showrooms/showroom-hero-hd.png" alt="" fill unoptimized className="object-cover" style={{ objectPosition: position }} sizes="40px" /></span>)}
+            {["35% center", "70% center"].map((position, index) => <span key={position} className={`${index ? '-ml-2' : ''} relative h-9 w-9 overflow-hidden rounded-full border-2 border-[#F8F4EC] shadow-[0_5px_12px_rgba(0,0,0,.24)]`}><Image src="/talla/showrooms/showroom-hero-hd.png" alt="" fill unoptimized className="object-cover" style={{ objectPosition: position }} sizes="36px" /></span>)}
           </span>
         </button>
 

@@ -15,6 +15,16 @@ import { useLanguage } from '../../../contexts/LanguageContext'
 import { playClickSound } from '../../../lib/playClickSound'
 import { prepareReturnToHeroCard } from '../../../lib/homeNavigation'
 
+const DAY_ABBR_TO_INDEX: Record<string, number> = {
+  Sun: 0,
+  Mon: 1,
+  Tue: 2,
+  Wed: 3,
+  Thu: 4,
+  Fri: 5,
+  Sat: 6,
+}
+
 export default function Hero() {
   const { t } = useLanguage()
   const [currentFace, setCurrentFace] = useState<Face>('front')
@@ -53,16 +63,6 @@ export default function Hero() {
   const doctorCredentials = ['Gold', 'Diamonds', 'Polki', 'Silver']
   const doctorExpertise = ['100% BIS Hallmarked', 'Natural Diamonds', 'Bridal Jewellery', 'ZAVI Silver', 'Solitaires', 'Heritage Polki']
 
-  const dayAbbrToIndex: Record<string, number> = {
-    Sun: 0,
-    Mon: 1,
-    Tue: 2,
-    Wed: 3,
-    Thu: 4,
-    Fri: 5,
-    Sat: 6,
-  }
-
   const computeOpenStatus = useCallback(() => {
     const hours = shopConfig?.contact?.storeHours || ''
     const normalized = hours
@@ -86,8 +86,8 @@ export default function Hero() {
     const openTimeStr = match[3]
     const closeTimeStr = match[4]
 
-    const startDay = dayAbbrToIndex[startDayStr]
-    const endDay = dayAbbrToIndex[endDayStr]
+    const startDay = DAY_ABBR_TO_INDEX[startDayStr]
+    const endDay = DAY_ABBR_TO_INDEX[endDayStr]
     if (startDay === undefined || endDay === undefined) {
       return {
         isOpen: true,
