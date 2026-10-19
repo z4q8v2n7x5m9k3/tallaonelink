@@ -44,7 +44,7 @@ const reveal = {
 
 export default function MenuPreview() {
   return (
-    <section id="services" aria-labelledby="collection-edit-title" className="mx-auto w-full max-w-md bg-[#111011] py-8">
+    <section id="services" aria-labelledby="collection-edit-title" className="mx-auto w-full max-w-md bg-[#111011] py-6">
       <motion.header {...reveal} transition={{ duration: 0.45 }} className="mb-6 text-left">
         <div className="section-title-accent talla-title-accent mb-2 after:!max-w-[88px]">
           <h2 id="collection-edit-title" className="[font-family:var(--font-manrope)] text-2xl font-bold tracking-tight text-white sm:text-3xl">The Collection Edit</h2>

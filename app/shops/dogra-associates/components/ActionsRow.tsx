@@ -28,6 +28,7 @@ import { playClickSound } from '../../../lib/playClickSound'
 import { useLanguage } from '../../../contexts/LanguageContext'
 import { prepareReturnToHeroCard } from '../../../lib/homeNavigation'
 import GoogleGIcon from '../../../components/GoogleGIcon'
+import GoldExchangeDialog from './GoldExchangeDialog'
 
 interface ActionsRowProps {
   onOpenPayments?: () => void
@@ -54,12 +55,6 @@ const TIME_SLOTS = [
   '6:30 PM',
 ]
 
-const SHOWROOM_PREVIEW_IMAGES = [
-  '/talla/showrooms/gandhi-nagar.jpg',
-  '/talla/showrooms/lakhdata-bazar.jpg',
-  '/talla/showrooms/udhampur.jpg',
-]
-
 const ActionsRow = forwardRef<ActionsRowRef, ActionsRowProps>(({ onOpenPayments, onOpenAppointment, onOpenDoctorProfile }, ref) => {
   const { t } = useLanguage()
   const [callSelectorOpen, setCallSelectorOpen] = useState(false)
@@ -68,7 +63,7 @@ const ActionsRow = forwardRef<ActionsRowRef, ActionsRowProps>(({ onOpenPayments,
   const [goldExchangeOpen, setGoldExchangeOpen] = useState(false)
   const [storyOpen, setStoryOpen] = useState(false)
   const [consultationModalOpen, setConsultationModalOpen] = useState(false)
-  const [showroomPreviewIndex, setShowroomPreviewIndex] = useState(0)
+
 
   // Consultation Form state
   const [custName, setCustName] = useState('')
@@ -119,10 +114,7 @@ const ActionsRow = forwardRef<ActionsRowRef, ActionsRowProps>(({ onOpenPayments,
     }
   }, [callSelectorOpen, whatsappSelectorOpen, showroomsModalOpen, goldExchangeOpen, storyOpen, consultationModalOpen])
 
-  useEffect(() => {
-    const timer = window.setInterval(() => setShowroomPreviewIndex((value) => (value + 1) % SHOWROOM_PREVIEW_IMAGES.length), 4200)
-    return () => window.clearInterval(timer)
-  }, [])
+
 
   const handleCall = (person: ContactPerson) => {
     playClickSound()
@@ -207,7 +199,7 @@ Please confirm availability.`
             onClick={(e) => {
               playClickSound()
               e.stopPropagation()
-              setConsultationModalOpen(true)
+              window.location.href = '/book-consultation'
             }}
             className="relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#DDB66A]/50 text-white transition active:scale-[0.97] touch-manipulation group cursor-pointer"
             style={{
@@ -226,41 +218,19 @@ Please confirm availability.`
           </button>
         </div>
 
-        {/* Row 2: Featured full-width showroom button */}
-        <button
-          type="button"
-          onClick={handleDirections}
-          title="Explore our showrooms across J&K"
-          className="order-2 relative block min-h-[78px] w-full overflow-hidden rounded-[22px] p-[2px] transition-transform active:scale-[0.985] text-left cursor-pointer"
-          style={{
-            background: 'linear-gradient(105deg, #FFF8FB 0%, #610138 34%, #DDB66A 52%, #370820 76%, #FFF8FB 100%)',
-            backgroundSize: '230% 100%',
-            boxShadow: '0 11px 26px rgba(97,1,56,0.28)',
-          }}
-        >
-          <motion.span className="pointer-events-none absolute inset-0 rounded-[22px]" style={{ backgroundImage: 'linear-gradient(105deg,#FFF8FB 0%,#610138 34%,#DDB66A 52%,#370820 76%,#FFF8FB 100%)', backgroundSize: '230% 100%' }} animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }} transition={{ duration: 5.5, ease: 'linear', repeat: Infinity }} aria-hidden />
-          <span className="relative flex min-h-[74px] items-center overflow-hidden rounded-[20px] bg-[#3E102B] px-3.5 py-2">
-            <AnimatePresence initial={false} mode="sync">
-              <motion.span key={SHOWROOM_PREVIEW_IMAGES[showroomPreviewIndex % 2]} className="absolute inset-0" initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.05 }} aria-hidden>
-                <Image src={SHOWROOM_PREVIEW_IMAGES[showroomPreviewIndex % 2]} alt="" fill unoptimized className="object-cover object-center" sizes="(max-width: 640px) 100vw, 448px" />
-              </motion.span>
-            </AnimatePresence>
-            <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(42,7,27,.96)_0%,rgba(97,1,56,.84)_55%,rgba(97,1,56,.35)_100%)]" aria-hidden />
-            <span className="relative z-10 h-11 w-11 shrink-0 overflow-hidden rounded-[15px] border-2 border-white/95 shadow-[0_7px_18px_rgba(0,0,0,0.30)] ring-1 ring-[#DDB66A]/50">
-              <Image src="/talla/showrooms/gandhi-nagar.jpg" alt="Talla Jewellers showroom" fill unoptimized className="object-cover" sizes="48px" />
-            </span>
-            <span className="relative z-10 ml-3 min-w-0 flex-1 text-left">
-              <strong className="block truncate text-[15px] font-black text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]">Explore All Showrooms</strong>
-              <span className="mt-0.5 block truncate text-[11px] font-semibold text-[#F3D890]">Find Nearest Showroom</span>
-            </span>
-            {/* Exactly 2 preview images per user instruction */}
-            <span className="relative z-10 ml-2 flex shrink-0 -space-x-2" aria-hidden>
-              {SHOWROOM_PREVIEW_IMAGES.slice(0, 2).map((src, index) => (
-                <span key={src} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/95 shadow-[0_6px_16px_rgba(0,0,0,0.32)] ring-1 ring-[#DDB66A]/60">
-                  <Image src={src} alt="" fill unoptimized className="object-cover" sizes="40px" />
-                </span>
-              ))}
-            </span>
+        {/* Featured showroom link — restored editorial image treatment */}
+        <button type="button" onClick={handleDirections} title="Explore our showrooms across J&K" className="group order-2 relative flex min-h-[88px] w-full items-center overflow-hidden rounded-[24px] border border-[#DDB66A]/70 bg-[#610138] px-3.5 text-left shadow-[0_13px_28px_rgba(97,1,56,.28)] transition active:scale-[.985]">
+          <Image src="/talla/showrooms/showroom-hero-hd.png" alt="" fill unoptimized className="object-cover object-center opacity-42 transition-transform duration-700 group-hover:scale-[1.03]" sizes="448px" />
+          <span className="absolute inset-0 bg-[linear-gradient(90deg,#3E0624_0%,rgba(97,1,56,.94)_54%,rgba(97,1,56,.28)_100%)]" />
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 h-[68%] bg-[linear-gradient(180deg,transparent_0%,rgba(17,5,12,.54)_100%)]" />
+          <span className="pointer-events-none absolute inset-[3px] rounded-[20px] border border-white/15" />
+          <span className="relative mr-3 h-[54px] w-[54px] shrink-0 overflow-hidden rounded-[15px] border-2 border-[#F8F4EC] shadow-[0_6px_16px_rgba(0,0,0,.22)]"><Image src="/talla/showrooms/showroom-hero-hd.png" alt="Talla showroom" fill unoptimized className="object-cover object-left" sizes="54px" /></span>
+          <span className="relative min-w-0 flex-1 pr-2">
+            <strong className="block whitespace-nowrap text-[15px] font-extrabold tracking-[-.015em] text-white">Explore All Showrooms</strong>
+            <span className="mt-1 block text-[11px] font-bold text-[#F0D18F]">Find Nearest Showroom</span>
+          </span>
+          <span className="relative flex shrink-0 items-center">
+            {["35% center", "70% center"].map((position, index) => <span key={position} className={`${index ? '-ml-2.5' : ''} relative h-10 w-10 overflow-hidden rounded-full border-2 border-[#F8F4EC] shadow-[0_5px_12px_rgba(0,0,0,.24)]`}><Image src="/talla/showrooms/showroom-hero-hd.png" alt="" fill unoptimized className="object-cover" style={{ objectPosition: position }} sizes="40px" /></span>)}
           </span>
         </button>
 
@@ -279,7 +249,7 @@ Please confirm availability.`
             style={{ boxShadow: '0 7px 18px rgba(97,1,56,0.12)' }}
           >
             <span className="pointer-events-none absolute right-0 top-0 h-full w-[46%] overflow-hidden"><Image src="/talla/talla-couture-01.png" alt="" fill unoptimized className="object-cover opacity-50 transition-transform duration-500 group-hover:scale-110" sizes="110px" /><span className="absolute inset-0 bg-[linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.20)_100%)]" /></span>
-            <span className="relative z-10 truncate text-[13px] font-black text-[#610138]">Collections</span>
+            <span className="relative z-10 truncate text-sm font-black text-[#610138]">Collections</span>
           </Link>
 
           <Link
@@ -321,10 +291,10 @@ Please confirm availability.`
               setWhatsappSelectorOpen(true)
               setCallSelectorOpen(false)
             }}
-            className="relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#79CE9B] text-[#116638] transition active:scale-[0.97] cursor-pointer"
-            style={{ background: 'linear-gradient(115deg,#FFFFFF 0%,#F4FFF8 52%,#DDF5E6 100%)', boxShadow: '0 8px 18px rgba(18,122,67,0.15), inset 0 1px 0 rgba(255,255,255,0.98)' }}
+            className="relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#CBC5C8] text-[#176C40] transition active:scale-[0.97] cursor-pointer"
+            style={{ background: 'linear-gradient(118deg,#F8F7F5 0%,#EFEDEA 58%,#E3E7E3 100%)', boxShadow: '0 8px 18px rgba(31,43,36,0.12), inset 0 1px 0 rgba(255,255,255,0.94)' }}
           >
-            <span className="pointer-events-none absolute -right-5 -top-6 h-16 w-20 rounded-full bg-[#25D366]/12 blur-xl" />
+            <span className="pointer-events-none absolute -right-5 -top-6 h-16 w-20 rounded-full bg-[#25D366]/10 blur-xl" />
             <svg viewBox="0 0 24 24" className="relative z-10 h-[21px] w-[21px] shrink-0" fill="#25D366" aria-hidden>
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
@@ -357,15 +327,15 @@ Please confirm availability.`
             onClick={(e) => {
               e.stopPropagation()
               playClickSound()
+              document.querySelector('[data-actions-row]')?.closest('section')?.scrollIntoView({ behavior: 'instant', block: 'start' })
               setGoldExchangeOpen(true)
             }}
-            className="relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#DDB66A] transition active:scale-[0.97] group cursor-pointer"
-            style={{ background: 'linear-gradient(115deg,#FFFDF7 0%,#FFF5D7 50%,#EED49B 100%)', boxShadow: '0 9px 20px rgba(167,116,26,0.20), inset 0 1px 0 rgba(255,255,255,.9)' }}
+            className="group relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#DDB66A]/70 bg-[#F5E3B0] text-[#610138] shadow-[0_8px_18px_rgba(148,111,43,.18)] transition active:scale-[0.97] cursor-pointer"
           >
-            <span className="pointer-events-none absolute -right-2 -top-5 h-16 w-16 rounded-full border border-[#B4832E]/15 bg-[#DDB66A]/20" />
-            <span className="pointer-events-none absolute right-7 -bottom-7 h-14 w-14 rounded-full border border-[#B4832E]/20" />
-            <Coins className="relative z-10 h-[19px] w-[19px] shrink-0 text-[#916515]" strokeWidth={2.25} />
-            <span className="relative z-10 truncate text-sm font-extrabold text-[#610138]">Gold Exchange</span>
+            <Image src="/talla/kriyon/fine-110.webp" alt="" fill className="object-cover object-[70%_40%] opacity-44 transition-transform duration-500 group-hover:scale-[1.04]" sizes="220px" />
+            <span className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,238,202,.98)_0%,rgba(245,227,176,.86)_58%,rgba(245,227,176,.34)_100%)]" />
+            <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#B88A35]/40 bg-white/85"><RefreshCw className="absolute h-[18px] w-[18px] text-[#9A742A]" strokeWidth={1.5} /><Gem className="relative h-[10px] w-[10px] fill-[#DDB66A]/35 text-[#610138]" strokeWidth={1.9} /></span>
+            <span className="relative truncate text-sm font-extrabold">Gold Exchange</span>
           </button>
         </div>
 
@@ -380,11 +350,11 @@ Please confirm availability.`
               playClickSound()
             }}
             title="Visit the Talla Jewellers website"
-            className="relative flex h-11 min-w-0 items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#DDB66A]/50 text-white transition active:scale-[0.97]"
-            style={{ background: 'linear-gradient(135deg, #610138 0%, #7D064B 60%, #4D012B 100%)', boxShadow: '0 8px 18px rgba(97,1,56,0.30)' }}
+            className="relative flex h-11 min-w-0 items-center justify-center gap-1 overflow-hidden rounded-2xl border border-[#E7C876]/75 text-white transition active:scale-[0.97]"
+            style={{ background: 'linear-gradient(135deg, #610138 0%, #7D064B 60%, #4D012B 100%)', boxShadow: '0 8px 18px rgba(97,1,56,0.30), inset 0 1px 0 rgba(255,235,183,.24)' }}
           >
             <span className="pointer-events-none absolute -right-4 -top-7 h-20 w-20 opacity-20" style={{ backgroundImage: 'url(/talla/talla-emblem.png)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }} />
-            <Image src="/talla/talla-monogram.png" alt="" width={40} height={40} className="relative z-10 h-10 w-10 shrink-0 object-contain" />
+            <Image src="/talla/talla-monogram.png" alt="" width={32} height={32} className="relative z-10 h-8 w-8 shrink-0 object-contain" />
             <span className="relative z-10 truncate text-sm font-extrabold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">Website</span>
           </a>
 
@@ -642,95 +612,11 @@ Please confirm availability.`
           )}
         </AnimatePresence>
 
-        {/* 3. Gold Exchange Modal */}
-        <AnimatePresence>
-          {goldExchangeOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/70 p-4 backdrop-blur-md"
-              onClick={() => setGoldExchangeOpen(false)}
-            >
-              <motion.div
-                initial={{ scale: 0.92, y: 20 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.92, y: 20 }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-sm overflow-hidden rounded-[26px] border border-[#DDB66A]/50 bg-[#171116] p-5 text-white shadow-2xl"
-              >
-                <div className="flex items-center justify-between border-b border-[#370820] pb-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#610138] text-[#DDB66A]">
-                      <RefreshCw className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-black text-white">Gold Exchange Program</h3>
-                      <p className="text-[11px] font-semibold text-[#DDB66A]">100% Value • Zero Deductions</p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setGoldExchangeOpen(false)}
-                    className="grid h-8 w-8 place-items-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                  >
-                    <X className="h-4 w-4 text-white" />
-                  </button>
-                </div>
-
-                <div className="mt-4 space-y-2.5">
-                  <div className="rounded-2xl border border-[#DDB66A]/30 bg-[#251520] p-3">
-                    <div className="flex items-center gap-2 mb-1">
-                      <ShieldCheck className="h-4 w-4 text-[#DDB66A]" />
-                      <div className="text-[13px] font-extrabold text-white">100% Value For Your Gold</div>
-                    </div>
-                    <div className="text-[11px] text-white/75 leading-relaxed">
-                      Exchange your hallmark jewellery at 100% current benchmark gold value without unnecessary making cuts.
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl border border-[#370820] bg-[#1F121B] p-3">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Sparkles className="h-4 w-4 text-[#DDB66A]" />
-                      <div className="text-[13px] font-extrabold text-white">Computerised Karatmeter Testing</div>
-                    </div>
-                    <div className="text-[11px] text-white/75 leading-relaxed">
-                      Instant, non-destructive purity evaluation tested live before you for absolute transparency.
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl border border-[#370820] bg-[#1F121B] p-3">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Gem className="h-4 w-4 text-[#DDB66A]" />
-                      <div className="text-[13px] font-extrabold text-white">Upgrade To Bridal & Diamonds</div>
-                    </div>
-                    <div className="text-[11px] text-white/75 leading-relaxed">
-                      Easily exchange old gold jewellery for natural certified solitaires, diamond chokers, or heritage polki.
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setGoldExchangeOpen(false)
-                      setSelectedPurpose('Gold Exchange Consultation')
-                      setConsultationModalOpen(true)
-                    }}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-black text-white shadow-lg transition-transform active:scale-[0.98]"
-                    style={{
-                      background: 'linear-gradient(135deg, #610138 0%, #370820 100%)',
-                      border: '1px solid rgba(221, 182, 106, 0.65)',
-                    }}
-                  >
-                    <span>Book Gold Exchange Consultation</span>
-                    <ChevronRight className="h-4 w-4 text-[#DDB66A]" />
-                  </button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {goldExchangeOpen && <GoldExchangeDialog onClose={() => setGoldExchangeOpen(false)} onBook={() => {
+          setGoldExchangeOpen(false)
+          setSelectedPurpose('Gold Exchange Consultation')
+          setConsultationModalOpen(true)
+        }} />}
 
         {/* 4. Our Story Modal */}
         <AnimatePresence>

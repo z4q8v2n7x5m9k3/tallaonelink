@@ -26,7 +26,7 @@ export const shopConfig = {
   contact: {
     phones: ['918716900000'],
     email: 'care@tallajewellers.com',
-    address: '4 A/B, Gandhi Nagar, Jammu, Jammu & Kashmir 180004',
+    address: '4 A/B, Gandhi Nagar, Jammu, 180004',
     locationLine: 'Gandhi Nagar, Jammu (4 Showrooms in J&K)',
     mapQuery: 'Talla Jewellers Gandhi Nagar Jammu',
     storeHours: 'Daily 10:30 AM - 8:00 PM',
@@ -38,7 +38,7 @@ export const shopConfig = {
   },
 
   branches: [
-    { name: 'Talla Jewellers — Gandhi Nagar', address: '4 A/B, Gandhi Nagar, near Gole Market, Jammu 180004', phone: '+91 87169 00000', mapQuery: 'Talla Jewellers 4 A/B Gandhi Nagar Jammu' },
+    { name: 'Talla Jewellers — Gandhi Nagar', address: '4 A/B, Gandhi Nagar, Jammu, 180004', phone: '+91 87169 00000', mapQuery: 'Talla Jewellers 4 A/B Gandhi Nagar Jammu 180004' },
     { name: 'Talla Jewellers — Lakhdata Bazar', address: '48, Lakhdata Bazar, Jammu 180001', phone: '+91 87169 00000', mapQuery: 'Talla Jewellers 48 Lakhdata Bazar Jammu' },
     { name: 'Talla Jewellers — Janipur', address: "Near Domino's Pizza, Patoli, Janipur, Jammu 180007", phone: '+91 87169 00000', mapQuery: "Talla Jewellers near Domino's Pizza Patoli Janipur Jammu" },
     { name: 'Talla Jewellers — Udhampur', address: 'Dhar Road, Indra Nagar, Udhampur, Ladan 182101', phone: '+91 87169 00000', mapQuery: 'Talla Jewellers Dhar Road Indra Nagar Udhampur' },
@@ -86,8 +86,8 @@ export const shopConfig = {
   },
 
   google: {
-    placeId: 'talla-jewellers-jammu',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Talla+Jewellers+Jammu',
+    placeId: 'ChIJyQ392bqEHjkRPv7z1rhWPjA',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query_place_id=ChIJyQ392bqEHjkRPv7z1rhWPjA&query=Talla+Jewellers+Gandhi+Nagar',
     reviewsUrl: '#reviews',
     isDemo: false,
   },

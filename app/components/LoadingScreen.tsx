@@ -12,7 +12,7 @@ export default function LoadingScreen() {
       animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        transition: { duration: 0.65, ease: [0.4, 0, 0.2, 1] },
+        transition: { duration: 0.85, ease: [0.4, 0, 0.2, 1] },
       }}
       className="fixed inset-0 z-[99999] flex flex-col items-center justify-center overflow-hidden px-6"
       style={{
@@ -48,11 +48,11 @@ export default function LoadingScreen() {
             initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{
-              scale: shouldReduceMotion ? 1 : 2.8,
-              rotate: shouldReduceMotion ? 0 : 25,
+              scale: shouldReduceMotion ? 1 : 1.35,
+              rotate: shouldReduceMotion ? 0 : 70,
               opacity: 0,
               transition: {
-                duration: 0.65,
+                duration: 0.85,
                 ease: [0.25, 1, 0.5, 1],
               },
             }}
@@ -61,6 +61,7 @@ export default function LoadingScreen() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
+            <motion.div className="h-full w-full" animate={{ rotate: shouldReduceMotion ? 0 : 360 }} transition={{ rotate: { duration: 14, ease: 'linear', repeat: Infinity } }} style={{ willChange: 'transform' }}>
             <Image
               src="/talla/loading/talla-pattern-gold.png"
               alt="Talla Brand Pattern"
@@ -69,6 +70,7 @@ export default function LoadingScreen() {
               className="w-full h-full object-contain select-none drop-shadow-[0_4px_24px_rgba(230,203,144,0.12)]"
               priority
             />
+            </motion.div>
           </motion.div>
 
           {/* Stage 2: Central T (Fades out quickly on exit) */}

@@ -3,21 +3,21 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 
 export default function BackToTop() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 520) {
         setIsVisible(true)
       } else {
         setIsVisible(false)
       }
     }
 
-    window.addEventListener('scroll', toggleVisibility)
+    toggleVisibility()
+    window.addEventListener('scroll', toggleVisibility, { passive: true })
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
 
@@ -32,19 +32,20 @@ export default function BackToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          className="fixed bottom-6 right-4 z-50"
+          initial={{ opacity: 0, y: 14, scale: 0.86 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 10, scale: 0.9 }}
+          transition={{ type: 'spring', stiffness: 330, damping: 25 }}
+          className="fixed bottom-5 right-4 z-50"
         >
-          <Button
+          <button
+            type="button"
             onClick={scrollToTop}
-            className="w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center p-0"
-          style={{ background: '#0F2A44', boxShadow: '0 8px 20px rgba(15,42,68,0.15)' }}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#DDB66A]/55 bg-[#610138] p-0 text-[#F4D58B] shadow-[0_10px_24px_rgba(39,2,22,.28)] backdrop-blur-md transition active:scale-90"
             aria-label="Back to top"
           >
-            <ArrowUp className="w-5 h-5" />
-          </Button>
+            <ArrowUp className="h-[18px] w-[18px]" strokeWidth={1.8} />
+          </button>
         </motion.div>
       )}
     </AnimatePresence>

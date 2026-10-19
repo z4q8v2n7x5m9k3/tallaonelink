@@ -13,6 +13,7 @@ import PaymentFace from './PaymentFace'
 import AppointmentFace from './AppointmentFace'
 import { useLanguage } from '../../../contexts/LanguageContext'
 import { playClickSound } from '../../../lib/playClickSound'
+import { prepareReturnToHeroCard } from '../../../lib/homeNavigation'
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -475,7 +476,7 @@ export default function Hero() {
 
               {/* Logo Circle – subtle infinite float with enlarged premium frame */}
               <motion.div
-                className="absolute -top-16 left-5"
+                className="absolute -top-14 left-5"
                 initial={{ scale: 0.92, opacity: 0 }}
                 animate={{
                   scale: 1,
@@ -489,7 +490,7 @@ export default function Hero() {
                 }}
               >
                 <div
-                  className="h-28 w-28 rounded-full flex items-center justify-center overflow-hidden bg-[#610138]"
+                  className="h-24 w-24 rounded-full flex items-center justify-center overflow-hidden bg-[#610138]"
                   style={{
                     border: '2.5px solid rgba(255, 255, 255, 0.95)',
                     boxShadow:
@@ -501,14 +502,14 @@ export default function Hero() {
                     alt={`${shopConfig.name} logo`}
                     width={140}
                     height={140}
-                    className="h-full w-full scale-[1.72] object-cover rounded-full"
+                    className="h-full w-full scale-[1.58] object-cover rounded-full"
                   />
                 </div>
               </motion.div>
 
               {/* Brand info - clean, bold, high-contrast typography matching Burger Bazaar */}
               <motion.div 
-                className="pt-11 mb-2"
+                className="pt-10 mb-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.15, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
@@ -577,13 +578,13 @@ export default function Hero() {
         }
         faceInfo={
           <div
-            className="backdrop-blur-md rounded-[24px] shadow-2xl border-2 cursor-pointer relative h-full overflow-hidden flex flex-col"
+            className="rounded-[26px] shadow-2xl border cursor-pointer relative h-full overflow-hidden flex flex-col [font-family:var(--font-poppins)]"
             style={{
               minHeight: 'min(580px, 85dvh)',
               boxSizing: 'border-box',
-              background: 'linear-gradient(145deg,#170611 0%,#3D0B27 48%,#610138 100%)',
-              borderColor: 'rgba(229,214,155,.42)',
-              boxShadow: '0 18px 40px rgba(0,0,0,.28), 0 0 0 1px rgba(229,214,155,.12)',
+              background: 'linear-gradient(155deg,#250917 0%,#4B082C 55%,#610138 100%)',
+              borderColor: 'rgba(229,214,155,.46)',
+              boxShadow: '0 22px 46px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.08)',
             }}
             onClick={(e) => {
               if ((e.target as HTMLElement).closest('button, a, [role="button"]')) return
@@ -598,11 +599,11 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={(e) => { e.stopPropagation(); handleFlip(e, true); }}
-              className="absolute top-4 right-4 z-10 text-xs text-white font-semibold bg-white/20 hover:bg-white/30 px-3 py-2 rounded-xl backdrop-blur-md shadow-lg cursor-pointer transition-all flex items-center gap-1.5 touch-manipulation"
+              className="absolute top-4 right-4 z-10 text-[11px] text-[#3B0A26] font-bold bg-[#FFFDF8] px-3 py-2 rounded-full shadow-lg cursor-pointer transition-all flex items-center gap-1.5 touch-manipulation"
               style={{ WebkitTapHighlightColor: 'transparent' }}
               aria-label={t('tapToReturn')}
             >
-              <Hand className="w-3.5 h-3.5 text-white" />
+              <Hand className="w-3.5 h-3.5 text-[#610138]" />
               <span style={{ fontSize: '12px' }}>{t('tapToReturn')}</span>
             </motion.button>
 
@@ -610,7 +611,7 @@ export default function Hero() {
             <motion.div
               className="absolute inset-0 pointer-events-none"
               style={{
-                backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 0%, transparent 50%)',
+                backgroundImage: 'radial-gradient(circle at 12% 12%, rgba(221,182,106,.17) 0%, transparent 32%), radial-gradient(circle at 90% 88%, rgba(255,255,255,.08) 0%, transparent 42%)',
               }}
               animate={{ opacity: [0.5, 0.8, 0.5] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -634,47 +635,51 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
                 className="w-full flex flex-col items-center max-w-[calc(100%-0.25rem)] flex-shrink-0 gap-0"
               >
-                <h2 className="text-xl sm:text-2xl font-black mb-4 pt-1 pb-1 tracking-wide text-white text-center w-full [text-shadow:0_1px_3px_rgba(0,0,0,0.25)]">
+                <div className="mb-4 w-full text-center">
+                <p className="text-[9px] font-bold uppercase tracking-[.25em] text-[#E8CA85]">At a glance</p>
+                <h2 className="mt-1 text-[22px] sm:text-2xl font-extrabold tracking-[-.02em] text-white w-full">
                   Business Snapshot
                 </h2>
+                <p className="mt-1 text-[11px] font-medium text-white/65">Heritage, craft and service across Jammu.</p>
+                </div>
 
                 {/* Block 1: Location – Mango-style light block + dark blue icon pill */}
                 <div
-                  className="flex items-start gap-3 w-full mb-3 rounded-[22px] p-3.5 sm:p-4 border shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
+                  className="flex items-start gap-3 w-full mb-3 rounded-[20px] p-3.5 sm:p-4 border shadow-[0_10px_22px_rgba(0,0,0,0.13)]"
                   style={{
-                    background: 'linear-gradient(135deg,rgba(255,253,248,.99),rgba(248,237,214,.97))',
-                    borderColor: 'rgba(221,182,106,.68)',
+                    background: '#FFFDF8',
+                    borderColor: 'rgba(221,182,106,.54)',
                   }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-[0_8px_18px_rgba(30,64,175,0.28)]"
-                    style={{ background: 'linear-gradient(135deg,#610138,#8A1455)', border: '1px solid rgba(221,182,106,.72)' }}
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: '#F7EDDC', border: '1px solid rgba(221,182,106,.58)' }}
                   >
-                    <MapPin className="w-5 h-5" style={{ color: '#DBEAFE' }} />
+                    <MapPin className="w-5 h-5" style={{ color: '#610138' }} />
                   </div>
                   <div className="min-w-0 flex-1 text-left">
-                    <p className="text-sm font-black leading-snug text-[#3B0A26]">Five Signature Showrooms</p>
-                    <p className="text-[11px] font-medium leading-relaxed text-slate-700">Gandhi Nagar • City Chowk • Channi Himmat • Katra • Udhampur</p>
+                    <p className="text-sm font-bold leading-snug text-[#3B0A26]">Four Signature Showrooms</p>
+                    <p className="mt-1 text-[11px] font-medium leading-relaxed text-[#75636B]">Gandhi Nagar • Lakhdata Bazar • Janipur • Udhampur</p>
                   </div>
                 </div>
 
                 {/* Block 2: Services – same treatment */}
                 <div
-                  className="flex items-start gap-3 w-full mb-3 rounded-[22px] p-3.5 sm:p-4 border shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
+                  className="flex items-start gap-3 w-full mb-3 rounded-[20px] p-3.5 sm:p-4 border shadow-[0_10px_22px_rgba(0,0,0,0.13)]"
                   style={{
-                    background: 'linear-gradient(135deg,rgba(255,253,248,.99),rgba(248,237,214,.97))',
-                    borderColor: 'rgba(221,182,106,.68)',
+                    background: '#FFFDF8',
+                    borderColor: 'rgba(221,182,106,.54)',
                   }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-[0_8px_18px_rgba(30,64,175,0.28)]"
-                    style={{ background: 'linear-gradient(135deg,#610138,#8A1455)', border: '1px solid rgba(221,182,106,.72)' }}
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: '#F7EDDC', border: '1px solid rgba(221,182,106,.58)' }}
                   >
-                    <Store className="w-5 h-5" style={{ color: '#DBEAFE' }} />
+                    <Store className="w-5 h-5" style={{ color: '#610138' }} />
                   </div>
                   <div className="min-w-0 flex-1 text-left">
-                    <p className="text-sm font-black leading-snug text-[#3B0A26]">Fine Jewellery &amp; Bridal</p>
-                    <p className="text-[11px] font-medium leading-relaxed text-slate-700">Bridal • Gold • Natural Diamonds • Polki • ZAVI Silver</p>
+                    <p className="text-sm font-bold leading-snug text-[#3B0A26]">Fine Jewellery &amp; Bridal</p>
+                    <p className="mt-1 text-[11px] font-medium leading-relaxed text-[#75636B]">Bridal • Gold • Natural Diamonds • Polki • ZAVI Silver</p>
                   </div>
                 </div>
 
@@ -682,10 +687,10 @@ export default function Hero() {
 
                 {/* Google Map – matches block treatment */}
                 <div
-                  className="w-full h-28 sm:h-32 rounded-[22px] overflow-hidden mb-4 pointer-events-none flex-shrink-0 border shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
+                  className="w-full h-28 sm:h-32 rounded-[20px] overflow-hidden mb-4 pointer-events-none flex-shrink-0 border shadow-[0_10px_22px_rgba(0,0,0,0.14)]"
                   style={{
                     background: 'rgba(255,255,255,0.94)',
-                    borderColor: 'rgba(10, 102, 178, 0.35)',
+                    borderColor: 'rgba(221,182,106,.55)',
                   }}
                 >
                   <iframe
@@ -702,28 +707,20 @@ export default function Hero() {
                 {/* Open in Maps – same style as Mango (white pill on gradient) */}
                 <div className="w-full flex flex-col items-center mt-2 pt-2" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
                   <motion.a
-                    href={shopConfig.google?.isDemo ? '#demo-location' : `https://www.google.com/maps?q=${encodeURIComponent(shopConfig.contact.mapQuery)}`}
-                    target={shopConfig.google?.isDemo ? undefined : '_blank'}
-                    rel="noopener noreferrer"
+                    href="/nearest-branch"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center justify-center gap-2 bg-white/25 hover:bg-white/35 active:bg-white/40 text-white font-semibold px-6 py-3.5 rounded-full border border-white/30 backdrop-blur-sm touch-manipulation pointer-events-auto shadow-[0_10px_25px_rgba(0,0,0,0.3)] min-h-[48px] min-w-[180px]"
+                    className="inline-flex items-center justify-center gap-2 bg-[#FFFDF8] text-[#610138] font-bold px-6 py-3.5 rounded-full border border-[#DDB66A]/60 touch-manipulation pointer-events-auto shadow-[0_10px_24px_rgba(0,0,0,.2)] min-h-[48px] min-w-[180px]"
                     onClick={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
-                      handleFlip(e, true)
-                      setTimeout(() => {
-                        if (shopConfig.google?.isDemo) {
-                          window.alert('Demo Version — location directions are not connected.')
-                          return
-                        }
-                        window.open(`https://www.google.com/maps?q=${encodeURIComponent(shopConfig.contact.mapQuery)}`, '_blank', 'noopener,noreferrer')
-                      }, 700)
+                      prepareReturnToHeroCard()
+                      window.location.href = '/nearest-branch'
                     }}
                     style={{ fontSize: 'clamp(13px, 3.5vw, 15px)', WebkitTapHighlightColor: 'transparent' }}
                   >
-                    <MapPin className="w-5 h-5 flex-shrink-0 text-white" />
-                    {shopConfig.google?.isDemo ? 'Demo Version' : 'Get Directions'}
+                    <MapPin className="w-5 h-5 flex-shrink-0 text-[#A6772B]" />
+                    Get Directions
                   </motion.a>
                 </div>
               </motion.div>

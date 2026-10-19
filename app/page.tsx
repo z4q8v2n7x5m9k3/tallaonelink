@@ -86,7 +86,7 @@ export default function Home() {
             <Hero />
             <About />
             <div
-              className="lower-dark talla-unified -mx-4 mt-0 px-4 pt-6 pb-[max(2rem,env(safe-area-inset-bottom))]"
+              className="lower-dark talla-unified -mx-4 mt-0 px-4 pt-0 pb-[max(2rem,env(safe-area-inset-bottom))]"
               style={{
                 background: '#111011',
               }}

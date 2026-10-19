@@ -121,19 +121,19 @@ export default function NewArrivalsPage() {
   }
 
   return (
-    <main className="talla-unified min-h-screen bg-[#FAF8F5] px-3 pb-16 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F] [font-family:var(--font-manrope)]">
+    <main className="talla-unified min-h-screen bg-[#111011] px-3 pb-16 pt-[max(.75rem,env(safe-area-inset-top))] text-[#32101F] [font-family:var(--font-poppins)]">
       <div className="mx-auto w-full max-w-md">
-        {/* Luxury Unified Header with Integrated Categories */}
-        <header className="relative overflow-hidden rounded-[30px] border border-[#DDB66A]/45 bg-[#5F0D3C] p-4.5 text-white shadow-[0_20px_42px_rgba(95,13,60,.32)]">
+        {/* Clean editorial header */}
+        <header className="relative overflow-hidden rounded-[28px] border border-[#DDB66A]/45 bg-[#5F0D3C] p-5 text-white shadow-[0_18px_38px_rgba(0,0,0,.28)]">
           <Image
             src="/talla/kriyon/fine-081.webp"
             alt=""
             fill
             priority
-            className="object-cover object-[65%_36%] opacity-35"
+            className="object-cover object-[65%_36%] opacity-48"
             sizes="448px"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(52,4,31,.98)_0%,rgba(95,13,60,.86)_55%,rgba(35,5,23,.45)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(52,4,31,.98)_0%,rgba(95,13,60,.87)_52%,rgba(35,5,23,.25)_100%)]" />
 
           <div className="relative">
             {/* Top Navigation Bar */}
@@ -142,17 +142,12 @@ export default function NewArrivalsPage() {
                 href="/"
                 onClick={() => prepareReturnToHeroCard()}
                 aria-label="Back home"
-                className="grid h-11 w-11 place-items-center rounded-xl border border-white/20 bg-black/20 text-white backdrop-blur-md active:scale-95 transition-transform"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md active:scale-95 transition-transform"
               >
                 <ArrowLeft className="h-5 w-5" />
               </Link>
-              <div className="text-center">
-                <span className="block text-[9.5px] font-bold uppercase tracking-[0.24em] text-[#EACD8C]">
-                  Talla Jewellers
-                </span>
-                <span className="block text-[11px] font-semibold text-white/80">Est. 1960</span>
-              </div>
-              <span className="relative h-11 w-11 overflow-hidden rounded-full border border-[#DDB66A]/65 bg-[#5F0D3C] shadow-md">
+              <span className="text-[9.5px] font-bold uppercase tracking-[0.24em] text-[#EACD8C]">Talla Jewellers</span>
+              <span className="relative h-10 w-10 overflow-hidden rounded-full border border-[#DDB66A]/65 bg-[#5F0D3C] shadow-md">
                 <Image
                   src="/talla/elegant-gold-t-emblem.png"
                   alt="Talla Jewellers"
@@ -164,68 +159,33 @@ export default function NewArrivalsPage() {
             </div>
 
             {/* Header Titles */}
-            <div className="mt-5">
-              <span className="block text-[9.5px] font-bold uppercase tracking-[.26em] text-[#EACD8C]">
-                Haute Joaillerie Edits
-              </span>
-              <h1 className="mt-1 text-[30px] font-black leading-tight tracking-tight text-white">
+            <div className="mt-12 max-w-[290px]">
+              <span className="block text-[9px] font-bold uppercase tracking-[.28em] text-[#EACD8C]">The latest edit</span>
+              <h1 className="mt-1 text-[31px] font-extrabold leading-tight tracking-[-.025em] text-white">
                 New Arrivals
               </h1>
-              <p className="mt-1 text-[12px] font-medium leading-relaxed text-white/85">
-                Explore our freshest handcrafted masterworks across gold, diamonds, polki & silver.
+              <p className="mt-2 text-[11px] font-medium leading-5 text-white/78">
+                Newly arrived pieces across bridal, gold, diamonds, polki and silver.
               </p>
-            </div>
-
-            {/* Integrated Category Filter Bar inside Navbar */}
-            <div className="mt-4 pt-3.5 border-t border-white/15">
-              <div
-                ref={filterScrollRef}
-                className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide"
-                style={{ WebkitOverflowScrolling: 'touch' }}
-              >
-                {CATEGORIES.map(({ key, label, image }) => {
-                  const isActive = activeCategory === key
-                  return (
-                    <button
-                      key={key}
-                      data-cat-pill={key}
-                      type="button"
-                      onClick={() => selectCategory(key)}
-                      className={`flex h-9 shrink-0 items-center gap-2 rounded-full border px-3 text-[11.5px] font-black transition-all shadow-sm active:scale-95 ${
-                        isActive
-                          ? 'border-white bg-white text-[#5F0D3C] shadow-[0_4px_14px_rgba(0,0,0,.25)]'
-                          : 'border-white/20 bg-black/25 text-white/90 hover:bg-black/35'
-                      }`}
-                    >
-                      <span className="relative h-5 w-5 shrink-0 overflow-hidden rounded-full border border-white/60 shadow-sm">
-                        <Image
-                          src={image}
-                          alt={label}
-                          fill
-                          className="object-cover"
-                          sizes="20px"
-                        />
-                      </span>
-                      <span>{label}</span>
-                    </button>
-                  )
-                })}
-              </div>
             </div>
           </div>
         </header>
 
+        <div ref={filterScrollRef} className="mt-3 flex gap-2 overflow-x-auto rounded-[20px] border border-white/10 bg-[#1A1719] p-2 scrollbar-hide" style={{ WebkitOverflowScrolling: 'touch' }}>
+          {CATEGORIES.map(({ key, label, image }) => { const isActive = activeCategory === key; return <button key={key} data-cat-pill={key} type="button" onClick={() => selectCategory(key)} className={`flex h-10 shrink-0 items-center gap-2 rounded-full border py-1 pl-1 pr-3.5 text-[10.5px] font-bold transition active:scale-95 ${isActive ? 'border-[#DDB66A] bg-[#F8F4EC] text-[#610138]' : 'border-white/10 bg-white/[.05] text-white/75'}`}><span className="relative h-8 w-8 overflow-hidden rounded-full border border-white/30"><Image src={image} alt="" fill className="object-cover" sizes="32px" /></span>{label}</button> })}
+        </div>
+
         {/* Section Subtitle & Count */}
-        <div className="mt-4 mb-3 flex items-center justify-between px-1">
-          <h2 className="text-[17px] font-black tracking-tight text-[#1F0715]">
+        <div className="mt-6 mb-3 flex items-center justify-between px-1 text-white">
+          <h2 className="text-[18px] font-extrabold tracking-[-.02em]">
             Featured Masterpieces
           </h2>
-          <span className="rounded-full border border-[#DDB66A]/45 bg-white px-2.5 py-0.5 text-[11px] font-black text-[#5F0D3C] shadow-sm">
+          <span className="rounded-full border border-[#DDB66A]/35 bg-white/[.06] px-2.5 py-1 text-[10px] font-bold text-[#EACD8C]">
             {filteredItems.length} styles
           </span>
         </div>
 
-        {/* 2-Column Luxury Grid (No 22KT Badges, No Arrows, Clean & Focused) */}
+        {/* Editorial collection-style grid */}
         <div className="grid grid-cols-2 gap-3">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
@@ -236,14 +196,14 @@ export default function NewArrivalsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ delay: index * 0.03, duration: 0.25 }}
-                className="flex flex-col justify-between overflow-hidden rounded-[22px] border border-[#DDB66A]/40 bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFDF9_60%,#FAF5EB_100%)] p-2.5 shadow-[0_10px_24px_rgba(50,16,31,.07)]"
+                className={`${activeCategory !== 'all' || index === 0 || index === filteredItems.length - 1 ? 'col-span-2' : ''} relative overflow-hidden rounded-[22px] border border-[#DDB66A]/38 bg-[#201019] shadow-[0_12px_28px_rgba(0,0,0,.22)]`}
               >
-                {/* Product Image Showcase */}
                 <a
                   href={item.shopUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block aspect-[1/1] w-full overflow-hidden rounded-[18px] bg-[#1E0E18]"
+                  aria-label={`View ${item.title}`}
+                  className={`group relative block w-full overflow-hidden bg-[#1E0E18] ${activeCategory !== 'all' || index === 0 || index === filteredItems.length - 1 ? 'aspect-[16/9]' : 'aspect-[4/5]'}`}
                 >
                   <Image
                     src={item.image}
@@ -252,31 +212,13 @@ export default function NewArrivalsPage() {
                     className="object-cover transition duration-500 group-hover:scale-[1.04]"
                     sizes="220px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
-                </a>
-
-                {/* Product Info & Action */}
-                <div className="flex flex-1 flex-col justify-between pt-2.5 px-0.5">
-                  <div>
-                    <h3 className="text-[13.5px] font-black leading-tight text-[#1F0715] line-clamp-1">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-[11px] font-medium leading-[1.35] text-[#6E5864] line-clamp-2">
-                      {item.subtitle}
-                    </p>
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.03)_22%,rgba(20,3,13,.40)_62%,rgba(12,2,8,.96)_100%)]" />
+                  <div className="absolute inset-x-3 bottom-3 text-white">
+                    <span className="text-[8px] font-bold uppercase tracking-[.2em] text-[#EACD8C]">{item.categoryLabel}</span>
+                    <h3 className={`${activeCategory !== 'all' || index === 0 || index === filteredItems.length - 1 ? 'text-[18px]' : 'text-[13px]'} mt-0.5 font-extrabold leading-tight tracking-[-.02em]`}>{item.title}</h3>
                   </div>
-
-                  {/* Clean Inquire Now Button */}
-                  <a
-                    href={getWhatsappProductLink(item.title)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-[#5F0D3C] to-[#75114A] text-[11.5px] font-black text-white shadow-[0_4px_12px_rgba(95,13,60,.20)] active:scale-95 transition-all hover:brightness-105"
-                  >
-                    <WhatsAppLogo className="h-3.5 w-3.5" color="#25D366" />
-                    <span>Inquire Now</span>
-                  </a>
-                </div>
+                </a>
+                <a href={getWhatsappProductLink(item.title)} target="_blank" rel="noopener noreferrer" className="absolute right-3 top-3 flex h-8 items-center gap-1.5 rounded-full border border-[#EACD8C]/55 bg-[#610138]/90 px-3 text-[9.5px] font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,.24)] backdrop-blur-md transition hover:bg-[#75114A] active:scale-95"><WhatsAppLogo className="h-3.5 w-3.5" color="#25D366" /><span>Enquire</span></a>
               </motion.article>
             ))}
           </AnimatePresence>

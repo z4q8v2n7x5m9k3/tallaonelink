@@ -28,8 +28,8 @@ const reasons: ReasonItem[] = [
   {
     title: 'Four Showrooms',
     description: 'Gandhi Nagar, Lakhdata Bazar, Janipur & Udhampur.',
-    bgImage: '/talla/talla-showroom.webp',
-    iconImage: '/talla/showrooms/gandhi-nagar.jpg',
+    bgImage: '/talla/showrooms/showroom-hero-hd.png',
+    iconImage: '/talla/showrooms/showroom-hero-hd.png',
   },
   {
     title: 'Since 1960',
@@ -46,9 +46,9 @@ export default function Services() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.3 }}
-      className="mx-auto w-full max-w-md py-6 [font-family:var(--font-manrope)]"
+      className="mx-auto w-full max-w-md py-8 [font-family:var(--font-poppins)]"
     >
-      <div className="mb-5">
+      <div className="mb-6">
         <div className="section-title-accent talla-title-accent mb-2">
           <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
             Why Talla Jewellers?
@@ -59,7 +59,7 @@ export default function Services() {
         </p>
       </div>
 
-      <div className="grid gap-3">
+      <div className="grid gap-3.5">
         {reasons.map((reason, index) => (
           <motion.article
             key={reason.title}
@@ -67,8 +67,10 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, duration: 0.28 }}
-            className="relative min-h-[96px] overflow-hidden rounded-[24px] border border-[#DDB66A]/35 bg-[#FFF9F5] shadow-[0_10px_24px_rgba(0,0,0,.16)]"
+            className="group relative min-h-[104px] overflow-hidden rounded-[24px] border border-[#DDB66A]/48 bg-[#FFF9F5] shadow-[0_12px_28px_rgba(0,0,0,.18)]"
           >
+            <motion.span aria-hidden className="pointer-events-none absolute -inset-y-8 z-20 w-16 rotate-[18deg] bg-gradient-to-r from-transparent via-[#F6D98D]/35 to-transparent blur-sm" animate={{ left: ['-28%', '118%'] }} transition={{ duration: 3.8, delay: index * .55, repeat: Infinity, repeatDelay: 2.8, ease: 'easeInOut' }} />
+            <span className="pointer-events-none absolute inset-[3px] z-20 rounded-[20px] border border-[#A9772A]/14" />
             {/* Background Image Layer */}
             <div className="pointer-events-none absolute inset-y-0 right-0 w-[64%] overflow-hidden">
               <Image
@@ -88,7 +90,7 @@ export default function Services() {
             </span>
 
             {/* Content & Icon Box */}
-            <div className="relative z-10 flex min-h-[96px] items-center gap-3.5 p-3.5">
+            <div className="relative z-10 flex min-h-[104px] items-center gap-3.5 p-4">
               <span className="relative flex h-[62px] w-[62px] shrink-0 items-center justify-center overflow-hidden rounded-[18px] border border-[#DDB66A]/40 bg-white p-1 shadow-[0_7px_16px_rgba(97,1,56,.10)]">
                 {reason.isBisLogo ? (
                   <Image

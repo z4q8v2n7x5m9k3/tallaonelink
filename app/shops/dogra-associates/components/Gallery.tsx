@@ -4,9 +4,7 @@ import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import NextLink from 'next/link'
 import NextImage from 'next/image'
-import { useRouter } from 'next/navigation'
 import { ArrowRight, Sparkles } from 'lucide-react'
-import { setReturnSection } from '../../../lib/homeNavigation'
 
 // Fresh official Talla Jewellers fine jewellery and heirloom pieces
 const galleryImages = [
@@ -26,8 +24,6 @@ const Image = NextImage as any
 const Link = NextLink as any
 
 export default function Gallery() {
-  const router = useRouter()
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       visibleImages.forEach((src) => {
@@ -36,11 +32,6 @@ export default function Gallery() {
       })
     }
   }, [])
-
-  const handleImageClick = () => {
-    setReturnSection('gallery')
-    router.push('/gallery')
-  }
 
   return (
     <section id="gallery" className="mx-auto w-full max-w-md pb-6 pt-8 [font-family:var(--font-manrope)]">
@@ -70,8 +61,7 @@ export default function Gallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-30px' }}
             transition={{ delay: index * 0.06, duration: 0.3 }}
-            className="group relative aspect-square cursor-pointer overflow-hidden rounded-[24px] border border-[#DDB66A]/30 bg-[#1D141A] shadow-[0_16px_34px_rgba(0,0,0,.35)] active:scale-[0.98] transition-all"
-            onClick={handleImageClick}
+            className="group relative aspect-square overflow-hidden rounded-[24px] border border-[#DDB66A]/30 bg-[#1D141A] shadow-[0_16px_34px_rgba(0,0,0,.35)]"
           >
             <Image
               src={imageSrc}
@@ -82,9 +72,6 @@ export default function Gallery() {
             />
             <div className="absolute inset-[1px] z-[1] rounded-[23px] border border-white/10 pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-            <div className="absolute bottom-2.5 left-3 z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <span className="text-[10px] font-bold text-white/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">View Piece →</span>
-            </div>
           </motion.div>
         ))}
       </div>
@@ -98,8 +85,9 @@ export default function Gallery() {
         className="mt-5"
       >
         <Link
-          href="/gallery"
-          onClick={() => setReturnSection('gallery')}
+          href="https://tallajewellers.com/gallery/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="group relative flex min-h-[54px] w-full items-center justify-center gap-3 rounded-2xl border border-[#DDB66A]/60 bg-gradient-to-r from-[#610138] via-[#780646] to-[#51012E] px-4 [font-family:var(--font-manrope)] text-base font-bold tracking-tight text-white shadow-[0_12px_26px_rgba(97,1,56,.32),inset_0_1px_0_rgba(255,255,255,0.22)] transition-all active:scale-[0.98] hover:brightness-105"
         >
           {/* Changed 2 images with luxury circular styling */}
