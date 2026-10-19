@@ -9,11 +9,11 @@ export default function BackToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 520) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
+      const collection = document.getElementById('services')
+      const passedCollection = collection
+        ? collection.getBoundingClientRect().bottom < window.innerHeight * 0.45
+        : window.scrollY > 900
+      setIsVisible(passedCollection)
     }
 
     toggleVisibility()

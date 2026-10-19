@@ -14,7 +14,7 @@ function GoogleMapsDirectionButton({ mapQuery, label = 'Directions' }: { mapQuer
       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`}
       target="_blank"
       rel="noreferrer"
-      className="flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-[#610138] bg-[#610138] px-4 text-[13px] font-semibold text-white shadow-[0_8px_18px_rgba(97,1,56,.20)] transition-all active:scale-[0.98] hover:bg-[#741048]"
+      className="flex h-11 min-w-0 flex-1 basis-0 items-center justify-center gap-1.5 rounded-full border border-[#610138] bg-[#610138] px-2 text-[11.5px] font-semibold text-white shadow-[0_8px_18px_rgba(97,1,56,.20)] transition-all active:scale-[0.98] hover:bg-[#741048]"
     >
       <Navigation className="h-4 w-4 fill-[#EACD8C]/25 text-[#EACD8C]" strokeWidth={1.8} />
       <span>{label}</span>
@@ -96,7 +96,7 @@ export default function NearestBranchPage() {
   }
 
   return (
-    <main className="talla-unified min-h-screen bg-[#FAF9F6] px-4 pb-12 pt-[max(1rem,env(safe-area-inset-top))] text-[#32101F]">
+    <motion.main initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .32, ease: [0.22,1,0.36,1] }} className="talla-unified min-h-screen bg-[#FAF9F6] px-4 pb-12 pt-[max(1rem,env(safe-area-inset-top))] text-[#32101F]">
       <div className="mx-auto max-w-md">
         <header className="relative overflow-hidden rounded-[26px] bg-[#610138] p-5 text-white">
           <Image src="/talla/showrooms/showroom-hero-hd.png" alt="" fill priority className="object-cover object-center opacity-45" sizes="448px" />
@@ -124,7 +124,7 @@ export default function NearestBranchPage() {
           <AnimatePresence>{nearest && <motion.article id="nearest-result" initial={{ opacity: 0, y: 18, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ type: 'spring', stiffness: 330, damping: 25 }} className="mt-3 overflow-hidden rounded-[24px] border border-[#DDB66A]/55 bg-white shadow-[0_16px_34px_rgba(50,16,31,.12)]">
             <div className="relative h-[168px] overflow-hidden"><Image src="/talla/showrooms/showroom-hero-hd.png" alt="Talla showroom" fill className="object-cover" sizes="448px" /><span className="absolute inset-0 bg-gradient-to-t from-[#270617]/80 via-[#270617]/10 to-transparent" /><div className="absolute inset-x-4 bottom-4"><p className="text-[9px] font-bold uppercase tracking-[.18em] text-[#EACD8C]">Nearest to you · {nearest.distance.toFixed(1)} km</p><h2 className="mt-1 text-[20px] font-extrabold text-white">{nearest.name.replace('Talla Jewellers — ', '')}</h2></div></div>
             <div className="border-t border-[#E8DED2] p-5"><p className="text-[12px] font-medium leading-5 text-[#87747D]">{nearest.address}</p>
-            <div className="mt-4 flex gap-2"><a href={`tel:${nearest.phone.replace(/\s/g, '')}`} className="flex h-11 flex-1 items-center justify-center gap-2 rounded-full bg-[#610138] text-[12px] font-semibold text-white"><Phone className="h-4 w-4" strokeWidth={1.6} />Call showroom</a><GoogleMapsDirectionButton mapQuery={nearest.mapQuery} /></div></div>
+            <div className="mt-4 flex gap-2"><a href={`tel:${nearest.phone.replace(/\s/g, '')}`} className="flex h-11 min-w-0 flex-1 basis-0 items-center justify-center gap-1.5 rounded-full bg-[#610138] px-2 text-[11.5px] font-semibold text-white"><Phone className="h-4 w-4" strokeWidth={1.6} />Call showroom</a><GoogleMapsDirectionButton mapQuery={nearest.mapQuery} /></div></div>
           </motion.article>}</AnimatePresence>
         </section>
 
@@ -134,16 +134,16 @@ export default function NearestBranchPage() {
             <div className="relative h-[184px] overflow-hidden bg-[#F6F3ED]">
               <Image src={showroom.image} alt={showroom.isJewellery ? 'Original Talla gold jewellery' : `${showroom.name} showroom`} fill className={showroom.isJewellery ? 'object-contain p-3' : 'object-cover'} style={{ objectPosition: showroom.imagePosition }} sizes="448px" />
               <span className="absolute inset-0 bg-black/[.04]" />
-              <span className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#120208]/95 via-[#260A18]/58 to-transparent" />
+              <span className="absolute inset-0 bg-gradient-to-t from-[#100106]/95 via-[#220814]/46 to-black/10" />
               <span className="absolute left-4 top-4 rounded-full border border-white/60 bg-white/90 px-2.5 py-1 text-[9px] font-semibold text-[#610138]">0{index+1} · Talla Jewellers</span>
               <div className="absolute inset-x-4 bottom-4 text-white drop-shadow-md"><h3 className="text-[20px] font-extrabold tracking-[-.02em]">{showroom.name.replace('Talla Jewellers — ', '')}</h3><p className="mt-1 line-clamp-1 text-[10px] font-medium text-white/82">{showroom.address}</p></div>
             </div>
             <div className="border-t border-[#E8DED2] bg-[linear-gradient(180deg,#FFFDF9_0%,#F8F1E8_100%)] p-5">
-              <div className="flex gap-3"><a href={`tel:${showroom.phone.replace(/\s/g, '')}`} className="flex h-11 flex-1 items-center justify-center gap-2 rounded-full border border-[#E1C477]/70 bg-white text-[12px] font-semibold text-[#610138] shadow-[0_7px_16px_rgba(69,29,47,.08)]"><Phone className="h-4 w-4 text-[#9A742A]" strokeWidth={1.7} />Call showroom</a><GoogleMapsDirectionButton mapQuery={showroom.mapQuery} /></div>
+              <div className="flex gap-2"><a href={`tel:${showroom.phone.replace(/\s/g, '')}`} className="flex h-11 min-w-0 flex-1 basis-0 items-center justify-center gap-1.5 rounded-full border border-[#E1C477]/70 bg-white px-2 text-[11.5px] font-semibold text-[#610138] shadow-[0_7px_16px_rgba(69,29,47,.08)]"><Phone className="h-4 w-4 text-[#9A742A]" strokeWidth={1.7} />Call showroom</a><GoogleMapsDirectionButton mapQuery={showroom.mapQuery} /></div>
             </div>
           </article>)}</div>
         </section>
       </div>
-    </main>
+    </motion.main>
   )
 }

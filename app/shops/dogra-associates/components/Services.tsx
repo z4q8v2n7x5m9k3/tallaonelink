@@ -67,9 +67,9 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, duration: 0.28 }}
-            className="group relative min-h-[104px] overflow-hidden rounded-[24px] border border-[#DDB66A]/48 bg-[#FFF9F5] shadow-[0_12px_28px_rgba(0,0,0,.18)]"
+            className="group relative min-h-[92px] overflow-hidden rounded-[22px] border border-[#DDB66A]/48 bg-[#FFF9F5] shadow-[0_10px_24px_rgba(0,0,0,.16)]"
           >
-            <span className="pointer-events-none absolute inset-[3px] z-20 rounded-[20px] border border-[#A9772A]/14" />
+            <span className="pointer-events-none absolute inset-[3px] z-20 rounded-[18px] border border-[#A9772A]/14" />
             {/* Background Image Layer */}
             <div className="pointer-events-none absolute inset-y-0 right-0 w-[64%] overflow-hidden">
               <Image
@@ -89,8 +89,8 @@ export default function Services() {
             </span>
 
             {/* Content & Icon Box */}
-            <div className="relative z-10 flex min-h-[104px] items-center gap-3.5 p-4">
-              <span className="relative flex h-[62px] w-[62px] shrink-0 items-center justify-center overflow-hidden rounded-[18px] border border-[#DDB66A]/40 bg-white p-1 shadow-[0_7px_16px_rgba(97,1,56,.10)]">
+            <div className="relative z-10 flex min-h-[92px] items-center gap-3 p-3.5">
+              <span className="relative flex h-[54px] w-[54px] shrink-0 items-center justify-center overflow-hidden rounded-[16px] border border-[#DDB66A]/40 bg-white p-1 shadow-[0_7px_16px_rgba(97,1,56,.10)]">
                 {reason.isBisLogo ? (
                   <Image
                     src={reason.iconImage}
@@ -104,17 +104,17 @@ export default function Services() {
                     src={reason.iconImage}
                     alt={reason.title}
                     fill
-                    sizes="62px"
+                    sizes="54px"
                     className="object-cover"
                   />
                 )}
               </span>
 
               <div className="min-w-0 max-w-[70%]">
-                <h3 className="text-[16px] font-bold leading-tight text-[#1D1717]">
+                <h3 className="text-[15px] font-bold leading-tight text-[#1D1717]">
                   {reason.title}
                 </h3>
-                <p className="mt-1.5 text-[12px] font-semibold leading-[1.45] text-slate-600">
+                <p className="mt-1 text-[11px] font-semibold leading-[1.4] text-slate-600">
                   {reason.description}
                 </p>
               </div>

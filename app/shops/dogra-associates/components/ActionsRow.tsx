@@ -224,13 +224,13 @@ Please confirm availability.`
           <span className="absolute inset-0 bg-[linear-gradient(90deg,#3E0624_0%,rgba(97,1,56,.94)_54%,rgba(97,1,56,.28)_100%)]" />
           <span className="pointer-events-none absolute inset-x-0 bottom-0 h-[68%] bg-[linear-gradient(180deg,transparent_0%,rgba(17,5,12,.54)_100%)]" />
           <span className="pointer-events-none absolute inset-[3px] rounded-[20px] border border-white/15" />
-          <span className="relative mr-4 h-12 w-12 shrink-0 overflow-hidden rounded-[14px] border-2 border-[#F8F4EC] shadow-[0_6px_16px_rgba(0,0,0,.22)]"><Image src="/talla/showrooms/showroom-hero-hd.png" alt="Talla showroom" fill unoptimized className="object-cover object-left" sizes="48px" /></span>
-          <span className="relative min-w-0 flex-1 pr-3">
-            <strong className="block whitespace-nowrap text-[15px] font-extrabold tracking-[-.015em] text-white">Explore All Showrooms</strong>
+          <span className="relative mr-3 h-11 w-11 shrink-0 overflow-hidden rounded-[13px] border-2 border-[#F8F4EC] shadow-[0_6px_16px_rgba(0,0,0,.22)]"><Image src="/talla/showrooms/showroom-hero-hd.png" alt="Talla showroom" fill unoptimized className="object-cover object-left" sizes="44px" /></span>
+          <span className="relative min-w-0 flex-1 pr-1">
+            <strong className="block whitespace-nowrap text-[13.5px] font-extrabold tracking-[-.02em] text-white">Explore All Showrooms</strong>
             <span className="mt-1 block text-[11px] font-bold text-[#F0D18F]">Find Nearest Showroom</span>
           </span>
           <span className="relative flex shrink-0 items-center">
-            {["35% center", "70% center"].map((position, index) => <span key={position} className={`${index ? '-ml-2' : ''} relative h-9 w-9 overflow-hidden rounded-full border-2 border-[#F8F4EC] shadow-[0_5px_12px_rgba(0,0,0,.24)]`}><Image src="/talla/showrooms/showroom-hero-hd.png" alt="" fill unoptimized className="object-cover" style={{ objectPosition: position }} sizes="36px" /></span>)}
+            {["35% center", "70% center"].map((position, index) => <span key={position} className={`${index ? '-ml-1.5' : ''} relative h-8 w-8 overflow-hidden rounded-full border-2 border-[#F8F4EC] shadow-[0_5px_12px_rgba(0,0,0,.24)]`}><Image src="/talla/showrooms/showroom-hero-hd.png" alt="" fill unoptimized className="object-cover" style={{ objectPosition: position }} sizes="32px" /></span>)}
           </span>
         </button>
 
@@ -334,8 +334,8 @@ Please confirm availability.`
           >
             <Image src="/talla/kriyon/fine-110.webp" alt="" fill className="object-cover object-[70%_40%] opacity-44 transition-transform duration-500 group-hover:scale-[1.04]" sizes="220px" />
             <span className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,238,202,.98)_0%,rgba(245,227,176,.86)_58%,rgba(245,227,176,.34)_100%)]" />
-            <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#B88A35]/40 bg-white/88"><svg viewBox="0 0 28 28" className="h-[19px] w-[19px]" aria-hidden><path d="M7.2 10.2A7.7 7.7 0 0 1 20.3 7l1.2 1.2" fill="none" stroke="#9A742A" strokeWidth="1.7" strokeLinecap="round"/><path d="m21.8 5.6-.2 3.1-3.1-.2" fill="none" stroke="#9A742A" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/><path d="M20.8 17.8A7.7 7.7 0 0 1 7.7 21l-1.2-1.2" fill="none" stroke="#610138" strokeWidth="1.7" strokeLinecap="round"/><path d="m6.2 22.4.2-3.1 3.1.2" fill="none" stroke="#610138" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/><path d="M10 12.3h8l-1.3 5.2h-5.4L10 12.3Z" fill="#DDB66A" stroke="#7B5720" strokeWidth="1"/></svg></span>
-            <span className="relative truncate text-sm font-extrabold">Gold Exchange</span>
+            <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#B88A35]/45 bg-white/90"><Coins className="h-[16px] w-[16px] text-[#8A6425]" strokeWidth={1.8} /></span>
+            <span className="relative truncate text-[12.5px] font-extrabold tracking-[-.01em]">Gold Exchange</span>
           </button>
         </div>
 

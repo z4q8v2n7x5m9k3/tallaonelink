@@ -180,7 +180,7 @@ Please confirm the consultation appointment.`
             </div>
 
             {/* Date & Time */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
               <div>
                 <span className="mb-1.5 flex items-center gap-1.5 text-[12px] font-extrabold text-[#1F0715]">
                   <CalendarDays className="h-4 w-4 text-[#9A7A35]" />
@@ -190,7 +190,7 @@ Please confirm the consultation appointment.`
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="h-[54px] w-full rounded-[16px] border border-[#D7C6AF] bg-white px-4 text-[13px] font-bold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
+                  className="block h-[54px] min-w-0 w-full max-w-full rounded-[16px] border border-[#D7C6AF] bg-white px-4 text-[13px] font-bold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
                 />
               </div>
 
