@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowUpRight, MapPin } from 'lucide-react'
 
 interface ReasonItem {
   title: string
@@ -126,6 +128,25 @@ export default function Services() {
             </div>
           </motion.article>
         ))}
+      </div>
+
+      <div className="mt-5 grid grid-cols-2 gap-3">
+        <Link
+          href="/nearest-branch"
+          className="flex min-h-[52px] items-center justify-center gap-2 rounded-[17px] border border-[#DDB66A]/65 bg-[#FFF9ED] px-3 text-center text-[12px] font-bold text-[#610138] shadow-[0_8px_22px_rgba(0,0,0,.14)] transition active:scale-[.98]"
+        >
+          <MapPin className="h-4 w-4 text-[#A87925]" strokeWidth={1.9} />
+          Visit Our Showrooms
+        </Link>
+        <a
+          href="https://tallajewellers.com/shop/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex min-h-[52px] items-center justify-center gap-2 rounded-[17px] border border-[#DDB66A]/55 bg-[#610138] px-3 text-center text-[12px] font-bold text-white shadow-[0_10px_24px_rgba(97,1,56,.25)] transition active:scale-[.98]"
+        >
+          Shop Jewellery
+          <ArrowUpRight className="h-4 w-4 text-[#E8CA85]" strokeWidth={1.9} />
+        </a>
       </div>
     </motion.section>
   )

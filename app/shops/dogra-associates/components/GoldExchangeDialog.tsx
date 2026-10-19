@@ -36,8 +36,8 @@ export default function GoldExchangeDialog({ onClose, onBook }: { onClose: () =>
           <button type="button" onClick={onClose} aria-label="Close Gold Exchange" className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border border-[#E8CA85]/60 bg-[#7B174D] text-[#F2D58F] shadow-[0_7px_18px_rgba(0,0,0,.2)] transition hover:bg-[#8B1B59]"><X className="h-[17px] w-[17px]" strokeWidth={1.8} /></button>
           <span className="relative block h-12 w-12 overflow-hidden rounded-full border border-[#E8CA85]/60 bg-[#650039] shadow-md"><Image src="/talla/elegant-gold-t-emblem.png" alt="Talla Jewellers" fill className="scale-[1.78] object-cover" sizes="48px" /></span>
           <p className="relative mt-4 text-[9px] font-bold uppercase tracking-[.27em] text-[#E8CA85]">Talla Gold Exchange</p>
-          <h2 id="gold-exchange-title" className="relative mt-1.5 max-w-[320px] text-[25px] font-extrabold leading-[1.12] tracking-[-.025em]">Exchange Your Gold, Beautifully</h2>
-          <p className="relative mt-3 max-w-[325px] text-[11.5px] font-medium leading-[1.7] text-white/82">A private, transparent assessment of your gold, with personal guidance for choosing the Talla jewel that comes next.</p>
+          <h2 id="gold-exchange-title" className="relative mt-1.5 whitespace-nowrap text-[clamp(17px,5.6vw,24px)] font-extrabold leading-tight tracking-[-.025em]">Exchange Your Gold Beautifully</h2>
+          <p className="relative mt-2.5 max-w-[330px] text-[11px] font-medium leading-[1.55] text-white/82">Transparent valuation and personal guidance for your next Talla jewel.</p>
         </div>
         <div className="p-5">
           <div className="space-y-2.5">
