@@ -37,6 +37,16 @@ function todayDateValue() {
   return date.toISOString().slice(0, 10)
 }
 
+function formatVisitDate(value: string) {
+  if (!value) return 'Choose a date'
+  const [year, month, day] = value.split('-').map(Number)
+  return new Intl.DateTimeFormat('en-IN', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(year, month - 1, day))
+}
+
 export default function BookConsultationPage() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -186,12 +196,19 @@ Please confirm the consultation appointment.`
                   <CalendarDays className="h-4 w-4 text-[#9A7A35]" />
                   Preferred Date
                 </span>
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="block h-[54px] min-w-0 w-full max-w-full rounded-[16px] border border-[#D7C6AF] bg-white px-4 text-[13px] font-bold text-[#32101F] shadow-[0_8px_18px_rgba(45,20,31,.08)] outline-none transition focus:border-[#610138] focus:ring-2 focus:ring-[#610138]/10"
-                />
+                <div className="relative h-[54px] w-full min-w-0 max-w-full overflow-hidden rounded-[16px] border border-[#D7C6AF] bg-white shadow-[0_8px_18px_rgba(45,20,31,.08)] focus-within:border-[#610138] focus-within:ring-2 focus-within:ring-[#610138]/10">
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-between px-4 text-[13px] font-bold text-[#32101F]">
+                    <span>{formatVisitDate(date)}</span>
+                    <CalendarDays className="h-4 w-4 text-[#9A7A35]" />
+                  </span>
+                  <input
+                    type="date"
+                    aria-label="Preferred Date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="absolute inset-0 h-full w-full min-w-0 max-w-full cursor-pointer opacity-0"
+                  />
+                </div>
               </div>
 
               <div>

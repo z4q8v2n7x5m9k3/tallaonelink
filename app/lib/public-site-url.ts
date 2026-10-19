@@ -4,4 +4,4 @@
  * Set NEXT_PUBLIC_SITE_URL on Vercel for the final public domain.
  */
 export const PUBLIC_SITE_URL =
-  (process.env.NEXT_PUBLIC_SITE_URL || 'https://new-vision-onelink.vercel.app').replace(/\/$/, '')
+  (process.env.NEXT_PUBLIC_SITE_URL || 'https://talla.onelink.cards').replace(/\/$/, '')

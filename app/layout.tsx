@@ -4,7 +4,6 @@ import './globals.css'
 import { siteConfig } from './data/site'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { CartProvider } from './contexts/CartContext'
-import { shopConfig } from './shops/dogra-associates/config'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -50,11 +49,11 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: `${siteConfig.url}${shopConfig.assets.cover}`,
-        width: 1200,
-        height: 630,
+        url: `${siteConfig.url}/talla/talla-og-image.png`,
+        width: 1254,
+        height: 1254,
         alt: `${siteConfig.name} | ${siteConfig.tagline}`,
-        type: 'image/jpeg',
+        type: 'image/png',
       },
     ],
   },
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
-    images: [`${siteConfig.url}${shopConfig.assets.cover}`],
+    images: [`${siteConfig.url}/talla/talla-og-image.png`],
   },
   robots: {
     index: true,
