@@ -2,16 +2,16 @@ export default function Loading() {
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center"
-      style={{ background: '#F7FAFF' }}
+      style={{ background: '#111011' }}
       aria-live="polite"
       aria-busy="true"
     >
       <div
-        className="w-10 h-10 rounded-full border-4 border-[#E5ECF6] border-t-[#0A66B2] animate-spin"
+        className="h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-[#DDB66A]"
         aria-hidden
       />
-      <p className="mt-4 text-sm font-medium" style={{ color: '#6B7A90' }}>
-        Loading...
+      <p className="mt-4 text-[10px] font-semibold uppercase tracking-[.24em]" style={{ color: '#DDB66A' }}>
+        Talla Jewellers
       </p>
     </div>
   )

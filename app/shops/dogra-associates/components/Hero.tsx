@@ -359,18 +359,18 @@ export default function Hero() {
                 transition={{ duration: 0.3, delay: 0.4 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="absolute top-4 right-4 z-10 text-xs font-semibold px-3 py-2 rounded-full shadow-lg cursor-pointer transition-all flex items-center gap-1.5 touch-manipulation"
+                className="absolute right-3.5 top-3.5 z-10 flex cursor-pointer touch-manipulation items-center gap-1 rounded-full px-2.5 py-1.5 font-semibold transition-all backdrop-blur-md"
                 style={{
                   WebkitTapHighlightColor: 'transparent',
-                  color: '#0f172a',
-                  background: 'rgba(255,255,255,0.95)',
-                  border: '1px solid rgba(147, 197, 253, 0.7)',
-                  boxShadow: '0 8px 18px rgba(7, 59, 115, 0.18), 0 2px 6px rgba(15, 23, 42, 0.08)',
+                  color: '#2E1222',
+                  background: 'rgba(255,255,255,0.78)',
+                  border: '1px solid rgba(255,255,255,0.68)',
+                  boxShadow: '0 7px 16px rgba(25,8,17,0.14), inset 0 1px 0 rgba(255,255,255,0.72)',
                 }}
                 aria-label={t('tapToFlip')}
               >
-                <Hand className="w-3.5 h-3.5" style={{ color: '#1e40af' }} />
-                <span style={{ fontSize: '12px' }}>{t('tapToFlip')}</span>
+                <Hand className="h-3 w-3" style={{ color: '#610138' }} />
+                <span className="text-[10px] tracking-[-.01em]">{t('tapToFlip')}</span>
               </motion.button>
             )}
 
